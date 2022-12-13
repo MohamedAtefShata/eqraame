@@ -1,0 +1,22 @@
+{
+  "name": "root",
+  "version": "1.0.0",
+  "description": "",
+  "main": "",
+  "scripts": {
+    "dev": "concurrently \"cd backend && npm run dev\" \"cd frontend && npm start\" "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hngara/cs309proj.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hngara/cs309proj/issues"
+  },
+  "homepage": "https://github.com/hngara/cs309proj#readme",
+  "devDependencies": {
+    "concurrently": "^7.6.0"
+  }
+}
