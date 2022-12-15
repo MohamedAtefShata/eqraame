@@ -15,26 +15,13 @@ router.post(
     .not()
     .isEmpty()
     .withMessage("Name is require")
-    .not()
-    .matches(/\d/)
-    .withMessage("Name must not contains number")
+    .escape()
+    .matches(/^[a-zA-Z\s\.\-]+$/g)
+    .withMessage("Invalid name (use only letters , white space and (. or -))")
     .isLength({ max: 100 })
     .withMessage("Name must be at most 100 character"),
 
-  check("email")
-    .trim()
-    .isEmail()
-    .withMessage("Invaild E-mail")
-    .custom(async (value) => {
-      try {
-        let user = await User.findOne().byEmail(value);
-        if (user) return Promise.reject("E-mail is already used");
-        return Promise.resolve(true);
-      } catch (err) {
-        console.log("error in check email used :", err);
-        return Promise.reject("Server error");
-      }
-    }),
+  check("email").trim().isEmail().withMessage("Invaild E-mail"),
 
   check("password")
     .not()
@@ -57,11 +44,36 @@ router.post(
     )
     .withMessage("invalid role propartey"),
   /******** Response handling ********/
-  (req, res) => {
+  async (req, res) => {
     const errors = validationResult(req);
-    if (!errors.isEmpty()) res.status(401).json({ errors: errors.array() });
+    if (!errors.isEmpty())
+      return res.status(401).json({ errors: errors.array() });
 
-    res.send("good request");
+    const { name, email, password, birthdate, role, avatar } = req.body;
+
+    try {
+      // check if email is used
+      let user = await User.findOne().byEmail(email);
+      if (user)
+        return res
+          .status(401)
+          .json({ errors: [{ msg: "Email is already used", param: "email" }] });
+
+      user = new User({ name, email, password, role });
+      await user.encryptPassword();
+
+      if (birthdate) user.birthdate = new Date(birthdate);
+      if (avatar) user.avatar = avatar;
+
+      await user.save();
+
+      console.log("token", user.token);
+
+      res.send("good request");
+    } catch (error) {
+      console.log("error in creaet user :", error.message);
+      return res.status(500).json({ msg: "server error" });
+    }
   }
 );
 

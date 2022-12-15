@@ -16,20 +16,27 @@ const userScheme = new mongoose.Schema(
     role: {
       type: String,
       required: true,
+      immutable: true,
       enum: ["student", "teacher", "admin"],
       default: "student",
     },
-    birthDate: { type: Date, required: true },
+    birthdate: { type: Date /*@todo validate birthdate range*/ },
     avatar: { type: String },
   },
-  { timestampst: true }
+  { timestamps: true }
 );
 
-userScheme.methods.encryptPassword = async () => {
+userScheme.methods.encryptPassword = async function () {
   const salt = await bcrypt.genSalt(10);
   this.password = await bcrypt.hash(this.password, salt);
 };
 
-userScheme.query.byEmail = (email) => this.where({ email: email });
+userScheme.query.byEmail = function (email) {
+  return this.where({ email: email });
+};
+
+userScheme.virtual("token").get(function () {
+  return this.id;
+});
 
 module.exports = User = mongoose.model("User", userScheme);
