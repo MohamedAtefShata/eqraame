@@ -2,12 +2,12 @@ const router = require("express").Router();
 const { check, validationResult } = require("express-validator");
 const User = require("../../models/User.model");
 
-//@route POST /api/user
+//@route POST /api/user/register
 //@desc  register user to database
 //@acess public
 router.post(
   // path
-  "/",
+  "/register",
 
   /*****  checkers *****/
   check("name")
