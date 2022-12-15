@@ -14,7 +14,10 @@ const HOST = process.env.HOST || "127.0.0.1";
 const Main = async () => {
   try {
     // connect to database
+    console.log("start connecting to db will take some seconds ......");
     await connect();
+
+    console.log("runnung server ......");
     app.listen(PORT, () => {
       console.log(`Server is running on port: http://${HOST}:${PORT}`);
     });
