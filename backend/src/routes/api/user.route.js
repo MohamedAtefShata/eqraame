@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const { check, validationResult } = require("express-validator");
 const User = require("../../models/User.model");
+const registerUser = require("../../services/register-user");
 
 //@route POST /api/user/register
 //@desc  register user to database
@@ -65,7 +66,10 @@ router.post(
       if (birthdate) user.birthdate = new Date(birthdate);
       if (avatar) user.avatar = avatar;
 
-      await user.save();
+      // await user.save();
+
+      // register user transaction
+      await registerUser(user);
 
       const token = user.getToken();
 
