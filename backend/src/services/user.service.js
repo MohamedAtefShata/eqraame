@@ -1,13 +1,18 @@
 /**
- * register user Transtaction
- * @desc: transaction to register user and create wallet and profile for it
- * @author: Mahmoud Atef
+ * User service
+ * @desc service do all buusiness for user : logic register , delete ,...
+ * @author Mahmoud Atef
  */
 
 const { connection } = require("../config/db-connection");
 const Wallet = require("../models/Wallet.model");
 
-module.exports = async function (user) {
+/**
+ * register user function
+ * @desc transaction to register user and create wallet and profile for it
+ * @param user user object from User.model
+ */
+const register = async function (user) {
   const session = await connection.startSession();
 
   try {
@@ -29,3 +34,5 @@ module.exports = async function (user) {
     session.endSession();
   }
 };
+
+module.exports = { register };

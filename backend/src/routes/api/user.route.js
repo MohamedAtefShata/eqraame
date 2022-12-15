@@ -7,7 +7,7 @@
 const router = require("express").Router();
 const { check, validationResult } = require("express-validator");
 const User = require("../../models/User.model");
-const registerUser = require("../../services/register-user");
+const userService = require("../../services/user.service");
 
 /**
  * @route POST /api/user/register
@@ -77,7 +77,7 @@ router.post(
       // await user.save();
 
       // register user transaction
-      await registerUser(user);
+      await userService.register(user);
 
       const token = user.getToken();
 
