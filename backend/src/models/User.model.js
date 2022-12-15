@@ -1,6 +1,6 @@
 /**
  * User Model
- * @desc user model schema
+ * @desc   user model schema
  * @author Mahmoud Atef
  */
 

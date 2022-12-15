@@ -1,6 +1,6 @@
 /**
  * Wallet Model
- * @desc wallet model schema
+ * @desc   wallet model schema
  * @author Mahmoud Atef
  */
 
@@ -32,6 +32,14 @@ const walletScheme = new mongoose.Schema(
  */
 walletScheme.methods.addCourse = function (course) {
   this.courses.unshift(course);
+};
+
+/** by user id query
+ * @desc add by user-id to query to find ,update or delete by it
+ * @param id user id to query by it
+ */
+walletScheme.query.byUserID = function (id) {
+  return this.where({ user_id: id });
 };
 
 module.exports = mongoose.model("Wallet", walletScheme);

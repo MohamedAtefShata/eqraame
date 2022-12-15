@@ -1,3 +1,9 @@
+/**
+ * Authentication rout
+ * @route /auth
+ * @author Mahmoud Atef
+ */
+
 const auth = require("../../middlewares/auth");
 const User = require("../../models/User.model");
 
@@ -26,7 +32,7 @@ router.get("/", auth, async (req, res) => {
 
 /**
  * @route  POST api/auth
- *@desc   create authentication for login
+ * @desc   create authentication for login
  * @access public
  */
 router.post(
