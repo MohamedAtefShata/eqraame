@@ -67,9 +67,9 @@ router.post(
 
       await user.save();
 
-      console.log("token", user.token);
+      const token = user.getToken();
 
-      res.send("good request");
+      res.json({ msg: "user register succufully", token });
     } catch (error) {
       console.log("error in creaet user :", error.message);
       return res.status(500).json({ msg: "server error" });
