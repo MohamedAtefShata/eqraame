@@ -1,3 +1,9 @@
+/**
+ * User Model
+ * @desc user model schema
+ * @author Mahmoud Atef
+ */
+
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
@@ -22,7 +28,7 @@ const userScheme = new mongoose.Schema(
       enum: ["student", "teacher", "admin"],
       default: "student",
     },
-    birthdate: { type: Date /*@todo validate birthdate range*/ },
+    birthdate: { type: Date /**@todo validate birthdate range*/ },
     avatar: { type: String },
   },
   { timestamps: true }
@@ -33,6 +39,10 @@ userScheme.methods.encryptPassword = async function () {
   this.password = await bcrypt.hash(this.password, salt);
 };
 
+/** by email query
+ * @desc add by Email to query to find ,update or delete by it
+ * @param email email to use in query
+ */
 userScheme.query.byEmail = function (email) {
   return this.where({ email: email });
 };
@@ -46,6 +56,11 @@ userScheme.methods.getToken = function () {
   return token;
 };
 
+/**
+ * Compare password
+ * @desc to compare plain password to hashed password saved in db
+ * @param password text password
+ */
 userScheme.methods.comparePassword = async function (password) {
   let isMatch = await bcrypt.compare(password, this.password);
   return isMatch;

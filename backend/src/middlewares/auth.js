@@ -1,3 +1,9 @@
+/**
+ * auth middleware
+ * @desc middlerware for verify authentication
+ * @author Mahmoud Atef
+ */
+
 const jwt = require("jsonwebtoken");
 
 module.exports = async function (req, res, next) {
@@ -12,7 +18,10 @@ module.exports = async function (req, res, next) {
     req.user = decode.user;
     next();
   } catch (err) {
-    console.log("error in authntication", err.message);
-    return res.status(401).json({ msg: "Token is not valid." });
+    if (err.name === "JsonWebTokenError")
+      return res.status(401).json({ msg: "Token is not valid." });
+
+    console.log("error in authntication", `${err.name} : ${err.message}`);
+    return res.status(500).json({ msg: "server error" });
   }
 };

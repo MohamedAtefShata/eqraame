@@ -1,3 +1,8 @@
+/**
+ *  Main File for run server and connect to DB
+ * @author hangra
+ */
+
 const express = require("express");
 const cors = require("cors");
 const __ = require("dotenv").config();

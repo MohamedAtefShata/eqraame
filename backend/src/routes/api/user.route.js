@@ -1,11 +1,19 @@
+/**
+ * user rout
+ * @user /auth
+ * @author Mahmoud Atef
+ */
+
 const router = require("express").Router();
 const { check, validationResult } = require("express-validator");
 const User = require("../../models/User.model");
 const registerUser = require("../../services/register-user");
 
-//@route POST /api/user/register
-//@desc  register user to database
-//@acess public
+/**
+ * @route POST /api/user/register
+ * @acess public
+ * @desc  register user to database
+ */
 router.post(
   // path
   "/register",

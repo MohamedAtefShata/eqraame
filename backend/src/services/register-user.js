@@ -1,8 +1,8 @@
-/*
-    register user Transtaction 
-    @desc: transaction to register user and create wallet and profile for it
-    @author: Mahmoud Atef
-*/
+/**
+ * register user Transtaction
+ * @desc: transaction to register user and create wallet and profile for it
+ * @author: Mahmoud Atef
+ */
 
 const { connection } = require("../config/db-connection");
 const Wallet = require("../models/Wallet.model");
@@ -22,6 +22,7 @@ module.exports = async function (user) {
     // commiting
     await session.commitTransaction();
   } catch (error) {
+    // roll back and rethrow error to know an error happen
     await session.abortTransaction();
     throw error;
   } finally {

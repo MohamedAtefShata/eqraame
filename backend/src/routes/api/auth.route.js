@@ -4,9 +4,11 @@ const User = require("../../models/User.model");
 const router = require("express").Router();
 const { check, validationResult } = require("express-validator");
 
-//@route  GET api/auth
-//@desc   check authentication for user and return user data if valid auth
-//@access public
+/**
+ * @route  GET api/auth
+ * @desc   check authentication for user and return user data if valid auth
+ * @access public
+ */
 router.get("/", auth, async (req, res) => {
   try {
     let user = req.user;
@@ -22,9 +24,11 @@ router.get("/", auth, async (req, res) => {
   }
 });
 
-//@route  POST api/auth
-//@desc   create authentication for login
-//@access public
+/**
+ * @route  POST api/auth
+ *@desc   create authentication for login
+ * @access public
+ */
 router.post(
   "/",
   /*****  checkers *****/

@@ -1,3 +1,9 @@
+/**
+ * Wallet Model
+ * @desc wallet model schema
+ * @author Mahmoud Atef
+ */
+
 const mongoose = require("mongoose");
 
 const walletScheme = new mongoose.Schema(
@@ -20,6 +26,10 @@ const walletScheme = new mongoose.Schema(
   { timestamps: true }
 );
 
+/** add course
+ * @desc function to add coures id object to wallet
+ * @param course course object id
+ */
 walletScheme.methods.addCourse = function (course) {
   this.courses.unshift(course);
 };
