@@ -30,4 +30,6 @@ userScheme.methods.encryptPassword = async () => {
   this.password = await bcrypt.hash(this.password, salt);
 };
 
+userScheme.query.byEmail = (email) => this.where({ email: email });
+
 module.exports = User = mongoose.model("User", userScheme);

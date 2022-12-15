@@ -4,7 +4,7 @@
   "description": "",
   "main": "",
   "scripts": {
-    "backend-dev":"cd backend && npm run dev",
+    "backend-dev": "cd backend && npm run dev",
     "dev": "concurrently \"cd backend && npm run dev\" \"cd frontend && npm start\" "
   },
   "repository": {
