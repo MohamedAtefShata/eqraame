@@ -7,6 +7,7 @@
 const { connection } = require("../config/db-connection");
 const UserModel = require("../models/User.model");
 const WalletModel = require("../models/Wallet.model");
+const WalletTransactionModel = require("../models/WalletTransaction.model");
 
 /** pay function
  * @author Mahmoud Atef
@@ -59,6 +60,19 @@ const pay = async function (wallet, seller, item) {
     wallet.addCourse(item.id);
     adminWallet.balance += totalVat;
     seller.balance += afterVat;
+
+    await WalletTransactionModel.create(
+      [
+        {
+          user_id: wallet.user_id,
+          seller_id: seller.user_id,
+          item_id: item.id,
+          pricing,
+          vat: totalVat,
+        },
+      ],
+      { session }
+    );
 
     await wallet.save({ session });
     await adminWallet.save({ session });
