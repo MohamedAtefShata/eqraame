@@ -26,6 +26,16 @@ const walletScheme = new mongoose.Schema(
   { timestamps: true }
 );
 
+/*********** queries *************/
+/** by user id query
+ * @desc add by user-id to query to find ,update or delete by it
+ * @param id user id to query by it
+ */
+walletScheme.query.byUserID = function (id) {
+  return this.where({ user_id: id });
+};
+
+/************ Mehods  ****************/
 /** add course
  * @desc function to add coures id object to wallet
  * @param course course object id
@@ -34,12 +44,12 @@ walletScheme.methods.addCourse = function (course) {
   this.courses.unshift(course);
 };
 
-/** by user id query
- * @desc add by user-id to query to find ,update or delete by it
- * @param id user id to query by it
+/** check ability
+ * @desc check ability to pay item
+ * @param price price of item
  */
-walletScheme.query.byUserID = function (id) {
-  return this.where({ user_id: id });
+walletScheme.methods.abilityToPay = function (price) {
+  return price <= this.balance;
 };
 
 module.exports = mongoose.model("Wallet", walletScheme);
