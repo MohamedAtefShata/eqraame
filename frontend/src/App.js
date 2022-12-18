@@ -1,21 +1,18 @@
+import Navbar from "./components/Navbar"
 import React from 'react';
-import { BrowserRouter as Router, Route} from "react-router-dom";
+import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import Nav from "./components/nav.component"
-import home from "./components/home.component";
-import CreateUser from "./components/createuser.component.js";
-
-function App() {
-  return (
-    <Router>
-      <div className="container">
-      <Nav />
-      <br/>
-      <Route path="/" exact component={home} />
-      <Route path="/user" component={CreateUser} />
-      </div>
-    </Router>
-  );
+function App(){
+    return(
+        <>
+        <Router>
+            <Navbar/>
+            <Routes>
+                <Route path="/" exact />
+            </Routes>
+        </Router>
+        </>
+    );
 }
-
 export default App;
