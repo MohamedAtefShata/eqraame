@@ -18,10 +18,10 @@ module.exports = async function (req, res, next) {
     req.user = decode.user;
     next();
   } catch (err) {
-    if (err.name === "JsonWebTokenError")
+    if (err.name === "JsonWebTokenError" || err.name === "TokenExpiredError")
       return res.status(401).json({ msg: "Token is not valid." });
 
-    console.log("error in authntication", `${err.name} : ${err.message}`);
+    console.log("error in authntication", `${err.name} : ${err.message} `);
     return res.status(500).json({ msg: "server error" });
   }
 };
