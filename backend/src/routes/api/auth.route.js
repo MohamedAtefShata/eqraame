@@ -8,7 +8,7 @@ const auth = require("../../middlewares/auth");
 const User = require("../../models/User.model");
 
 const router = require("express").Router();
-const { check, validationResult } = require("express-validator");
+const { checkLogin, validateCheckers } = require("../../middlewares/cheakers");
 
 /**
  * @route  GET api/auth
@@ -38,15 +38,11 @@ router.get("/", auth, async (req, res) => {
 router.post(
   "/",
   /*****  checkers *****/
-  check("email").trim().isEmail().withMessage("Invaild E-mail"),
-  check("password").not().isEmpty().withMessage("Password is required"),
-
+  checkLogin,
+  validateCheckers,
   /****  response handler *****/
   async (req, res) => {
     try {
-      const errors = validationResult(req);
-      if (!errors.isEmpty())
-        return res.status(401).json({ errors: errors.array() });
       const { email, password } = req.body;
       const user = await User.findOne().byEmail(email);
 

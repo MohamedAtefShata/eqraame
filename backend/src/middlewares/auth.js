@@ -15,13 +15,22 @@ module.exports = async function (req, res, next) {
 
   try {
     const decode = jwt.verify(token, process.env.JWT_SECRET_KEY);
+
+    user = await User.findById(user.id).select("-password");
+
+    if (!user) throw Error({ name: "JsonWebTokenError" });
+
     req.user = decode.user;
     next();
   } catch (err) {
-    if (err.name === "JsonWebTokenError")
+    if (
+      err.name === "JsonWebTokenError" ||
+      err.name === "TokenExpiredError" ||
+      err.kind == "ObjectId"
+    )
       return res.status(401).json({ msg: "Token is not valid." });
 
-    console.log("error in authntication", `${err.name} : ${err.message}`);
+    console.log("error in authntication", `${err.name} : ${err.message} `);
     return res.status(500).json({ msg: "server error" });
   }
 };
