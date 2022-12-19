@@ -7,6 +7,19 @@
 
 const mongoose = require("mongoose");
 
+const lessonScheme = new mongoose.Schema({
+  num: { type: Number, required: true },
+  name: { type: String, required: true, trim: true },
+  content_type: {
+    type: String,
+    enum: ["article", "video"],
+    default: "article",
+  },
+  content: {
+    type: String,
+  },
+});
+
 const CourseScheme = new mongoose.Schema(
   {
     name: { type: String, required: true, trim: true },
@@ -25,20 +38,7 @@ const CourseScheme = new mongoose.Schema(
       min: 0,
       required: true,
     },
-    lessons: [
-      {
-        num: { type: Number, required: true },
-        name: { type: String, required: true, trim: true },
-        content_type: {
-          type: String,
-          enum: ["article", "video"],
-          default: "article",
-        },
-        content: {
-          type: String,
-        },
-      },
-    ],
+    lessons: [lessonScheme],
   },
   { timestamps: true }
 );
