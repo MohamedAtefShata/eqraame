@@ -40,7 +40,7 @@ router.post(
       user = new User({ name, email, password, role });
       await user.encryptPassword();
 
-      if (birthdate) user.birthdate = new Date(birthdate);
+      if (birthdate) user.birthdate = birthdate;
       if (avatar) user.avatar = avatar;
 
       // await user.save();
