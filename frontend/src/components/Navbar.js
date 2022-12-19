@@ -10,9 +10,9 @@ import SearchIcon from '@mui/icons-material/Search';
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
-    backgroundColor: alpha(theme.palette.common.white, 0.15),
+    backgroundColor: alpha(theme.palette.common.white, 1),
     '&:hover': {
-      backgroundColor: alpha(theme.palette.common.white, 0.25),
+      backgroundColor: alpha(theme.palette.common.white, 1),
     },
     marginLeft: 0,
     width: '100%',
@@ -75,7 +75,7 @@ function Navbar(){
                 <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
                     <img src="./images/logoPSDWhite.png" className="logo" alt=""/>
                 </Link>
-                <Toolbar>
+                <Toolbar className='searchBar'>
                     <Search>
                         <SearchIconWrapper>
                             <SearchIcon />
@@ -90,17 +90,17 @@ function Navbar(){
                 <ul className={click ? 'nav-menu active' : 'nav-menu'}>
                     <li className='nav-item'>
                         <Link to='/' className='nav-links' onClick={closeMobileMenu}>
-                            MY COURSES
+                            NEW COURSES
                         </Link>
                     </li>
                     <li className='nav-item'>
                         <Link to='/' className='nav-links' onClick={closeMobileMenu}>
-                            MY WALLET
+                        CATEGORIES
                         </Link>
                     </li>
                     <li className='nav-item'>
                         <Link to='/' className='nav-links' onClick={closeMobileMenu}>
-                            LOGIN
+                            LOG IN
                         </Link>
                     </li>
                     {button && <Button buttonStyle='btn--outline'>SIGN UP</Button>}

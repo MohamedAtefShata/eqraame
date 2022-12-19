@@ -30,11 +30,7 @@
     font-size: 2rem;
     align-items: center;
   }
-  .btn-mobile {
-    justify-self: end;
-    margin-right: 10px;
-  }
-  
+
   .fa-typo3 {
     margin-left: 0rem;
     font-size: 1.8rem;
@@ -45,12 +41,11 @@
     grid-template-columns: repeat(5, auto);
     grid-gap: 10px;
     list-style: none;
-    text-align: center;
     align-items: center;
     width: 60vw;
     justify-content: end;
     justify-self: end;
-    margin-right: 2rem;
+    /* margin-right: 2rem; */
   }
   
   .nav-item {
@@ -165,5 +160,10 @@
       background: #fff;
       color: #282828;
       transition: 250ms;
+    }
+
+    .searchBar {
+      display: none;
+      opacity: 0;
     }
   }
