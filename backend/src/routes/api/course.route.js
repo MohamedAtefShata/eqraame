@@ -38,6 +38,38 @@ router.get(
 );
 
 /**
+ * @route GET /api/course
+ * @acess public
+ * @desc  get all courses in database
+ */
+router.get(
+  // path
+  "/:id",
+  /******** Response handling ********/
+  async (req, res) => {
+    try {
+      const course_id = req.params.id;
+      let course = await CourseModel.findById(course_id);
+      if (!course)
+        return res.status(401).json({ errors: [{ msg: "invalid course id" }] });
+
+      return res.json({
+        msg: "successful requeset",
+        data: course,
+      });
+    } catch (error) {
+      if (error.kind === "ObjectId")
+        return res.status(401).json({ errors: [{ msg: "invalid course id" }] });
+      console.log(
+        "error in get courses :",
+        `< ${error.name} >:${error.message}`
+      );
+      return res.status(500).json({ msg: "server error" });
+    }
+  }
+);
+
+/**
  * @route POST /api/course
  * @acess private
  * @desc  add course in database
