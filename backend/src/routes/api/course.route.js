@@ -7,6 +7,7 @@
 const CourseModel = require("../../models/Course.model");
 const auth = require("../../middlewares/auth");
 const teacherAuth = require("../../middlewares/teacherAuth");
+const BadRequestError = require("../../utils/BadRequestError");
 
 const router = require("express").Router();
 
@@ -50,16 +51,21 @@ router.get(
     try {
       const course_id = req.params.id;
       let course = await CourseModel.findById(course_id);
-      if (!course)
-        return res.status(401).json({ errors: [{ msg: "invalid course id" }] });
+
+      if (!course) throw new BadRequestError("Invalid Course ID");
 
       return res.json({
         msg: "successful requeset",
         data: course,
       });
     } catch (error) {
+      // if id is not object id
       if (error.kind === "ObjectId")
-        return res.status(401).json({ errors: [{ msg: "invalid course id" }] });
+        error = BadRequestError("Invalid Course ID");
+
+      if (error.name === "BadRequest")
+        return res.status(error.status).json(error.json);
+
       console.log(
         "error in get courses :",
         `< ${error.name} >:${error.message}`
