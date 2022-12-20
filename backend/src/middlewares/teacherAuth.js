@@ -5,14 +5,11 @@
  */
 
 const UserModel = require("../models/User.model");
+const BadRequestError = require("../utils/BadRequestError");
 
 module.exports = async function (req, res, next) {
   try {
-    /**  throw request  @todo seprate class*/
-    let err = new Error("");
-    err.name = "JsonWebTokenError";
-
-    if (!req.user) throw err;
+    if (!req.user) throw new BadRequestError("Token is not valid.", 401);
 
     const user = await UserModel.findById(req.user.id).select("-password");
 
@@ -25,7 +22,9 @@ module.exports = async function (req, res, next) {
       err.name === "TokenExpiredError" ||
       err.kind == "ObjectId"
     )
-      return res.status(401).json({ msg: "Token is not valid." });
+      err = new BadRequestError("Token is not valid.", 401);
+
+    if (err.name === "BadRequest") return res.status(err.status).json(err.json);
 
     console.log("error in authntication", `< ${err.name} >:${err.message}`);
     return res.status(500).json({ msg: "server error" });

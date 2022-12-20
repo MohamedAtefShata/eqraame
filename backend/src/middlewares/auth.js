@@ -5,23 +5,19 @@
  */
 
 const jwt = require("jsonwebtoken");
+const BadRequestError = require("../utils/BadRequestError");
 
 module.exports = async function (req, res, next) {
-  const token = req.header("x-auth-token");
-  if (!token)
-    return res
-      .status(401)
-      .json({ errros: [{ msg: "No token , Authentcation denided." }] });
-
   try {
+    const token = req.header("x-auth-token");
+    if (!token)
+      throw new BadRequestError("No token , Authentcation denided.", 401);
+
     const decode = jwt.verify(token, process.env.JWT_SECRET_KEY);
 
     user = await User.findById(decode.user.id).select("-password");
 
-    /**  throw request  @todo seprate class*/
-    let err = new Error("");
-    err.name = "JsonWebTokenError";
-    if (!user) throw err;
+    if (!user) throw new BadRequestError("Token is not valid.", 401);
 
     req.user = decode.user;
     next();
@@ -31,7 +27,9 @@ module.exports = async function (req, res, next) {
       err.name === "TokenExpiredError" ||
       err.kind == "ObjectId"
     )
-      return res.status(401).json({ msg: "Token is not valid." });
+      err = new BadRequestError("Token is not valid.", 401);
+
+    if (err.name === "BadRequest") return res.status(err.status).json(err.json);
 
     console.log("error in authntication", `< ${err.name} >:${err.message}`);
     return res.status(500).json({ msg: "server error" });

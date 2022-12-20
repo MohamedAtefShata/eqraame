@@ -42,8 +42,8 @@ router.post(
       res.json({ msg: "user register succufully", token });
     } catch (error) {
       // if error caused by request
-      if (error.name == "BadRequest")
-        return res.status(401).json({ errors: [{ msg: error.message }] });
+      if (error.name === "BadRequest")
+        return res.status(error.status).json(error.json);
 
       // if error happen in server
       console.log(

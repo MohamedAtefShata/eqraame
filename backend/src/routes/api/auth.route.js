@@ -9,6 +9,7 @@ const User = require("../../models/User.model");
 
 const router = require("express").Router();
 const { checkLogin, validateCheckers } = require("../../middlewares/cheakers");
+const BadRequestError = require("../../utils/BadRequestError");
 
 /**
  * @route  GET api/auth
@@ -20,11 +21,12 @@ router.get("/", auth, async (req, res) => {
     let user = req.user;
 
     user = await User.findById(user.id).select("-password");
-    if (!user)
-      return res.status(401).json({ errors: [{ msg: "Token is not valid." }] });
+    if (!user) throw new BadRequestError("Token is not valid.", 401);
 
     res.json({ user });
   } catch (error) {
+    if (err.name === "BadRequest") return res.status(err.status).json(err.json);
+
     console.log(
       "error in get auth route : ",
       `< ${error.name} >:${error.message}`
@@ -54,13 +56,13 @@ router.post(
       if (!user) valid = false;
       else valid = await user.comparePassword(password);
 
-      if (!valid)
-        return res
-          .status(401)
-          .json({ errors: [{ msg: "invalid email or password" }] });
+      if (!valid) throw new BadRequestError("invalid email or password.", 401);
 
       return res.json({ msg: "login succuffuly", token: user.getToken() });
     } catch (error) {
+      if (err.name === "BadRequest")
+        return res.status(err.status).json(err.json);
+
       console.log(
         "error in post auth route : ",
         `< ${error.name} >:${error.message}`
