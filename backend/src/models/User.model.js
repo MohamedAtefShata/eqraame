@@ -25,6 +25,7 @@ const userScheme = new mongoose.Schema(
       type: String,
       required: true,
       immutable: true,
+      lowercase: true,
       enum: ["student", "teacher", "admin"],
       default: "student",
     },

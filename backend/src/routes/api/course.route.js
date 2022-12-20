@@ -5,13 +5,15 @@
  */
 
 const CourseModel = require("../../models/Course.model");
+const auth = require("../../middlewares/auth");
+const teacherAuth = require("../../middlewares/teacherAuth");
 
 const router = require("express").Router();
 
 /**
  * @route GET /api/course
  * @acess public
- * @desc  register user to database
+ * @desc  get all courses in database
  */
 router.get(
   // path
@@ -22,20 +24,29 @@ router.get(
       let courses = await CourseModel.find();
 
       return res.json({
-        msg: "succufful requeset",
+        msg: "successful requeset",
         data: courses,
       });
     } catch (error) {
-      console.log("error in get courses :", error.message);
+      console.log(
+        "error in get courses :",
+        `< ${error.name} >:${error.message}`
+      );
       return res.status(500).json({ msg: "server error" });
     }
   }
 );
 
+/**
+ * @route POST /api/course
+ * @acess private
+ * @desc  add course in database
+ */
 router.post(
   // path
   "/",
-  /** @todo teacher auth */
+  auth,
+  teacherAuth,
   /******** Response handling ********/
   async (req, res) => {
     try {
@@ -44,9 +55,12 @@ router.post(
       if (descreption) course.descreption = descreption;
       await course.save();
 
-      return res.json({ msg: "succufull added" });
+      return res.json({ msg: "successful added" });
     } catch (error) {
-      console.log("error in get courses :", error.message);
+      console.log(
+        "error in get courses :",
+        `< ${error.name} >:${error.message}`
+      );
       return res.status(500).json({ msg: "server error" });
     }
   }
