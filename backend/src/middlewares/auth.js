@@ -16,9 +16,12 @@ module.exports = async function (req, res, next) {
   try {
     const decode = jwt.verify(token, process.env.JWT_SECRET_KEY);
 
-    user = await User.findById(user.id).select("-password");
+    user = await User.findById(decode.user.id).select("-password");
 
-    if (!user) throw Error({ name: "JsonWebTokenError" });
+    /**  throw request  @todo seprate class*/
+    let err = new Error("");
+    err.name = "JsonWebTokenError";
+    if (!user) throw err;
 
     req.user = decode.user;
     next();
@@ -30,7 +33,7 @@ module.exports = async function (req, res, next) {
     )
       return res.status(401).json({ msg: "Token is not valid." });
 
-    console.log("error in authntication", `${err.name} : ${err.message} `);
+    console.log("error in authntication", `< ${err.name} >:${err.message}`);
     return res.status(500).json({ msg: "server error" });
   }
 };

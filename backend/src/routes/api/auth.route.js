@@ -25,7 +25,10 @@ router.get("/", auth, async (req, res) => {
 
     res.json({ user });
   } catch (error) {
-    console.log("error in auth route", error.message);
+    console.log(
+      "error in get auth route : ",
+      `< ${error.name} >:${error.message}`
+    );
     return res.status(500).json({ msg: "server error" });
   }
 });
@@ -46,12 +49,11 @@ router.post(
       const { email, password } = req.body;
       const user = await User.findOne().byEmail(email);
 
+      // check email/password
       let valid = true;
       if (!user) valid = false;
-      else {
-        let isMatch = await user.comparePassword(password);
-        if (!isMatch) valid = false;
-      }
+      else valid = await user.comparePassword(password);
+
       if (!valid)
         return res
           .status(401)
@@ -59,7 +61,10 @@ router.post(
 
       return res.json({ msg: "login succuffuly", token: user.getToken() });
     } catch (error) {
-      console.log("error in auth route", error.message);
+      console.log(
+        "error in post auth route : ",
+        `< ${error.name} >:${error.message}`
+      );
       return res.status(500).json({ msg: "server error" });
     }
   }

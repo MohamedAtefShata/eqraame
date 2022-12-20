@@ -20,39 +20,36 @@ const userService = require("../../services/user.service");
 router.post(
   // path
   "/register",
-
   /*****  checkers *****/
   checkUserRegistration,
   // validate chekers is passed
   validateCheckers,
   /******** Response handling ********/
   async (req, res) => {
-    const { name, email, password, birthdate, role, avatar } = req.body;
-
     try {
-      // check if email is used
-      let user = await User.findOne().byEmail(email);
-      if (user)
-        return res
-          .status(401)
-          .json({ errors: [{ msg: "Email is already used", param: "email" }] });
+      const { name, email, password, birthdate, role, avatar } = req.body;
 
-      user = new User({ name, email, password, role });
-      await user.encryptPassword();
+      let user = new User({ name, email, password, role });
 
       if (birthdate) user.birthdate = birthdate;
       if (avatar) user.avatar = avatar;
 
-      // await user.save();
-
       // register user transaction
       await userService.register(user);
 
+      // response by token
       const token = user.getToken();
-
       res.json({ msg: "user register succufully", token });
     } catch (error) {
-      console.log("error in creaet user :", error.message);
+      // if error caused by request
+      if (error.name == "BadRequest")
+        return res.status(401).json({ errors: [{ msg: error.message }] });
+
+      // if error happen in server
+      console.log(
+        "error in creaet user :",
+        `< ${error.name} >:${error.message}`
+      );
       return res.status(500).json({ msg: "server error" });
     }
   }

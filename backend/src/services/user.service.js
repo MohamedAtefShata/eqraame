@@ -5,6 +5,7 @@
  */
 
 const { connection } = require("../config/db-connection");
+const User = require("../models/User.model");
 const Wallet = require("../models/Wallet.model");
 
 /**
@@ -18,6 +19,17 @@ const register = async function (user) {
   try {
     // satrt tansaction
     session.startTransaction();
+
+    // check email is used
+    let emailChecker = await User.findOne().byEmail(user.email);
+
+    /**  throw request  @todo seprate class*/
+    let err = new Error("Email is already used");
+    err.name = "BadRequest";
+    if (emailChecker) throw err;
+
+    // prepare user data
+    await user.encryptPassword();
 
     // transaction
     await user.save({ session });
