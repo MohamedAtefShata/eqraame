@@ -1,5 +1,6 @@
 :root {
     --primary: #fff;
+    --secondery: #282828;
 }
 
 .btn {
@@ -10,13 +11,14 @@
     cursor: pointer;
 }
 
-.btn--primary {
+
+.btn--primary--nav {
     background-color: var(--primary);
-    color: #242424;
+    color: #282828;
     border: 1px solid var(--primary);
 }
 
-.btn--outline {
+.btn--outline--nav {
     background-color: transparent;
     color: #fff;
     padding: 8px 20px;
@@ -24,19 +26,38 @@
     transition: all 0.3s ease-out;
 }
 
-.btn--medium {
+.btn--primary--scr {
+    background-color: var(--secondery);
+    color: #fff;
+    border: 1px solid var(--secondery);
+}
+
+.btn--outline--scr {
+    background-color: transparent;
+    color: #282828;
+    padding: 8px 20px;
+    border: 1px solid var(--secondery);
+    transition: all 0.3s ease-in;
+}
+
+.btn--medium{
     padding: 8px 20px;
     font-size: 20px;
 }
 
-.btn--large {
+.btn--large{
     padding: 12px 26px;
     font-size: 20px;
 }
 
-.btn--medium:hover,
-.btn--large:hover {
+.btn--nav:hover {
     background: #fff;
-    color: #242424;
+    color: #282828;
+    transition: all 0.3s ease-out;
+}
+
+.btn--scr:hover {
+    background: #282828;
+    color: #fff;
     transition: all 0.3s ease-out;
 }

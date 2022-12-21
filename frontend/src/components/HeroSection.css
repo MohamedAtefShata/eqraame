@@ -1,66 +1,67 @@
-.slognimg {
-  object-fit: fill;
-  width: 42%;
-  height: auto;
-  position: fixed;
-  z-index: -1;
-}
-  
   .hero-container {
-    /* background: url('./public/images/HeroS.png') center center/cover no-repeat; */
-    display: block;
+    display: grid;
+    grid-template-columns: repeat(2, auto);
     background-color: transparent;
-    color: #1f1f1f;
-    -webkit-align-items: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    -webkit-justify-content: center;
+    max-width: 1400px;
+    color: #282828;
     justify-content: center;
     margin: 0px auto;
-    max-width: 1400px;
     position: relative;
+  }
+
+  .slognimg {
+    height: 600px;
+    width: auto;
+    margin-bottom: 32px;
+    margin-right: 24px;
+    margin-top: 32px;
+  }
+
+  .heroimg {
+    max-width: 590px;
+    max-height: 643px;
+    margin-left: auto;
+    margin-right: auto;
     width: 100%;
   }
-  
+
+  .hero-slogan {
+    margin-left: 100px;
+    margin-right: 180px;
+    padding: 40px 0 55px;
+    position: relative;
+    width: 570px;
+    z-index: 3;
+  }
+
   .hero-title{
-    color: #1f1f1f;
+    color: #282828;
     font-size: 5.25rem;
     line-height: 5.75rem;
     font-family: "Source Sans Pro",Arial,sans-serif;
     font-weight: 600;
     letter-spacing: -0.2px;
+    margin-top: 30px;
+    margin-bottom: 30px;
   }
-  .hero-container > h1 {
-    color: #fff;
-    font-size: 100px;
-    margin-top: -100px;
-  }
-  
-  .hero-container > p {
-    margin-top: 8px;
-    color: #fff;
-    font-size: 32px;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
-      'Lucida Sans', Arial, sans-serif;
-  }
-  
-  .hero-btns {
-    margin-top: 32px;
+
+  .hero-dis {
+    color: #282828;
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    font-family: "Source Sans Pro",Arial,sans-serif;
+    font-weight: 400;
+    letter-spacing: -0.1px;
+    margin-top: 24px;
+    margin-bottom: 60px;
   }
   
-  .hero-btns .btn {
+  .hero-btn {
+    margin-top: 30px;
+  }
+  
+  .hero-btn .btn {
     margin: 6px;
-  }
-  
-  .fa-play-circle {
-    margin-left: 4px;
   }
   
   @media screen and (max-width: 960px) {
