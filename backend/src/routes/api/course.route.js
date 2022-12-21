@@ -8,6 +8,7 @@ const CourseModel = require("../../models/Course.model");
 const auth = require("../../middlewares/auth");
 const teacherAuth = require("../../middlewares/teacherAuth");
 const BadRequestError = require("../../utils/BadRequestError");
+const responseHandler = require("../../utils/RequestHandler");
 
 const router = require("express").Router();
 
@@ -41,7 +42,7 @@ router.get(
 /**
  * @route GET /api/course
  * @acess public
- * @desc  get all courses in database
+ * @desc  get  course by id
  */
 router.get(
   // path
@@ -118,6 +119,43 @@ router.delete(
 );
 
 /**
+ * @route UPDATE /api/course
+ * @acess private
+ * @desc  add course in database
+ */
+router.post(
+  // path
+  "/update/:id",
+  auth,
+  teacherAuth,
+  /******** Response handling ********/
+  async (req, res) => {
+    await responseHandler(res, async () => {
+      // get request data
+      const course_id = req.params.id;
+      const { name, price, descreption } = req.body;
+      const author_id = req.user.id;
+
+      // getting and check course
+      let course = await CourseModel.findById(course_id);
+      if (!course) throw BadRequestError("Invalid Course ID");
+      if (!course.author_id.equals(author_id))
+        throw new BadRequestError("You don't have access to update");
+
+      // update data
+      if (name) course.name = name;
+      if (price) course.price = price;
+      if (descreption) course.descreption = descreption;
+
+      // saving updates
+      await course.save();
+
+      res.json({ msg: "successful update" });
+    });
+  }
+);
+
+/**
  * @route POST /api/course
  * @acess private
  * @desc  add course in database
@@ -130,7 +168,8 @@ router.post(
   /******** Response handling ********/
   async (req, res) => {
     try {
-      const { name, price, author_id, descreption } = req.body;
+      const author_id = req.user.id;
+      const { name, price, descreption } = req.body;
       let course = new CourseModel({ name, price, author_id });
       if (descreption) course.descreption = descreption;
       await course.save();
