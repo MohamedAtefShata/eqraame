@@ -25,10 +25,15 @@ const userScheme = new mongoose.Schema(
       type: String,
       required: true,
       immutable: true,
+      lowercase: true,
       enum: ["student", "teacher", "admin"],
       default: "student",
     },
-    birthdate: { type: Date /**@todo validate birthdate range*/ },
+    birthdate: {
+      type: Date,
+      min: "1900-01-01",
+      max: Date.now,
+    },
     avatar: { type: String },
   },
   { timestamps: true }

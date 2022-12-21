@@ -8,15 +8,16 @@
 const mongoose = require("mongoose");
 
 const lessonScheme = new mongoose.Schema({
-  num: { type: Number, required: true },
   name: { type: String, required: true, trim: true },
   content_type: {
     type: String,
+    required: true,
     enum: ["article", "video"],
     default: "article",
   },
   content: {
     type: String,
+    required: true,
   },
 });
 
@@ -48,8 +49,8 @@ const CourseScheme = new mongoose.Schema(
  * @desc
  * @author Mahmoud Atef
  */
-CourseScheme.methods.addLesson = function (num, name, content_type, content) {
-  this.lessons.push({ num, content, content_type, name });
+CourseScheme.methods.addLesson = function (name, content_type, content) {
+  this.lessons.push({ content, content_type, name });
 };
 
 module.exports = mongoose.model("Course", CourseScheme);

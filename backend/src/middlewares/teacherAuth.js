@@ -1,25 +1,20 @@
 /**
- * auth middleware
- * @desc middlerware for verify authentication
+ * Teacher auth middleware
+ * @desc middlerware for verify if user is teacher (function must use after auth )
  * @author Mahmoud Atef
  */
 
-const jwt = require("jsonwebtoken");
+const UserModel = require("../models/User.model");
 const BadRequestError = require("../utils/BadRequestError");
 
 module.exports = async function (req, res, next) {
   try {
-    const token = req.header("x-auth-token");
-    if (!token)
-      throw new BadRequestError("No token , Authentcation denided.", 401);
+    if (!req.user) throw new BadRequestError("Token is not valid.", 401);
 
-    const decode = jwt.verify(token, process.env.JWT_SECRET_KEY);
+    const user = await UserModel.findById(req.user.id).select("-password");
 
-    user = await User.findById(decode.user.id).select("-password");
+    if (!user || user.role != "teacher") throw err;
 
-    if (!user) throw new BadRequestError("Token is not valid.", 401);
-
-    req.user = decode.user;
     next();
   } catch (err) {
     if (

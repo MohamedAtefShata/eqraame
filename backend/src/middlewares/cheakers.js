@@ -8,6 +8,9 @@
 
 const { check, validationResult } = require("express-validator");
 
+/***************************************************************
+ *          Checkers for custom field
+ **************************************************************/
 const checkName = () => {
   return check("name")
     .trim()
@@ -15,7 +18,7 @@ const checkName = () => {
     .isEmpty()
     .withMessage("Name is require")
     .escape()
-    .matches(/^[a-zA-Z\s\.\-]+$/g)
+    .matches(/^([a-zA-Z]+[\.\-\s]?[a-zA-Z]+)+$/g)
     .withMessage("Invalid name (use only letters , white space and (. or -))")
     .isLength({ max: 100 })
     .withMessage("Name must be at most 100 character");
@@ -38,13 +41,6 @@ const checkPassword = () => {
     .withMessage("password must contain number");
 };
 
-const checkPasswordConfirmation = () => {
-  return check(
-    "confirm-password",
-    "confirm password is not match password"
-  ).custom((value, { req }) => value === req.body.password);
-};
-
 const checkRole = () => {
   return check("role")
     .trim()
@@ -53,6 +49,25 @@ const checkRole = () => {
     )
     .withMessage("invalid role propartey");
 };
+
+const checkPasswordConfirmation = () => {
+  return check(
+    "confirm-password",
+    "confirm password is not match password"
+  ).custom((value, { req }) => value === req.body.password);
+};
+
+const checkBirthDate = () => {
+  return check("birthdate", "inavlid date out of range").custom((value) => {
+    var date = new Date(value).getTime();
+    const nowDate = Date.now().valueOf();
+    return (
+      !value || (date >= new Date("1900-01-01").getTime() && date <= nowDate)
+    );
+  });
+};
+
+/******************************************************************************/
 
 /**
  * @desc validate middle ware to check if all checker passed or not
@@ -65,25 +80,31 @@ const validateCheckers = (req, res, next) => {
   next();
 };
 
+/*************************************************************************
+ *     Collection of Checkers
+ *************************************************************************/
 const checkUserRegistration = [
   checkName(),
   checkEmail(),
   checkPassword(),
   checkPasswordConfirmation(),
   checkRole(),
+  checkBirthDate(),
 ];
 const checkLogin = [
-  checkEmail,
+  checkEmail(),
   check("password", "Password is required").not().isEmpty(),
 ];
-
+/************* Export  ******************/
 module.exports = {
   checkName,
   checkEmail,
   checkPassword,
   checkPasswordConfirmation,
   checkRole,
+  // collections
   checkUserRegistration,
   checkLogin,
+  // validate
   validateCheckers,
 };

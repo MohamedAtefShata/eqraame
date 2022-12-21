@@ -24,12 +24,14 @@ router.get("/", auth, async (req, res) => {
     return res.status(500).json({ errors: [{ msg: "server error" }] });
   }
 });
+
 /**
  * @route POST /api/wallet/pay/course
  * @acess private
  * @desc  pay money to get course
  */
 router.post("/pay/course/:id", auth, async (req, res) => {
+  /** @todo request need class error handler */
   try {
     let course = {
       id: req.params.id,
@@ -66,10 +68,13 @@ router.post("/pay/course/:id", auth, async (req, res) => {
     walletService.pay(wallet, seller, course);
     res.json({ msg: "procces succcufully happend ." });
   } catch (error) {
-    console.log("error in pay course route", `${error.kind}:${error.message}`);
     if (error.kind === "ObjectId")
       return res.status(401).json({ errors: [{ msg: "invalid course" }] });
 
+    console.log(
+      "error in pay course route : ",
+      `< ${error.name} >:${error.message}`
+    );
     return res.status(500).json({ errors: [{ msg: "server error" }] });
   }
 });
