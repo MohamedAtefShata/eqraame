@@ -67,6 +67,34 @@ const checkBirthDate = () => {
   });
 };
 
+const checkCourseLessonName = () => {
+  return check("name")
+    .trim()
+    .not()
+    .isEmpty()
+    .withMessage("Name is require")
+    .escape()
+    .matches(/^([a-zA-Z]+([\.\-\s\_]?[1-9]*)*)+$/g)
+    .withMessage(
+      "Invalid name (name must start with character and contains numbers,letters,spaces , . , - , _)"
+    )
+    .isLength({ max: 100 })
+    .withMessage("Name must be at most 100 character");
+};
+
+const checkPrice = () => {
+  return check("price")
+    .isNumeric({ min: 0 })
+    .withMessage("price must be number and minumum price should be 0");
+};
+
+const checkContentType = () => {
+  return check("content_type", "content type must be article or video").isIn([
+    "article",
+    "video",
+  ]);
+};
+
 /******************************************************************************/
 
 /**
@@ -95,6 +123,12 @@ const checkLogin = [
   checkEmail(),
   check("password", "Password is required").not().isEmpty(),
 ];
+const checkCourse = [checkCourseLessonName(), checkPrice()];
+const checkLesson = [
+  checkCourseLessonName(),
+  checkContentType(),
+  check("content", "conent is require").not().isEmpty(),
+];
 /************* Export  ******************/
 module.exports = {
   checkName,
@@ -105,6 +139,8 @@ module.exports = {
   // collections
   checkUserRegistration,
   checkLogin,
+  checkCourse,
+  checkLesson,
   // validate
   validateCheckers,
 };
