@@ -1,8 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import Box from '@mui/material/Box';
+import Rating from '@mui/material/Rating';
 
 function CardItem(props) {
-  return (
+    const [value] = React.useState(props.rate);
+    return (
     <>
         <li className='cards__item'>
             <Link className='cards__item__link' to={props.path}>
@@ -14,6 +17,8 @@ function CardItem(props) {
                 </figure>
                 <div className='cards__item__info'>
                     <h5 className='cards__item__text'>{props.text}</h5>
+                    <Rating className='cards__item__rating' name="read-only" value={value} readOnly />
+                    <h3 className='cards__item__price'>{props.price}</h3>
                 </div>
             </Link>
         </li>

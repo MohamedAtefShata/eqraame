@@ -11,9 +11,11 @@ function Cards() {
             <ul className='cards__items'>
                 <CardItem 
                 src='images/55555555.jpg'
-                text='test text working or not'
+                text='C++ Programming Course'
                 label='Programming'
-                path='/login'
+                path='/C++'
+                rate='4'
+                price='239$'
                 />
             </ul>
         </div>

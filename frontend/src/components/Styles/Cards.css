@@ -98,6 +98,12 @@
     font-size: 18px;
     line-height: 24px;
   }
+
+  .cards__item__price {
+    color: #252e48;
+    font-size: 18px;
+    line-height: 24px;
+  }
   
   @media only screen and (min-width: 1200px) {
     .content__blog__container {
