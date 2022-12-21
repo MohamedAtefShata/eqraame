@@ -24,17 +24,13 @@ router.get(
   async (req, res) => {
     await responseHandler(res, async () => {
       let courses = await CourseModel.find();
-
-      return res.json({
-        msg: "successful requeset",
-        data: courses,
-      });
+      return res.json({ msg: "successful requeset", data: courses });
     });
   }
 );
 
 /**
- * @route GET /api/course
+ * @route GET /api/course/:id
  * @acess public
  * @desc  get  course by id
  */
@@ -46,13 +42,9 @@ router.get(
     await responseHandler(res, async () => {
       const course_id = req.params.id;
       let course = await CourseModel.findById(course_id);
-
       if (!course) throw new BadRequestError("Invalid Course ID");
-
-      return res.json({
-        msg: "successful requeset",
-        data: course,
-      });
+      // response
+      return res.json({ msg: "successful requeset", data: course });
     });
   }
 );
@@ -72,24 +64,23 @@ router.delete(
     await responseHandler(res, async () => {
       // validate request
       const course_id = req.params.id;
+
       let course = await CourseModel.findById(course_id);
       if (!course) throw new BadRequestError("Invalid Course ID");
-
       if (!course.author_id.equals(req.user.id))
         throw new BadRequestError("You don't have access to delete", 401);
 
       // delete
       await CourseModel.findByIdAndDelete(course_id);
-
       return res.json({ msg: "deleted successfuly" });
     });
   }
 );
 
 /**
- * @route UPDATE /api/course
+ * @route POST /api/course/update/:id
  * @acess private
- * @desc  add course in database
+ * @desc  update course in database
  */
 router.post(
   // path
@@ -142,6 +133,35 @@ router.post(
       if (descreption) course.descreption = descreption;
       await course.save();
 
+      return res.json({ msg: "successful added" });
+    });
+  }
+);
+
+/**
+ * @route POST /api/course/:id/lesson
+ * @acess private
+ * @desc  add course in database
+ */
+router.post(
+  // path
+  "/:id/lesson",
+  auth,
+  teacherAuth,
+  /******** Response handling ********/
+  async (req, res) => {
+    await responseHandler(res, async () => {
+      const author_id = req.user.id;
+      const course_id = req.params.id;
+      const { name, content_type, content } = req.body;
+
+      let course = await CourseModel.findById(course_id);
+      if (!course) throw BadRequestError("Invalid Course ID");
+      if (!course.author_id.equals(author_id))
+        throw new BadRequestError("You don't have access");
+
+      course.addLesson(name, content_type, content);
+      await course.save();
       return res.json({ msg: "successful added" });
     });
   }
