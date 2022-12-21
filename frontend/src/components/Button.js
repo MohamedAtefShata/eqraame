@@ -12,14 +12,15 @@ export const Button = ({
     onClick,
     buttonStyle,
     buttonSize,
-    buttonTrans
+    buttonTrans,
+    buttonPath
 }) => {
     const checkButtonStyle = STYLES.includes(buttonStyle)? buttonStyle : STYLES[0];
     const checkButtonSize = SIZES.includes(buttonSize)? buttonSize : SIZES[0];
     const checkButtonTrans = TRANS.includes(buttonTrans)? buttonTrans : TRANS[0];
 
     return(
-        <Link to='/' className="btn-mobile">
+        <Link to={buttonPath} className="btn-mobile">
             <button 
             className={`btn ${checkButtonStyle} ${checkButtonSize} ${checkButtonTrans}`}
             onClick={onClick}

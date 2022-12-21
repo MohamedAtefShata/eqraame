@@ -18,14 +18,16 @@ function HeroSection() {
           className='btns' 
           buttonStyle='btn--outline--scr'
           buttonSize='btn--large'
-          buttonTrans='btn--scr'>
+          buttonTrans='btn--scr'
+          buttonPath='/login'>
           join as teacher
           </Button>
           <Button 
           className='btns' 
           buttonStyle='btn--primary--scr'
           buttonSize='btn--large'
-          buttonTrans='btn--scr'> 
+          buttonTrans='btn--scr'
+          buttonPath='/login'> 
           join as student
           </Button>
           </div>
