@@ -7,6 +7,12 @@
     justify-content: center;
     margin: 0px auto;
     position: relative;
+    
+    /** Make text not selector*/
+    -webkit-user-select: none; /* Safari */        
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
   }
 
   .slognimg {
@@ -23,6 +29,10 @@
     margin-left: auto;
     margin-right: auto;
     width: 100%;
+
+    /** Make image not dragble*/
+    -webkit-user-drag: none;
+    user-drag: none; 
   }
 
   .hero-slogan {
