@@ -22,20 +22,14 @@ router.get(
   "/",
   /******** Response handling ********/
   async (req, res) => {
-    try {
+    await responseHandler(res, async () => {
       let courses = await CourseModel.find();
 
       return res.json({
         msg: "successful requeset",
         data: courses,
       });
-    } catch (error) {
-      console.log(
-        "error in get courses :",
-        `< ${error.name} >:${error.message}`
-      );
-      return res.status(500).json({ msg: "server error" });
-    }
+    });
   }
 );
 
@@ -49,7 +43,7 @@ router.get(
   "/:id",
   /******** Response handling ********/
   async (req, res) => {
-    try {
+    await responseHandler(res, async () => {
       const course_id = req.params.id;
       let course = await CourseModel.findById(course_id);
 
@@ -59,20 +53,7 @@ router.get(
         msg: "successful requeset",
         data: course,
       });
-    } catch (error) {
-      // if id is not object id
-      if (error.kind === "ObjectId")
-        error = BadRequestError("Invalid Course ID");
-
-      if (error.name === "BadRequest")
-        return res.status(error.status).json(error.json);
-
-      console.log(
-        "error in get courses :",
-        `< ${error.name} >:${error.message}`
-      );
-      return res.status(500).json({ msg: "server error" });
-    }
+    });
   }
 );
 /**
@@ -88,7 +69,7 @@ router.delete(
 
   /******** Response handling ********/
   async (req, res) => {
-    try {
+    await responseHandler(res, async () => {
       // validate request
       const course_id = req.params.id;
       let course = await CourseModel.findById(course_id);
@@ -101,20 +82,7 @@ router.delete(
       await CourseModel.findByIdAndDelete(course_id);
 
       return res.json({ msg: "deleted successfuly" });
-    } catch (error) {
-      // if id is not object id
-      if (error.kind === "ObjectId")
-        error = BadRequestError("Invalid Course ID");
-
-      if (error.name === "BadRequest")
-        return res.status(error.status).json(error.json);
-
-      console.log(
-        "error in get courses :",
-        `< ${error.name} >:${error.message}`
-      );
-      return res.status(500).json({ msg: "server error" });
-    }
+    });
   }
 );
 
@@ -140,7 +108,7 @@ router.post(
       let course = await CourseModel.findById(course_id);
       if (!course) throw BadRequestError("Invalid Course ID");
       if (!course.author_id.equals(author_id))
-        throw new BadRequestError("You don't have access to update");
+        throw new BadRequestError("You don't have access to update", 401);
 
       // update data
       if (name) course.name = name;
@@ -167,7 +135,7 @@ router.post(
   teacherAuth,
   /******** Response handling ********/
   async (req, res) => {
-    try {
+    await responseHandler(res, async () => {
       const author_id = req.user.id;
       const { name, price, descreption } = req.body;
       let course = new CourseModel({ name, price, author_id });
@@ -175,13 +143,7 @@ router.post(
       await course.save();
 
       return res.json({ msg: "successful added" });
-    } catch (error) {
-      console.log(
-        "error in get courses :",
-        `< ${error.name} >:${error.message}`
-      );
-      return res.status(500).json({ msg: "server error" });
-    }
+    });
   }
 );
 

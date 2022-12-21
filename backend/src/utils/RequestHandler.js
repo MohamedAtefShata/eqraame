@@ -7,10 +7,12 @@ const responseHandler = async (res, fun) => {
     // transform some errors to BadReauest
     if (
       error.name === "JsonWebTokenError" ||
-      error.name === "TokenExpiredError" ||
-      error.kind == "ObjectId"
+      error.name === "TokenExpiredError"
     )
       error = new BadRequestError("Token is not valid.", 401);
+
+    if (error.kind == "ObjectId")
+      error = new BadRequestError("Invalid id", 400);
 
     // handle bad request response
     if (error.name === "BadRequest")
