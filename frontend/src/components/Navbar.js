@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from './Button';
-import './navbar.css';
+import './Styles/navbar.css';
 import { styled, alpha } from '@mui/material/styles';
 import Toolbar from '@mui/material/Toolbar';
 import InputBase from '@mui/material/InputBase';
@@ -89,12 +89,12 @@ function Navbar(){
                 </div>
                 <ul className={click ? 'nav-menu active' : 'nav-menu'}>
                     <li className='nav-item'>
-                        <Link to='/' className='nav-links' onClick={closeMobileMenu}>
+                        <Link to='/Courses' className='nav-links' onClick={closeMobileMenu}>
                             NEW COURSES
                         </Link>
                     </li>
                     <li className='nav-item'>
-                        <Link to='/' className='nav-links' onClick={closeMobileMenu}>
+                        <Link to='/Categories' className='nav-links' onClick={closeMobileMenu}>
                         CATEGORIES
                         </Link>
                     </li>
@@ -103,7 +103,7 @@ function Navbar(){
                             LOG IN
                         </Link>
                     </li>
-                    {button && <Button buttonStyle='btn--outline--nav'>SIGN UP</Button>}
+                    {button && <Button buttonStyle='btn--outline--nav' buttonPath='/sign-up'>SIGN UP</Button>}
                     <li className='nav-item'>
                         <Link to='/' className='nav-links-mobile' onClick={closeMobileMenu}>
                             SIGN UP

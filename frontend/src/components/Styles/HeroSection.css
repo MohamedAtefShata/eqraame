@@ -13,6 +13,7 @@
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none; /* IE10+/Edge */
     user-select: none; /* Standard */
+    
   }
 
   .slognimg {
@@ -52,6 +53,8 @@
     letter-spacing: -0.2px;
     margin-top: 30px;
     margin-bottom: 30px;
+    text-align: start;
+    
   }
 
   .hero-dis {

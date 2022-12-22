@@ -1,7 +1,7 @@
 import { Button } from "./Button";
 import React from "react";
-import "../App.css";
-import "./HeroSection.css";
+import "./Styles/App.css";
+import "./Styles/HeroSection.css";
 
 function HeroSection() {
   return (
@@ -20,6 +20,7 @@ function HeroSection() {
               buttonStyle="btn--outline--scr"
               buttonSize="btn--large"
               buttonTrans="btn--scr"
+              buttonPath="/login"
             >
               join as teacher
             </Button>
@@ -28,6 +29,7 @@ function HeroSection() {
               buttonStyle="btn--primary--scr"
               buttonSize="btn--large"
               buttonTrans="btn--scr"
+              buttonPath="/login"
             >
               join as student
             </Button>
