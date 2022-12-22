@@ -21,9 +21,7 @@ const getAllCourses = async (req, res, next) => {
 /**  get course by id */
 const getCourseByID = async (req, res, next) => {
   try {
-    const course_id = req.params.id;
-    if (!mongoose.isValidObjectId(course_id))
-      throw new BadRequestError("Invalid Course ID");
+    const course_id = req.course.id;
 
     // do servies
     let course = await CourseModel.findById(course_id);
@@ -40,10 +38,9 @@ const getCourseByID = async (req, res, next) => {
 const deleteByID = async (req, res, next) => {
   try {
     // validate request
-    const course_id = req.params.id;
-    if (!mongoose.isValidObjectId(course_id))
-      throw new BadRequestError("Invalid Course ID");
+    const course_id = req.course.id;
 
+    // get cours
     let course = await CourseModel.findById(course_id);
     if (!course) throw new BadRequestError("Invalid Course ID");
     if (!course.author_id.equals(req.user.id))
@@ -61,7 +58,7 @@ const deleteByID = async (req, res, next) => {
 const updateByID = async (req, res, next) => {
   try {
     // get request data
-    const course_id = req.params.id;
+    const course_id = req.course.id;
     const { name, price, descreption } = req.body;
     const author_id = req.user.id;
 
