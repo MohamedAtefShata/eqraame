@@ -84,8 +84,10 @@ const checkCourseLessonName = () => {
 
 const checkPrice = () => {
   return check("price")
-    .isNumeric({ min: 0 })
-    .withMessage("price must be number and minumum price should be 0");
+    .isCurrency({ allow_negatives: false, digits_after_decimal: [0, 1, 2] })
+    .withMessage(
+      "price must be number with almost two digit after point and minumum price should be 0"
+    );
 };
 
 const checkContentType = () => {

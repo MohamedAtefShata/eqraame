@@ -14,6 +14,6 @@ module.exports = (error, req, res, next) => {
 
   // log and response
   console.log(`error happend in (${location}) : < ${name}> : ${message}`);
-  console.log(`stack : ${stack}`);
+  // console.log(`stack : ${stack}`);
   return res.status(status).json({ errors });
 };

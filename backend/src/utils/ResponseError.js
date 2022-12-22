@@ -1,10 +1,10 @@
 class ResponseError extends Error {
-  constructor(message, status, location) {
+  constructor(message, status = 500, location = "") {
     super(message);
     this.name = "ResponseError";
     this.status = status;
-    this.location - location;
-    this.json = { errors: [{ msg: this.message }] };
+    this.location = location;
+    this.json = [{ msg: this.message }];
   }
 }
 module.exports = ResponseError;
