@@ -53,10 +53,6 @@ function Log_in(){
                         width: 500,
                         p: 1,
                         m: 1,
-                        bgcolor: (theme) =>
-                          theme.palette.mode === 'dark' ? '#101010' : 'grey.50',
-                        color: (theme) =>
-                          theme.palette.mode === 'dark' ? 'grey.300' : 'grey.800',
                         textAlign: 'center',
                         fontSize: '0.875rem',
                         fontWeight: '700',
