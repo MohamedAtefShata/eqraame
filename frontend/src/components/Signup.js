@@ -5,9 +5,9 @@ import Grid from '@mui/material/Grid';
 import LoadingButton from '@mui/lab/LoadingButton';
 import Button from '@mui/lab/LoadingButton';
 import { Typography } from '@mui/material';
-import Link from '@mui/material/Link';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import Autocomplete from '@mui/material/Autocomplete';
+import { alpha, styled } from '@mui/material/styles';
 
 const theme = createTheme({
     palette: {
@@ -22,6 +22,44 @@ const theme = createTheme({
           textTransform: 'none',
           fontSize: 16,
         },
+    },
+  });
+  const CssTextField = styled(TextField)({
+    '& label.Mui-focused': {
+      color: '#282828',
+    },
+    '& .MuiInput-underline:after': {
+      borderBottomColor: '#282828',
+    },
+    '& .MuiOutlinedInput-root': {
+      '& fieldset': {
+        borderColor: '#282828',
+      },
+      '&:hover fieldset': {
+        borderColor: '#282828',
+      },
+      '&.Mui-focused fieldset': {
+        borderColor: '#282828',
+      },
+    },
+  });
+  const CssAutocomplete = styled(Autocomplete)({
+    '& label.Mui-focused': {
+      color: '#282828',
+    },
+    '& .MuiInput-underline:after': {
+      borderBottomColor: '#282828',
+    },
+    '& .MuiOutlinedInput-root': {
+      '& fieldset': {
+        borderColor: '#282828',
+      },
+      '&:hover fieldset': {
+        borderColor: '#282828',
+      },
+      '&.Mui-focused fieldset': {
+        borderColor: '#282828',
+      },
     },
   });
   const options = ['Teacher', 'Student'];
@@ -51,6 +89,7 @@ function Signup(){
         ><Grid item xs={3}>
             <ThemeProvider theme={theme}>
                     <Box component="form"
+                    noValidate
                     sx={{
                         mx: 'auto',
                         width: 500,
@@ -87,7 +126,7 @@ function Signup(){
                         continue with facebook
                         </LoadingButton>
 
-                        <TextField
+                        <CssTextField
                         sx={{mt: 2}}
                         required
                         fullWidth
@@ -96,7 +135,7 @@ function Signup(){
                         id="Name"
                         autoComplete="current-Name"
                         />
-                        <TextField
+                        <CssTextField
                         sx={{mt: 2}}
                         required
                         fullWidth
@@ -106,7 +145,7 @@ function Signup(){
                         autoComplete="email"
                         autoFocus
                         />
-                        <TextField
+                        <CssTextField
                         sx={{mt: 2}}
                         required
                         fullWidth
@@ -115,7 +154,11 @@ function Signup(){
                         id="password"
                         autoComplete="current-password"
                         />
-                        <Autocomplete
+                        <Box
+                        fullWidth
+                        sx = {{display: "flex"}}
+                        >
+                        <CssAutocomplete
                             id="controllable-states-demo"
                             value={value}
                             onChange={(event, newValue) => {
@@ -127,20 +170,22 @@ function Signup(){
                             }}
                             
                             options={options}
-                            sx={{mt: 2, width: 300 }}
+                            sx={{mt: 2, width: 300,m: 2 }}
                             renderInput={(params) => <TextField {...params} label="Role" />}
                         />
-                        <TextField
+                        
+                        <CssTextField
                             id="date"
                             label="Birthday"
                             type="date"
+                            
                             defaultValue="2017-05-24"
-                            sx={{ mt:2 , width: 400 }}
+                            sx={{ mt:2 , width: 300,m: 2 }}
                             InputLabelProps={{
                             shrink: true,
                             }}
                         />
-                        
+                        </Box>
                         <Button
                             sx={{mt: 2}}
                             margin = "normal"

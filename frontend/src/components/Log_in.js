@@ -6,7 +6,7 @@ import LoadingButton from '@mui/lab/LoadingButton';
 import Button from '@mui/lab/LoadingButton';
 import { Typography } from '@mui/material';
 import Link from '@mui/material/Link';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { ThemeProvider, createTheme,styled } from '@mui/material/styles';
 
 const theme = createTheme({
     palette: {
@@ -23,7 +23,25 @@ const theme = createTheme({
         },
     },
   });
-
+  const CssTextField = styled(TextField)({
+    '& label.Mui-focused': {
+      color: '#282828',
+    },
+    '& .MuiInput-underline:after': {
+      borderBottomColor: '#282828',
+    },
+    '& .MuiOutlinedInput-root': {
+      '& fieldset': {
+        borderColor: '#282828',
+      },
+      '&:hover fieldset': {
+        borderColor: '#282828',
+      },
+      '&.Mui-focused fieldset': {
+        borderColor: '#282828',
+      },
+    },
+  });
 function Log_in(){
     const [loading, setLoading] = React.useState(true);
     const handleClick = (event) =>{
@@ -35,7 +53,7 @@ function Log_in(){
         password: data.get('password'),
         });
     }
-    
+
     return(
         <>
         <Grid
@@ -83,7 +101,7 @@ function Log_in(){
                         >
                         continue with facebook
                         </LoadingButton>
-                        <TextField
+                        <CssTextField
                         sx={{mt: 2}}
                         required
                         fullWidth
@@ -93,7 +111,7 @@ function Log_in(){
                         autoComplete="email"
                         autoFocus
                         />
-                        <TextField
+                        <CssTextField
                         sx={{mt: 2}}
                         required
                         fullWidth
