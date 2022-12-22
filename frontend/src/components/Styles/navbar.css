@@ -122,6 +122,7 @@
   
     .logo {
       position: absolute;
+      margin-top: 27px;
       top: 0;
       left: 0;
       transform: translate(50%, -5%);
