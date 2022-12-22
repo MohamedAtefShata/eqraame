@@ -11,8 +11,8 @@ import { ThemeProvider, createTheme,styled } from '@mui/material/styles';
 const theme = createTheme({
     palette: {
         neutral: {
-        main: '#ffc107',
-        contrastText: '#212121',
+        main: '#ffc728',
+        contrastText: '#282828',
         },
     },
     typography: {
