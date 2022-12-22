@@ -170,7 +170,7 @@ function Signup(){
                             }}
                             
                             options={options}
-                            sx={{mt: 2, width: 300,m: 2 }}
+                            sx={{mt:2, width: 300 , mr:1}}
                             renderInput={(params) => <TextField {...params} label="Role" />}
                         />
                         
@@ -180,7 +180,7 @@ function Signup(){
                             type="date"
                             
                             defaultValue="2017-05-24"
-                            sx={{ mt:2 , width: 300,m: 2 }}
+                            sx={{ mt:2 , width: 300}}
                             InputLabelProps={{
                             shrink: true,
                             }}
