@@ -21,7 +21,7 @@ function Cards() {
                 src='images/55555555.jpg'
                 text='C++ Programming Course'
                 label='Programming'
-                path='/C++'
+                path='/Courses'
                 rate='4'
                 price='239$'
                 />

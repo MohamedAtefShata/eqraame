@@ -103,7 +103,7 @@ function Navbar(){
                             LOG IN
                         </Link>
                     </li>
-                    {button && <Button buttonStyle='btn--outline--nav' buttonPath='/sign-up'>SIGN UP</Button>}
+                    {button && <Button buttonStyle='btn--outline--nav' buttonPath='/signup'>SIGN UP</Button>}
                     <li className='nav-item'>
                         <Link to='/signup' className='nav-links-mobile' onClick={closeMobileMenu}>
                             SIGN UP
