@@ -8,7 +8,7 @@ function HeroSection() {
     <>
     <div className='hero-container'>
       <div className='hero-slogan'>
-        <h1 className='hero-title'>science have no limits</h1>
+        <h1 className='hero-title'>Science have no limits</h1>
         <p className='hero-dis'>
         Start, switch, or advance your career with more than 5,400 courses,
          Professional Certificates, and degrees from world-class universities and companies.
