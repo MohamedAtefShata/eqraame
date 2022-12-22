@@ -10,6 +10,7 @@ const __ = require("dotenv").config();
 
 const { connect } = require("./config/db-connection");
 const mainRoute = require("./routes/index");
+const ErrorHandler = require("./middlewares/ErrorHandler");
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -42,3 +43,5 @@ app.use(express.json());
 
 // load routes
 app.use("/", mainRoute);
+
+app.use(ErrorHandler);
