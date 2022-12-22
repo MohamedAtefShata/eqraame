@@ -24,7 +24,7 @@ const theme = createTheme({
     },
   });
 
-function Log_in(){
+function Signup(){
     const [loading, setLoading] = React.useState(true);
     const handleClick = (event) =>{
         setLoading(!loading);
@@ -107,6 +107,26 @@ function Log_in(){
                         id="password"
                         autoComplete="current-password"
                         />
+                        <TextField
+                        sx={{mt: 2}}
+                        required
+                        fullWidth
+                        name="password"
+                        label="Password"
+                        type="password"
+                        id="password"
+                        autoComplete="current-password"
+                        />
+                        <TextField
+                        sx={{mt: 2}}
+                        required
+                        fullWidth
+                        name="password"
+                        label="Password"
+                        type="password"
+                        id="password"
+                        autoComplete="current-password"
+                        />
                         <Button
                             sx={{mt: 2}}
                             margin = "normal"
@@ -118,16 +138,8 @@ function Log_in(){
                             loadingPosition="end"
                             type="submit"
                             >
-                                login
+                                signup
                         </Button>
-                        <Grid align="center">
-                            <Grid item>
-                                Don't have an account ?
-                                <Link href="/signup" variant="body2">
-                                 {"  Sign Up"}
-                                </Link>
-                            </Grid>
-                        </Grid>  
                     </Box>
                     </ThemeProvider>
                 </Grid>
@@ -135,4 +147,4 @@ function Log_in(){
         </>
     )
 }
-export default Log_in;
+export default Signup;
