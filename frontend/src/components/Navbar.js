@@ -99,13 +99,13 @@ function Navbar(){
                         </Link>
                     </li>
                     <li className='nav-item'>
-                        <Link to='/' className='nav-links' onClick={closeMobileMenu}>
+                        <Link to='/login' className='nav-links' onClick={closeMobileMenu}>
                             LOG IN
                         </Link>
                     </li>
                     {button && <Button buttonStyle='btn--outline--nav' buttonPath='/sign-up'>SIGN UP</Button>}
                     <li className='nav-item'>
-                        <Link to='/' className='nav-links-mobile' onClick={closeMobileMenu}>
+                        <Link to='/signup' className='nav-links-mobile' onClick={closeMobileMenu}>
                             SIGN UP
                         </Link>
                     </li>
