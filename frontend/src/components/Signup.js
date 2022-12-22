@@ -7,6 +7,7 @@ import Button from '@mui/lab/LoadingButton';
 import { Typography } from '@mui/material';
 import Link from '@mui/material/Link';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+import Autocomplete from '@mui/material/Autocomplete';
 
 const theme = createTheme({
     palette: {
@@ -23,9 +24,11 @@ const theme = createTheme({
         },
     },
   });
-
+  const options = ['Teacher', 'Student'];
 function Signup(){
     const [loading, setLoading] = React.useState(true);
+    const [value, setValue] = React.useState(options[0]);
+    const [inputValue, setInputValue] = React.useState('');
     const handleClick = (event) =>{
         setLoading(!loading);
         event.preventDefault();
@@ -63,7 +66,7 @@ function Signup(){
                     }} 
                     > 
                     <Typography align="center" variant="h6">
-                        log in to your eqraame account
+                        signup to eqraame 
                     </Typography>                  
                     <Button
                         sx={{mt: 2}}
@@ -87,6 +90,16 @@ function Signup(){
                         >
                         continue with facebook
                         </LoadingButton>
+
+                        <TextField
+                        sx={{mt: 2}}
+                        required
+                        fullWidth
+                        name="Name"
+                        label="Name"
+                        id="Name"
+                        autoComplete="current-Name"
+                        />
                         <TextField
                         sx={{mt: 2}}
                         required
@@ -103,30 +116,35 @@ function Signup(){
                         fullWidth
                         name="password"
                         label="Password"
-                        type="password"
                         id="password"
                         autoComplete="current-password"
+                        />
+                        <Autocomplete
+                            id="controllable-states-demo"
+                            value={value}
+                            onChange={(event, newValue) => {
+                            setValue(newValue);
+                            }}
+                            inputValue={inputValue}
+                            onInputChange={(event, newInputValue) => {
+                            setInputValue(newInputValue);
+                            }}
+                            
+                            options={options}
+                            sx={{mt: 2, width: 300 }}
+                            renderInput={(params) => <TextField {...params} label="Role" />}
                         />
                         <TextField
-                        sx={{mt: 2}}
-                        required
-                        fullWidth
-                        name="password"
-                        label="Password"
-                        type="password"
-                        id="password"
-                        autoComplete="current-password"
+                            id="date"
+                            label="Birthday"
+                            type="date"
+                            defaultValue="2017-05-24"
+                            sx={{ mt:2 , width: 400 }}
+                            InputLabelProps={{
+                            shrink: true,
+                            }}
                         />
-                        <TextField
-                        sx={{mt: 2}}
-                        required
-                        fullWidth
-                        name="password"
-                        label="Password"
-                        type="password"
-                        id="password"
-                        autoComplete="current-password"
-                        />
+                        
                         <Button
                             sx={{mt: 2}}
                             margin = "normal"
