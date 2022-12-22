@@ -19,7 +19,7 @@ function HeroSection() {
           buttonStyle='btn--outline--scr'
           buttonSize='btn--large'
           buttonTrans='btn--scr'
-          buttonPath='/login'>
+          buttonPath='/signup'>
           join as teacher
           </Button>
           <Button 
@@ -27,7 +27,7 @@ function HeroSection() {
           buttonStyle='btn--primary--scr'
           buttonSize='btn--large'
           buttonTrans='btn--scr'
-          buttonPath='/login'> 
+          buttonPath='/signup'> 
           join as student
           </Button>
           </div>
