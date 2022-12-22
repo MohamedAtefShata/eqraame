@@ -105,6 +105,8 @@ module.exports = {
   // collections
   checkUserRegistration,
   checkLogin,
+  checkCourse,
+  checkLesson,
   // validate
   validateCheckers,
 };

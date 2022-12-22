@@ -9,6 +9,11 @@ const auth = require("../../middlewares/auth");
 const teacherAuth = require("../../middlewares/teacherAuth");
 const BadRequestError = require("../../utils/BadRequestError");
 const responseHandler = require("../../utils/RequestHandler");
+const {
+  checkCourse,
+  validateCheckers,
+  checkLesson,
+} = require("../../middlewares/cheakers");
 
 const router = require("express").Router();
 
@@ -87,6 +92,8 @@ router.post(
   "/update/:id",
   auth,
   teacherAuth,
+  checkCourse,
+  validateCheckers,
   /******** Response handling ********/
   async (req, res) => {
     await responseHandler(res, async () => {
@@ -122,8 +129,12 @@ router.post(
 router.post(
   // path
   "/",
+  // authintications
   auth,
   teacherAuth,
+  // checkers
+  checkCourse,
+  validateCheckers,
   /******** Response handling ********/
   async (req, res) => {
     await responseHandler(res, async () => {
@@ -146,8 +157,12 @@ router.post(
 router.post(
   // path
   "/:id/lesson",
+  //authentication
   auth,
   teacherAuth,
+  // checkers
+  checkLesson,
+  validateCheckers,
   /******** Response handling ********/
   async (req, res) => {
     await responseHandler(res, async () => {

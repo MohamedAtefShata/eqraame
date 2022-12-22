@@ -1,7 +1,7 @@
-import { Button } from './Button';
-import React from 'react';
-import './Styles/App.css';
-import './Styles/HeroSection.css';
+import { Button } from "./Button";
+import React from "react";
+import "./Styles/App.css";
+import "./Styles/HeroSection.css";
 
 function HeroSection() {
   return (
@@ -19,7 +19,7 @@ function HeroSection() {
           buttonStyle='btn--outline--scr'
           buttonSize='btn--large'
           buttonTrans='btn--scr'
-          buttonPath='/signup'>
+          buttonPath='/login'>
           join as teacher
           </Button>
           <Button 
@@ -27,17 +27,22 @@ function HeroSection() {
           buttonStyle='btn--primary--scr'
           buttonSize='btn--large'
           buttonTrans='btn--scr'
-          buttonPath='/signup'> 
+          buttonPath='/login'> 
           join as student
           </Button>
           </div>
+        </div>
+        <div className="slognimg">
+          <img
+            draggable="false"
+            src="./images/HeroS.png"
+            className="heroimg"
+            alt=""
+          />
+        </div>
       </div>
-      <div className='slognimg'>
-        <img src='./images/HeroS.png' className='heroimg' alt=''/>
-      </div>
-    </div>
     </>
-  )
+  );
 }
 
 export default HeroSection;

@@ -7,7 +7,7 @@
     justify-content: center;
     margin: 0px auto;
     position: relative;
-    
+
     /** Make text not selector*/
     -webkit-user-select: none; /* Safari */        
     -moz-user-select: none; /* Firefox */
@@ -33,7 +33,6 @@
 
     /** Make image not dragble*/
     -webkit-user-drag: none;
-    user-drag: none; 
   }
 
   .hero-slogan {
