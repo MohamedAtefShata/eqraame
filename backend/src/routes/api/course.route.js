@@ -6,7 +6,7 @@
 
 const CourseModel = require("../../models/Course.model");
 const auth = require("../../middlewares/auth");
-const teacherAuth = require("../../middlewares/teacherAuth");
+const checkTeacherRole = require("../../middlewares/checkTeacherRole");
 const BadRequestError = require("../../utils/BadRequestError");
 const responseHandler = require("../../utils/RequestHandler");
 const {
@@ -62,7 +62,7 @@ router.delete(
   // path
   "/:id",
   auth,
-  teacherAuth,
+  checkTeacherRole,
 
   /******** Response handling ********/
   async (req, res) => {
@@ -91,7 +91,7 @@ router.post(
   // path
   "/update/:id",
   auth,
-  teacherAuth,
+  checkTeacherRole,
   checkCourse,
   validateCheckers,
   /******** Response handling ********/
@@ -131,7 +131,7 @@ router.post(
   "/",
   // authintications
   auth,
-  teacherAuth,
+  checkTeacherRole,
   // checkers
   checkCourse,
   validateCheckers,
@@ -159,7 +159,7 @@ router.post(
   "/:id/lesson",
   //authentication
   auth,
-  teacherAuth,
+  checkTeacherRole,
   // checkers
   checkLesson,
   validateCheckers,
