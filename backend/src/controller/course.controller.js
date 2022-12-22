@@ -10,8 +10,12 @@ const ResponseError = require("../utils/ResponseError");
 
 /** Get All courses */
 const getAllCourses = async (req, res, next) => {
-  const courses = await CourseModel.find();
-  res.json({ msg: "successful requeset", data: courses });
+  try {
+    const courses = await CourseModel.find();
+    res.json({ msg: "successful requeset", data: courses });
+  } catch (error) {
+    next(error);
+  }
 };
 
 /**  get course by id */
