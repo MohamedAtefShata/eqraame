@@ -25,4 +25,14 @@ const addUser = async (req, res, next) => {
   }
 };
 
-module.exports = { addUser };
+const getAllTeachers = async (req, res) => {
+  try {
+    let teachers = await User.find({ role: "teacher" });
+
+    return res.json({ msg: "succuful request", data: teachers });
+  } catch (error) {
+    next(error);
+  }
+};
+
+module.exports = { addUser, getAllTeachers };
