@@ -2,9 +2,9 @@ import React from "react";
 import './Styles/Button.css'
 import { Link } from 'react-router-dom';
 
-const STYLES = ['btn--primary--nav', 'btn--outline--nav', 'btn--primary--scr', 'btn--outline--scr'];
+const STYLES = ['btn--primary--nav', 'btn--outline--nav', 'btn--primary--scr', 'btn--outline--scr', 'btn--primary--logsign'];
 const SIZES = ['btn--medium', 'btn--large'];
-const TRANS = ['btn--nav', 'btn--scr'];
+const TRANS = ['btn--nav', 'btn--scr', 'btn--logsign'];
 
 export const Button = ({
     children,

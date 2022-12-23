@@ -123,9 +123,9 @@ function Log_in(){
                         <div className='log-btn'>
                           <Button
                             className='btns' 
-                            buttonStyle='btn--primary--scr'
+                            buttonStyle='btn--primary--logsign'
                             buttonSize='btn--large'
-                            buttonTrans='btn--scr'
+                            buttonTrans='btn--logsign'
                             buttonPath='/login'
                             >
                                 log in

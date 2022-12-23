@@ -190,9 +190,9 @@ function Signup(){
                         <div className='sign-btn'>
                           <Button
                             className='btns' 
-                            buttonStyle='btn--primary--scr'
+                            buttonStyle='btn--primary--logsign'
                             buttonSize='btn--large'
-                            buttonTrans='btn--scr'
+                            buttonTrans='btn--logsign'
                             buttonPath='/signup'
                             >
                                 sign up
