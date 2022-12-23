@@ -207,3 +207,13 @@ function Signup(){
     )
 }
 export default Signup;
+
+// Login /register gj
+// Add course 
+// Add leason 
+// View courses 
+// Buy course 
+// My courses 
+// My wallet 
+// Profile (avatar, birthdate, )
+// Searching 
