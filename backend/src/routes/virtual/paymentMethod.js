@@ -25,8 +25,13 @@ const virtual_cards = [
 ];
 
 router.post("/creditcard", (req, res) => {
-  const { card_number, cvv, card_expired, card_brand, amount } = req.body;
+  card_number = req.body.card.number;
+  cvv = req.body.card.cvv;
+  card_expired = req.body.card.expired;
+  card_brand = req.body.card.brand;
+  amount = req.body.card.amount;
 
+  let valid = false;
   virtual_cards.forEach((card) => {
     if (
       card_number === card.number &&
@@ -35,11 +40,11 @@ router.post("/creditcard", (req, res) => {
       cvv == card.cvv &&
       amount <= card.balance
     ) {
-      return res.json({ msg: "succcuful added balance" });
+      valid = true;
     }
   });
-
-  return res.status(406).json({ msg: "Error in charge" });
+  if (valid) return res.status(200).json({ msg: "succcuful added balance" });
+  else return res.status(406).json({ msg: "Error in charge" });
 });
 
 module.exports = router;

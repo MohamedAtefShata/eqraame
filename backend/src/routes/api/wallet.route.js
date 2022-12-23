@@ -32,4 +32,6 @@ router.post(
   walletController.payToCourse
 );
 
+router.post("/charge", auth, walletController.chargeWallet);
+
 module.exports = router;

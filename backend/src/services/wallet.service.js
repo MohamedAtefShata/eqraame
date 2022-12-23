@@ -4,12 +4,13 @@
  * @author Mahmoud Atef
  */
 
-const { VAT_PERCENTAGE } = require("../config/config");
+const { VAT_PERCENTAGE, HOST, PORT } = require("../config/config");
 const { connection } = require("../config/db");
 const UserModel = require("../models/User.model");
 const WalletModel = require("../models/Wallet.model");
 const WalletTransactionModel = require("../models/WalletTransaction.model");
 const ResponseError = require("../utils/ResponseError");
+const axios = require("axios");
 
 /** pay function
  * @author Mahmoud Atef
@@ -97,4 +98,41 @@ const getAdminWallet = async () => {
   return adminWallet;
 };
 
-module.exports = { pay };
+/***************************************************
+ *  Charge Wallet
+ ****************************************************/
+
+/**Charge function
+ * @author Mahmoud Atef
+ * @param wallet user wallet
+ * @param payment details
+ */
+const chargeWallet = async (wallet, payment) => {
+  if (payment.method === "creditcard") {
+    card = payment.data;
+    const charge = await requestToCardProvider(card);
+    if (charge) {
+      wallet.balance += card.amount;
+      await wallet.save();
+    }
+  } else {
+    throw new ResponseError("faild proccess", 206);
+  }
+};
+const requestToCardProvider = async (card) => {
+  try {
+    const response = await axios.post(
+      `http://${HOST}:${PORT}/virtual/paymentmethod/creditcard`,
+      {
+        card,
+      }
+    );
+
+    if (response.status === 200) return true;
+    else throw new ResponseError("charge failed", 206);
+  } catch (error) {
+    throw new ResponseError("charge failed", 206);
+  }
+};
+
+module.exports = { pay, chargeWallet };
