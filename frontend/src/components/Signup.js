@@ -7,7 +7,7 @@ import Button from '@mui/lab/LoadingButton';
 import { Typography } from '@mui/material';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import Autocomplete from '@mui/material/Autocomplete';
-import { alpha, styled } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
 
 const theme = createTheme({
     palette: {
@@ -170,7 +170,7 @@ function Signup(){
                             }}
                             
                             options={options}
-                            sx={{mt: 2, width: 300,m: 2 }}
+                            sx={{mt:2, width: 300 , mr:1}}
                             renderInput={(params) => <TextField {...params} label="Role" />}
                         />
                         
@@ -180,7 +180,7 @@ function Signup(){
                             type="date"
                             
                             defaultValue="2017-05-24"
-                            sx={{ mt:2 , width: 300,m: 2 }}
+                            sx={{ mt:2 , width: 300}}
                             InputLabelProps={{
                             shrink: true,
                             }}

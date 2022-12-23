@@ -19,12 +19,14 @@
     max-width: 100%;
   }
   
+
   .logo {
     width: 159px;
     display: flex;
     clear: both;
     justify-self: start;
     margin-left: 10px;
+    margin-right: 25px;
     cursor: pointer;
     text-decoration: none;
     font-size: 2rem;
