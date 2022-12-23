@@ -1,9 +1,6 @@
 import React from 'react';
 import { Button } from './Button';
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import Grid from '@mui/material/Grid';
-import { Typography } from '@mui/material';
+import { Typography,TextField,Grid,Box } from '@mui/material';
 import Link from '@mui/material/Link';
 import { ThemeProvider, createTheme,styled } from '@mui/material/styles';
 import './Styles/Log_in.css';
@@ -126,13 +123,13 @@ function Log_in(){
                         autoComplete="current-password"
                         />
                         <div className='log-btn'>
-                          <Button
+                          <Button                   
                             onClick = 'submit'
                             className='btns' 
                             buttonStyle='btn--primary--logsign'
                             buttonSize='btn--large'
                             buttonTrans='btn--logsign'
-                            buttonPath='/login'
+                            buttonPath='/myprofile'
                             >
                                 log in
                         </Button>

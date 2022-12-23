@@ -1,17 +1,11 @@
 import React from 'react';
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import Grid from '@mui/material/Grid';
-// import LoadingButton from '@mui/lab/LoadingButton';
-// import Button from '@mui/lab/LoadingButton';
-import { Typography } from '@mui/material';
+import { Typography,Grid,TextField ,Box,Autocomplete} from '@mui/material';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import Autocomplete from '@mui/material/Autocomplete';
 import Link from '@mui/material/Link';
 import { styled } from '@mui/material/styles';
 import { Button } from './Button';
 import './Styles/Signup.css';
-
+import axios from 'axios';
 const theme = createTheme({
     palette: {
         neutral: {
@@ -67,18 +61,29 @@ const theme = createTheme({
   });
   const options = ['Teacher', 'Student'];
 function Signup(){
-    // const [loading, setLoading] = React.useState(true);
     const [value, setValue] = React.useState(options[0]);
     const [inputValue, setInputValue] = React.useState('');
-    // const handleClick = (event) =>{
-    //     setLoading(!loading);
-    //     event.preventDefault();
-    //     const data = new FormData(event.currentTarget);
-    //     console.log({
-    //     email: data.get('email'),
-    //     password: data.get('password'),
-    //     });
-    // }
+    const handleSubmit = (event) => {
+      event.preventDefault();
+      const data = new FormData(event.currentTarget);
+      const user = {
+          name:data.get('name'),
+          email:data.get('email'),
+          password:data.get('password'),
+          "confirm-password":data.get('password'),
+          role:data.get('role'),
+          birthdate:data.get('birthdate'),
+          avatar:"default"
+      }
+      axios.post('http://localhost:5000/api/user/register',
+      )
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    };
     
     return(
         <>
@@ -93,6 +98,7 @@ function Signup(){
             <ThemeProvider theme={theme}>
                     <Box component="form"
                     noValidate
+                    onSubmit={handleSubmit} 
                     sx={{
                         mx: 'auto',
                         width: 500,
@@ -189,6 +195,7 @@ function Signup(){
                         </Box>
                         <div className='sign-btn'>
                           <Button
+                            onClick="submit"
                             className='btns' 
                             buttonStyle='btn--primary--logsign'
                             buttonSize='btn--large'
