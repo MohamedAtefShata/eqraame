@@ -4,8 +4,10 @@
  * @author Mahmoud Atef
  */
 
+const { default: mongoose } = require("mongoose");
 const User = require("../models/User.model");
 const UserService = require("../services/user.service");
+const ResponseError = require("../utils/ResponseError");
 
 const addUser = async (req, res, next) => {
   try {
@@ -25,7 +27,7 @@ const addUser = async (req, res, next) => {
   }
 };
 
-const getAllTeachers = async (req, res) => {
+const getAllTeachers = async (req, res, next) => {
   try {
     let teachers = await User.find({ role: "teacher" });
 
@@ -35,4 +37,20 @@ const getAllTeachers = async (req, res) => {
   }
 };
 
-module.exports = { addUser, getAllTeachers };
+const getTeacherByID = async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    if (!mongoose.isValidObjectId(id))
+      throw new ResponseError("user not found", 404);
+
+    let teacher = await User.findOne({ role: "teacher", _id: id });
+
+    if (!teacher) throw new ResponseError("user not found", 404);
+
+    return res.json({ msg: "succuful request", data: teacher });
+  } catch (error) {
+    next(error);
+  }
+};
+
+module.exports = { addUser, getAllTeachers, getTeacherByID };

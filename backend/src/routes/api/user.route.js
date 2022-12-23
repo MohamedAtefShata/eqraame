@@ -30,7 +30,7 @@ router.post(
 /**
  * @route GET /api/user/teacher
  * @acess public
- * @desc  register user to database
+ * @desc  get all teachers
  */
 router.get(
   // path
@@ -38,4 +38,14 @@ router.get(
   UserController.getAllTeachers
 );
 
+/**
+ * @route GET /api/user/teacher/:id
+ * @acess public
+ * @desc  get teacher by id
+ */
+router.get(
+  // path
+  "/teacher/:id",
+  UserController.getTeacherByID
+);
 module.exports = router;
