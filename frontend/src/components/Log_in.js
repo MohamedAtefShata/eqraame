@@ -7,7 +7,7 @@ import { Typography } from '@mui/material';
 import Link from '@mui/material/Link';
 import { ThemeProvider, createTheme,styled } from '@mui/material/styles';
 import './Styles/Log_in.css';
-
+import axios from 'axios';
 const theme = createTheme({
     palette: {
         neutral: {
@@ -46,13 +46,16 @@ function Log_in(){
     const handleSubmit = (event) => {
       event.preventDefault();
       const data = new FormData(event.currentTarget);
-      axios({
-        method: 'post',
-        url: 'localhost:5000/api/auth',
-        data: {
-          "email":"bakar@mail.com",
-          "password":"password1"
-        }
+      const user = {
+        email:data.get('email'),
+        password:data.get('password')
+      }
+      axios.post('http://localhost:5000/api/auth',user)
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
       });
     };
     return(
