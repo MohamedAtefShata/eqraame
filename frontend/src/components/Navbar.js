@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Button } from './Button';
 import './Styles/navbar.css';
 import { styled, alpha } from '@mui/material/styles';
+import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
@@ -75,14 +76,19 @@ function Navbar(){
                 <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
                     <img src="./images/logoPSDWhite.png" className="logo" alt=""/>
                 </Link>
-                <Toolbar className='searchBar'>
-                    <Search>
-                        <SearchIconWrapper>
-                            <SearchIcon />
-                            </SearchIconWrapper>
-                            <StyledInputBase placeholder="Search…" inputProps={{ 'aria-label': 'search' }} />
-                    </Search>
-                </Toolbar>
+                <Box sx={{ flexGrow: 1 }}>
+                    <Toolbar>
+                        <Search>
+                            <SearchIconWrapper>
+                                <SearchIcon />
+                                </SearchIconWrapper>
+                                <StyledInputBase
+                                placeholder="Search…"
+                                inputProps={{ 'aria-label': 'search' }}
+                                />
+                        </Search>
+                    </Toolbar>
+                </Box>
             </div>
             <div className='menu-icon' onClick={handleClick}>
                     <i className={click ? 'fas fa-times' : 'fas fa-bars'} />

@@ -7,7 +7,7 @@ import Button from '@mui/lab/LoadingButton';
 import { Typography } from '@mui/material';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import Autocomplete from '@mui/material/Autocomplete';
-import { alpha, styled } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
 
 const theme = createTheme({
     palette: {

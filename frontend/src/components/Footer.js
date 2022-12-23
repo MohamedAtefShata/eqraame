@@ -68,8 +68,8 @@ function Footer() {
             </Link>
           </div>
           <small class='website-rights'>
-            <img src='./images/logoPSDWhite.png' alt='' className='social-logo-rights'/>
-             © 2022</small>
+            {/* <img src='./images/logoPSDWhite.png' alt='' className='social-logo-rights'/> */}
+            eqraame © 2022</small>
           <div class='social-icons'>
             <Link
               class='social-icon-link facebook'
