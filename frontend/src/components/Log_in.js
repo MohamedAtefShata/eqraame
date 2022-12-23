@@ -1,12 +1,14 @@
 import React from 'react';
+import { Button } from './Button';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
-import LoadingButton from '@mui/lab/LoadingButton';
-import Button from '@mui/lab/LoadingButton';
+// import LoadingButton from '@mui/lab/LoadingButton';
+// import Button from '@mui/lab/LoadingButton';
 import { Typography } from '@mui/material';
 import Link from '@mui/material/Link';
 import { ThemeProvider, createTheme,styled } from '@mui/material/styles';
+import './Styles/Log_in.css';
 
 const theme = createTheme({
     palette: {
@@ -43,16 +45,16 @@ const theme = createTheme({
     },
   });
 function Log_in(){
-    const [loading, setLoading] = React.useState(true);
-    const handleClick = (event) =>{
-        setLoading(!loading);
-        event.preventDefault();
-        const data = new FormData(event.currentTarget);
-        console.log({
-        email: data.get('email'),
-        password: data.get('password'),
-        });
-    }
+    // const [loading, setLoading] = React.useState(true);
+    // const handleClick = (event) =>{
+    //     setLoading(!loading);
+    //     event.preventDefault();
+    //     const data = new FormData(event.currentTarget);
+    //     console.log({
+    //     email: data.get('email'),
+    //     password: data.get('password'),
+    //     });
+    // }
 
     return(
         <>
@@ -76,31 +78,28 @@ function Log_in(){
                         fontWeight: '700',
                     }} 
                     > 
-                    <Typography align="center" variant="h6">
+                    <Typography align="start" variant="h6">
                         log in to your eqraame account
-                    </Typography>                  
-                    <Button
-                        sx={{mt: 2}}
-                        fullWidth
-                        onClick={handleClick}
-                        loading={!loading}
-                        variant="outlined"
-                        loadingPosition="end"
-                        type="submit"
-                        >
-                        continue with google
-                        </Button>
-                        <LoadingButton
-                        sx={{mt: 2}}
-                        fullWidth
-                        onClick={handleClick}
-                        loading={!loading}
-                        variant="outlined"
-                        loadingPosition="end"
-                        type="submit"
-                        >
-                        continue with facebook
-                        </LoadingButton>
+                    </Typography> 
+                    <div className='login-btn'>                 
+                      <Button 
+                      className='btns' 
+                      buttonStyle='btn--outline--scr'
+                      buttonSize='btn--large'
+                      buttonTrans='btn--scr'
+                      buttonPath='/login'> 
+                      {/* <img className='googl-icon' src='./icons/google-icon.png' alt=''/> */}
+                      continue with google
+                      </Button>
+                      <Button 
+                      className='btns' 
+                      buttonStyle='btn--outline--scr'
+                      buttonSize='btn--large'
+                      buttonTrans='btn--scr'
+                      buttonPath='/login'> 
+                      continue with facebook
+                      </Button>
+                      </div>
                         <CssTextField
                         sx={{mt: 2}}
                         required
@@ -121,22 +120,20 @@ function Log_in(){
                         id="password"
                         autoComplete="current-password"
                         />
-                        <Button
-                            sx={{mt: 2}}
-                            margin = "normal"
-                            color="neutral"
-                            fullWidth
-                            onClick={handleClick}
-                            loading={!loading}
-                            variant="contained"
-                            loadingPosition="end"
-                            type="submit"
+                        <div className='log-btn'>
+                          <Button
+                            className='btns' 
+                            buttonStyle='btn--primary--scr'
+                            buttonSize='btn--large'
+                            buttonTrans='btn--scr'
+                            buttonPath='/login'
                             >
-                                login
+                                log in
                         </Button>
+                        </div>
                         <Grid align="center">
                             <Grid item>
-                                Don't have an account ?
+                                Don't have an account?
                                 <Link href="/signup" variant="body2">
                                  {"  Sign Up"}
                                 </Link>

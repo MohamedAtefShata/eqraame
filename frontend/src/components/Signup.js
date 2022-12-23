@@ -2,12 +2,15 @@ import React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
-import LoadingButton from '@mui/lab/LoadingButton';
-import Button from '@mui/lab/LoadingButton';
+// import LoadingButton from '@mui/lab/LoadingButton';
+// import Button from '@mui/lab/LoadingButton';
 import { Typography } from '@mui/material';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import Autocomplete from '@mui/material/Autocomplete';
+import Link from '@mui/material/Link';
 import { styled } from '@mui/material/styles';
+import { Button } from './Button';
+import './Styles/Signup.css';
 
 const theme = createTheme({
     palette: {
@@ -64,18 +67,18 @@ const theme = createTheme({
   });
   const options = ['Teacher', 'Student'];
 function Signup(){
-    const [loading, setLoading] = React.useState(true);
+    // const [loading, setLoading] = React.useState(true);
     const [value, setValue] = React.useState(options[0]);
     const [inputValue, setInputValue] = React.useState('');
-    const handleClick = (event) =>{
-        setLoading(!loading);
-        event.preventDefault();
-        const data = new FormData(event.currentTarget);
-        console.log({
-        email: data.get('email'),
-        password: data.get('password'),
-        });
-    }
+    // const handleClick = (event) =>{
+    //     setLoading(!loading);
+    //     event.preventDefault();
+    //     const data = new FormData(event.currentTarget);
+    //     console.log({
+    //     email: data.get('email'),
+    //     password: data.get('password'),
+    //     });
+    // }
     
     return(
         <>
@@ -100,31 +103,29 @@ function Signup(){
                         fontWeight: '700',
                     }} 
                     > 
-                    <Typography align="center" variant="h6">
-                        signup to eqraame 
-                    </Typography>                  
+                    <Typography align="start" variant="h6">
+                        sign up to eqraame
+                    </Typography>    
+                    <div className='signup-btn'>              
                     <Button
-                        sx={{mt: 2}}
-                        fullWidth
-                        onClick={handleClick}
-                        loading={!loading}
-                        variant="outlined"
-                        loadingPosition="end"
-                        type="submit"
+                        className='btns' 
+                        buttonStyle='btn--outline--scr'
+                        buttonSize='btn--large'
+                        buttonTrans='btn--scr'
+                        buttonPath='/login'
                         >
                         continue with google
                         </Button>
-                        <LoadingButton
-                        sx={{mt: 2}}
-                        fullWidth
-                        onClick={handleClick}
-                        loading={!loading}
-                        variant="outlined"
-                        loadingPosition="end"
-                        type="submit"
+                        <Button
+                        className='btns' 
+                        buttonStyle='btn--outline--scr'
+                        buttonSize='btn--large'
+                        buttonTrans='btn--scr'
+                        buttonPath='/login'
                         >
                         continue with facebook
-                        </LoadingButton>
+                        </Button>
+                        </div>
 
                         <CssTextField
                         sx={{mt: 2}}
@@ -186,19 +187,25 @@ function Signup(){
                             }}
                         />
                         </Box>
-                        <Button
-                            sx={{mt: 2}}
-                            margin = "normal"
-                            color="neutral"
-                            fullWidth
-                            onClick={handleClick}
-                            loading={!loading}
-                            variant="contained"
-                            loadingPosition="end"
-                            type="submit"
+                        <div className='sign-btn'>
+                          <Button
+                            className='btns' 
+                            buttonStyle='btn--primary--scr'
+                            buttonSize='btn--large'
+                            buttonTrans='btn--scr'
+                            buttonPath='/signup'
                             >
-                                signup
+                                sign up
                         </Button>
+                        </div>
+                        <Grid align="center">
+                            <Grid item>
+                                Already have account?
+                                <Link href="/login" variant="body2">
+                                 {"  Log In"}
+                                </Link>
+                            </Grid>
+                        </Grid> 
                     </Box>
                     </ThemeProvider>
                 </Grid>

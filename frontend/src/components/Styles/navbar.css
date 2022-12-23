@@ -169,5 +169,6 @@
     .searchBar {
       display: none;
       opacity: 0;
+      margin-top: 200px;
     }
   }
