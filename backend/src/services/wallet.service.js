@@ -4,6 +4,7 @@
  * @author Mahmoud Atef
  */
 
+const { VAT_PERCENTAGE } = require("../config/config");
 const { connection } = require("../config/db");
 const UserModel = require("../models/User.model");
 const WalletModel = require("../models/Wallet.model");
@@ -75,7 +76,7 @@ const pay = async function (wallet, seller, item) {
  * @param pricing price for item to buy
  */
 const calculateVat = (pricing) => {
-  const vatR = 10.0; // vat%
+  const vatR = VAT_PERCENTAGE; // vat%
 
   let totalVat = (pricing * vatR) / 100;
   totalVat = Math.round(totalVat * 4);

@@ -5,4 +5,5 @@ module.exports = {
   HOST: process.env.HOST || "127.0.0.1",
   DB_CONNECTION_STRING: process.env.DB_CONNECTION_STRING,
   JWT_SECRET_KEY: process.env.JWT_SECRET_KEY,
+  VAT_PERCENTAGE: process.env.VAT_PERCENTAGE || 10,
 };
