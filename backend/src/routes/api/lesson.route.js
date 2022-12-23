@@ -40,4 +40,18 @@ router.delete(
   LessonController.deleteLesson
 );
 
+/**
+ * @route POST /api/course/:course_id/lesson/:id
+ * @acess private
+ * @desc  update lesson in database
+ */
+router.post(
+  "/:id",
+  //authentication
+  auth,
+  teacherAuth,
+  checkLesson,
+  validateCheckers,
+  LessonController.updateLesson
+);
 module.exports = router;

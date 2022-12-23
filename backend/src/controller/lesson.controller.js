@@ -53,4 +53,35 @@ const deleteLesson = async (req, res, next) => {
   }
 };
 
-module.exports = { addLesson, deleteLesson };
+/**********     update lesson     ***************/
+const updateLesson = async (req, res, next) => {
+  try {
+    const author_id = req.user.id;
+    const lesson_id = req.params.id;
+    const { name, content_type, content } = req.body;
+
+    let course = req.course;
+    if (!course.author_id.equals(author_id))
+      throw new ResponseError("You don't have access", 401);
+
+    let lessonIDX = -1;
+    let i = 0;
+    await course.lessons.forEach((lesson) => {
+      if (lesson.id === lesson_id) lessonIDX = i;
+      i++;
+    });
+    if (lessonIDX == -1) throw new ResponseError("invalid lesson id");
+
+    if (name) course.lessons[lessonIDX].name = name;
+    if (content) course.lessons[lessonIDX].content = content;
+    if (content_type) course.lessons[lessonIDX].content_type = content_type;
+
+    await course.save();
+
+    return res.status(200).json({ msg: "Update successfuly" });
+  } catch (err) {
+    next(err);
+  }
+};
+
+module.exports = { addLesson, deleteLesson, updateLesson };
