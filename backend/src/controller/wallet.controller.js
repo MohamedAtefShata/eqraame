@@ -5,6 +5,8 @@
  */
 
 const Wallet = require("../models/Wallet.model");
+const ResponseError = require("../utils/ResponseError");
+const WalletService = require("../services/wallet.service");
 
 const getMyWallet = async (req, res, next) => {
   try {
@@ -15,43 +17,25 @@ const getMyWallet = async (req, res, next) => {
   }
 };
 
-const payToCourse = async (req, res) => {
+const payToCourse = async (req, res, next) => {
   /** @todo request need class error handler */
   try {
+    let course = req.course;
+
     let wallet = await Wallet.findOne().byUserID(req.user.id);
-
-    if (!wallet)
-      return res
-        .status(401)
-        .json({ errors: [{ msg: "Invalid Authentication" }] });
-
-    if (!wallet.abilityToPay(course.price))
-      return res
-        .status(401)
-        .json({ errors: [{ msg: "not avilable balance" }] });
+    if (!wallet) throw new ResponseError("Invalid Authentication", 401);
 
     let seller = await Wallet.findOne().byUserID(course.author_id);
     if (!seller)
-      throw new Error({
-        message: "not found author for course",
-        name: "InternalServerError",
-        kind: "ObjectId",
-      });
+      throw new ResponseError("not found course author", 500, "pay to course");
 
-    /**@todo remove this line is for teseting only */
-    course.id = wallet.id;
+    // do service
+    await WalletService.pay(wallet, seller, course);
 
-    walletService.pay(wallet, seller, course);
-    res.json({ msg: "procces succcufully happend ." });
+    // response
+    return res.json({ msg: "procces succcufully happend ." });
   } catch (error) {
-    if (error.kind === "ObjectId")
-      return res.status(401).json({ errors: [{ msg: "invalid course" }] });
-
-    console.log(
-      "error in pay course route : ",
-      `< ${error.name} >:${error.message}`
-    );
-    return res.status(500).json({ errors: [{ msg: "server error" }] });
+    next(error);
   }
 };
 

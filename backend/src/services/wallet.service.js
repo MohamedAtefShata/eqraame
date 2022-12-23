@@ -8,6 +8,7 @@ const { connection } = require("../config/db-connection");
 const UserModel = require("../models/User.model");
 const WalletModel = require("../models/Wallet.model");
 const WalletTransactionModel = require("../models/WalletTransaction.model");
+const ResponseError = require("../utils/ResponseError");
 
 /** pay function
  * @author Mahmoud Atef
@@ -22,43 +23,22 @@ const pay = async function (wallet, seller, item) {
     // satrt tansaction
     session.startTransaction();
 
-    /************************************
-     *   calculate our vat
-     * ***********************************/
-    const admin = await UserModel.findOne({ rolde: "admin" });
-    if (!admin)
-      throw new Error({
-        message: "Not Found Admin User",
-        name: "InternalSystemError",
-      });
+    // check availabilty
+    if (!wallet.abilityToPay(item.price))
+      throw new ResponseError("not avilable balance", 406);
 
-    const adminWallet = await WalletModel.findOne().byUserID(admin.id);
-    if (!adminWallet)
-      throw new Error({
-        message: "Not Found Admin wallet",
-        name: "InternalSystemError",
-      });
+    // get admin wallet to transfer vat
+    const adminWallet = await getAdminWallet();
 
-    //---------------------------------
-    //      Logic for VAT
-
-    const pricing = item.price;
-    const vatR = 10.0; // vat%
-
-    let totalVat = (pricing * vatR) / 100;
-    totalVat = Math.round(totalVat * 4);
-    let rem = totalVat % 4;
-    totalVat = (totalVat - rem) / 4;
-    totalVat += 0.25 * rem;
-
-    let afterVat = pricing - totalVat;
-
-    /************************************* */
+    // get vat and price after vat
+    let pricing = item.price;
+    let vat = calculateVat(pricing);
+    let afterVat = pricing - vat;
 
     // transaction
     wallet.balance -= item.price;
     wallet.addCourse(item.id);
-    adminWallet.balance += totalVat;
+    adminWallet.balance += vat;
     seller.balance += afterVat;
 
     await WalletTransactionModel.create(
@@ -68,7 +48,7 @@ const pay = async function (wallet, seller, item) {
           seller_id: seller.user_id,
           item_id: item.id,
           pricing,
-          vat: totalVat,
+          vat,
         },
       ],
       { session }
@@ -87,6 +67,33 @@ const pay = async function (wallet, seller, item) {
   } finally {
     session.endSession();
   }
+};
+
+/**
+ * Private function in file to calculate vat
+ * Logic for VAT
+ * @param pricing price for item to buy
+ */
+const calculateVat = (pricing) => {
+  const vatR = 10.0; // vat%
+
+  let totalVat = (pricing * vatR) / 100;
+  totalVat = Math.round(totalVat * 4);
+  let rem = totalVat % 4;
+  totalVat = (totalVat - rem) / 4;
+  totalVat += 0.25 * rem;
+
+  return totalVat;
+};
+/**Private function in file to get admin wallet  */
+const getAdminWallet = async () => {
+  const admin = await UserModel.findOne({ role: "admin" });
+  if (!admin) throw new ResponseError("Not Found Admin User", 500);
+
+  const adminWallet = await WalletModel.findOne().byUserID(admin.id);
+  if (!adminWallet) throw new ResponseError("Not Found Admin Wallet", 500);
+
+  return adminWallet;
 };
 
 module.exports = { pay };
