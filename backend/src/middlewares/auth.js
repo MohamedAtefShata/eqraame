@@ -5,6 +5,7 @@
  */
 
 const jwt = require("jsonwebtoken");
+const { JWT_SECRET_KEY } = require("../config/config");
 const BadRequestError = require("../utils/BadRequestError");
 
 module.exports = async function (req, res, next) {
@@ -13,7 +14,7 @@ module.exports = async function (req, res, next) {
     if (!token)
       throw new BadRequestError("No token , Authentcation denided.", 401);
 
-    const decode = jwt.verify(token, process.env.JWT_SECRET_KEY);
+    const decode = jwt.verify(token, JWT_SECRET_KEY);
 
     user = await User.findById(decode.user.id).select("-password");
 

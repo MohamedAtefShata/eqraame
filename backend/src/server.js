@@ -11,10 +11,9 @@ const __ = require("dotenv").config();
 const { connect } = require("./config/db");
 const mainRoute = require("./routes/index");
 const ErrorHandler = require("./middlewares/ErrorHandler");
+const { HOST, PORT } = require("./config/config");
 
 const app = express();
-const PORT = process.env.PORT || 5000;
-const HOST = process.env.HOST || "127.0.0.1";
 
 // Main function for start server
 
@@ -44,4 +43,5 @@ app.use(express.json());
 // load routes
 app.use("/", mainRoute);
 
+// error middleware
 app.use(ErrorHandler);
