@@ -18,7 +18,8 @@ const router = require("express").Router();
  */
 router.get("/", CourseController.getAllCourses);
 /**
- * @route GET /api/course/:id @acess public
+ * @route GET /api/course/:id
+ * @acess public
  * @desc  get  course by id
  */
 router.get("/:course_id", courseIDParams, CourseController.getCourseByID);
@@ -62,7 +63,6 @@ router.post(
   checkTeacherRole,
   checkCourse,
   validateCheckers,
-  courseIDParams,
   CourseController.addNewCourse
 );
 
