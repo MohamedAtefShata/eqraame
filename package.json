@@ -5,7 +5,7 @@
   "main": "",
   "scripts": {
     "backend-dev": "cd backend && npm run dev",
-    "frontend-dev":"cd frontend && npm start",
+    "frontend-dev": "cd frontend && npm start",
     "dev": "concurrently \"cd backend && npm run dev\" \"cd frontend && npm start\" "
   },
   "repository": {
@@ -20,5 +20,8 @@
   "homepage": "https://github.com/hngara/cs309proj#readme",
   "devDependencies": {
     "concurrently": "^7.6.0"
+  },
+  "dependencies": {
+    "axios": "^1.2.1"
   }
 }

@@ -49,6 +49,46 @@ function Cards() {
                 rate='4'
                 price='239$'
                 />
+                <CardItem 
+                src='images/55555555.jpg'
+                text='C++ Programming Course'
+                label='Programming'
+                path='/C++'
+                rate='4'
+                price='239$'
+                />
+                <CardItem 
+                src='images/55555555.jpg'
+                text='C++ Programming Course'
+                label='Programming'
+                path='/C++'
+                rate='4'
+                price='239$'
+                />
+                <CardItem 
+                src='images/55555555.jpg'
+                text='C++ Programming Course'
+                label='Programming'
+                path='/C++'
+                rate='4'
+                price='239$'
+                />
+                <CardItem 
+                src='images/55555555.jpg'
+                text='C++ Programming Course'
+                label='Programming'
+                path='/C++'
+                rate='4'
+                price='239$'
+                />
+                <CardItem 
+                src='images/55555555.jpg'
+                text='C++ Programming Course'
+                label='Programming'
+                path='/C++'
+                rate='4'
+                price='239$'
+                />
             </ul>
         </div>
       </div>

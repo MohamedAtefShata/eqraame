@@ -8,6 +8,8 @@ import Categories from "./components/Pages/Categories";
 import Footer from "./components/Footer";
 import Login from "./components/Pages/Login";
 import Register from "./components/Pages/Register";
+import EditAvatar from "./components/Pages/EditAvatar";
+import EditProfile from "./components/Pages/EditProfile";
 
 function App(){
     return(
@@ -20,6 +22,8 @@ function App(){
                 <Route path='/Categories' element={<Categories />} />
                 <Route path='/login' exact element={<Login/>} />
                 <Route path='/signup' exact element={<Register/>} />
+                <Route path='/user/edit-profile' element={<EditProfile />} />
+                <Route path='/user/edit-avatar' element={<EditAvatar />} />
             </Routes>
             <Footer/>
         </Router>

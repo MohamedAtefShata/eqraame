@@ -1,3 +1,77 @@
+.login-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 70px;
+    margin-bottom: 70px;
+    flex-direction: column;
+}
+.input-container
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.login-heading
+{
+    justify-self: start;
+}
+
+.input-field
+{
+    position: relative;
+    width: 484px;
+    margin-top: 15px;
+}
+
+.input-field input
+{
+    width: 100%;
+    padding: 12px 26px;
+    border: 1px solid #636161;
+    /* outline: none; */
+    border-radius: 2px;
+    font-size: 1.19rem;
+    transition: 0.15s;
+}
+
+.input-field span
+{
+    position: absolute;
+    left: 0;
+    padding: 10px;
+    padding-left: 20px;
+    pointer-events: none;
+    font-size: 1.2rem;
+    color: #636161;
+    /* text-transform: uppercase; */
+    font-family: 'PT Sans', sans-serif;
+    transition: 0.15s;
+}
+
+.input-field input:valid ~ span,
+.input-field input:focus ~ span
+{
+    color: #282828;
+    transform: translateX(25px) translateY(-9px);
+    font-size: 0.85rem;
+    padding: 0 5px;
+    background: #fff;
+    /* border-left: 1px solid #282828;
+    border-right: 1px solid #282828; */
+}
+.input-field input:valid,
+.input-field input:focus
+{
+    color: #282828;
+}
+
+.login-btn {
+    display: grid;
+    grid-template-columns: repeat(1, auto);
+    
+}
 
 .login-btn .btn {
     margin-top: 15px;

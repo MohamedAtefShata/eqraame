@@ -8,6 +8,7 @@
   }
   
   .cards__container {
+    
     display: flex;
     flex-flow: column;
     align-items: center;
@@ -22,11 +23,12 @@
   }
   
   .cards__items {
+    display: grid;
+    grid-template-columns: repeat(5, auto);
     margin-bottom: 24px;
   }
   
   .cards__item {
-    display: flex;
     flex: 1;
     margin: 0 1rem;
     border-radius: 10px;
@@ -107,13 +109,13 @@
   
   @media only screen and (min-width: 1200px) {
     .content__blog__container {
-      width: 84%;
+      width: 100%;
     }
   }
   
   @media only screen and (min-width: 1024px) {
     .cards__items {
-      display: flex;
+      display: grid;
     }
   }
   
