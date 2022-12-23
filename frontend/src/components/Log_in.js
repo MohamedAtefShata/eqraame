@@ -3,8 +3,6 @@ import { Button } from './Button';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
-// import LoadingButton from '@mui/lab/LoadingButton';
-// import Button from '@mui/lab/LoadingButton';
 import { Typography } from '@mui/material';
 import Link from '@mui/material/Link';
 import { ThemeProvider, createTheme,styled } from '@mui/material/styles';
@@ -45,17 +43,18 @@ const theme = createTheme({
     },
   });
 function Log_in(){
-    // const [loading, setLoading] = React.useState(true);
-    // const handleClick = (event) =>{
-    //     setLoading(!loading);
-    //     event.preventDefault();
-    //     const data = new FormData(event.currentTarget);
-    //     console.log({
-    //     email: data.get('email'),
-    //     password: data.get('password'),
-    //     });
-    // }
-
+    const handleSubmit = (event) => {
+      event.preventDefault();
+      const data = new FormData(event.currentTarget);
+      axios({
+        method: 'post',
+        url: 'localhost:5000/api/auth',
+        data: {
+          "email":"bakar@mail.com",
+          "password":"password1"
+        }
+      });
+    };
     return(
         <>
         <Grid
@@ -67,7 +66,10 @@ function Log_in(){
         style={{ minHeight: '90vh' }}
         ><Grid item xs={3}>
             <ThemeProvider theme={theme}>
-                    <Box component="form"
+                    <Box 
+                    component="form"
+                    onSubmit={handleSubmit} 
+                    noValidate
                     sx={{
                         mx: 'auto',
                         width: 500,
@@ -122,6 +124,7 @@ function Log_in(){
                         />
                         <div className='log-btn'>
                           <Button
+                            onClick = 'submit'
                             className='btns' 
                             buttonStyle='btn--primary--logsign'
                             buttonSize='btn--large'
