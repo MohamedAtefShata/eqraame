@@ -70,12 +70,12 @@ function Signup(){
           name:data.get('name'),
           email:data.get('email'),
           password:data.get('password'),
-          "confirm-password":data.get('password'),
+          ["confirm-password"]:data.get('password'),
           role:data.get('role'),
           birthdate:data.get('birthdate'),
           avatar:"default"
       }
-      axios.post('http://localhost:5000/api/user/register',
+      axios.post('http://localhost:5000/api/user/register',user
       )
       .then(function (response) {
         console.log(response);
