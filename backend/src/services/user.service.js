@@ -4,7 +4,7 @@
  * @author Mahmoud Atef
  */
 
-const { connection } = require("../config/db-connection");
+const { connection } = require("../config/db");
 const User = require("../models/User.model");
 const Wallet = require("../models/Wallet.model");
 const BadRequestError = require("../utils/BadRequestError");

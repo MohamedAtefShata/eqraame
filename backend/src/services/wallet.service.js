@@ -4,7 +4,7 @@
  * @author Mahmoud Atef
  */
 
-const { connection } = require("../config/db-connection");
+const { connection } = require("../config/db");
 const UserModel = require("../models/User.model");
 const WalletModel = require("../models/Wallet.model");
 const WalletTransactionModel = require("../models/WalletTransaction.model");
