@@ -23,7 +23,7 @@ const register = async function (user) {
 
     // check email is used
     let emailChecker = await User.findOne().byEmail(user.email);
-    if (emailChecker) throw BadRequestError("Email is already used");
+    if (emailChecker) throw new BadRequestError("Email is already used");
 
     // prepare user data
     await user.encryptPassword();

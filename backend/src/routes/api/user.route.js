@@ -1,5 +1,5 @@
 /**
- * user rout
+ * user route
  * @route /user
  * @author Mahmoud Atef
  */
@@ -11,6 +11,7 @@ const {
 } = require("../../middlewares/cheakers");
 const User = require("../../models/User.model");
 const userService = require("../../services/user.service");
+const UseController = require("../../controller/user.controller");
 
 /**
  * @route POST /api/user/register
@@ -22,37 +23,8 @@ router.post(
   "/register",
   /*****  checkers *****/
   checkUserRegistration,
-  // validate chekers is passed
   validateCheckers,
-  /******** Response handling ********/
-  async (req, res) => {
-    try {
-      const { name, email, password, birthdate, role, avatar } = req.body;
-
-      let user = new User({ name, email, password, role });
-
-      if (birthdate) user.birthdate = birthdate;
-      if (avatar) user.avatar = avatar;
-
-      // register user transaction
-      await userService.register(user);
-
-      // response by token
-      const token = user.getToken();
-      res.json({ msg: "user register succufully", token });
-    } catch (error) {
-      // if error caused by request
-      if (error.name === "BadRequest")
-        return res.status(error.status).json(error.json);
-
-      // if error happen in server
-      console.log(
-        "error in creaet user :",
-        `< ${error.name} >:${error.message}`
-      );
-      return res.status(500).json({ msg: "server error" });
-    }
-  }
+  UseController.addUser
 );
 
 module.exports = router;
