@@ -2,10 +2,20 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 70px;
-    margin-bottom: 70px;
+    margin-top: 150px;
+    margin-bottom: 150px;
     flex-direction: column;
 }
+
+.login-container  h5{
+    font-size: 1rem;
+}
+
+.login-container:nth-child(2)  h5{
+    font-size: 1rem;
+    margin-left: 130px;
+}
+
 .input-container
 {
     margin: 0;

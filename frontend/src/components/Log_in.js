@@ -2,6 +2,7 @@ import React from "react";
 import { Button } from "./Button";
 import "./Styles/Log_in.css";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 function Log_in() {
   const handleSubmit = (event) => {
@@ -24,7 +25,7 @@ function Log_in() {
     <>
       <div className="login-container">
         <form>
-          <h6 className="login-heading">log in to your eqraame account</h6>
+          <h5 className="login-heading">log in to your eqraame account</h5>
           <div className="login-btn">
             <Button
               className="btns"
@@ -67,6 +68,10 @@ function Log_in() {
             >
               log in
             </Button>
+            <h5>
+              Don't have an account?
+              <Link to="/signup"> Sign up</Link>
+            </h5>
           </div>
         </form>
       </div>
