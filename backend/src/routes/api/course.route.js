@@ -1,6 +1,6 @@
 /**
- * user rout
- * @user /auth
+ * Course route
+ * @route /course
  * @author Mahmoud Atef
  */
 
