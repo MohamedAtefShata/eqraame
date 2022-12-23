@@ -1,6 +1,6 @@
 /**
  * user rout
- * @user /auth
+ * @route /user
  * @author Mahmoud Atef
  */
 

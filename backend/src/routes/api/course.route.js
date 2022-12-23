@@ -1,6 +1,6 @@
 /**
- * user rout
- * @user /auth
+ * Course route
+ * @route /course
  * @author Mahmoud Atef
  */
 
@@ -8,6 +8,7 @@ const auth = require("../../middlewares/auth");
 const checkTeacherRole = require("../../middlewares/checkTeacherRole");
 const { checkCourse, validateCheckers } = require("../../middlewares/cheakers");
 const CourseController = require("../../controller/course.controller");
+const courseIDParams = require("../../middlewares/courseIDParams");
 const router = require("express").Router();
 
 /**
@@ -17,17 +18,24 @@ const router = require("express").Router();
  */
 router.get("/", CourseController.getAllCourses);
 /**
- * @route GET /api/course/:id @acess public
+ * @route GET /api/course/:id
+ * @acess public
  * @desc  get  course by id
  */
-router.get("/:id", CourseController.getCourseByID);
+router.get("/:course_id", courseIDParams, CourseController.getCourseByID);
 
 /**
  * @route DELETE /api/course/delete/:id
  * @acess private
  * @desc  delete course by id
  */
-router.delete("/:id", auth, checkTeacherRole, CourseController.deleteByID);
+router.delete(
+  "/:course_id",
+  auth,
+  checkTeacherRole,
+  courseIDParams,
+  CourseController.deleteByID
+);
 
 /**
  * @route POST /api/course/update/:id
@@ -35,11 +43,12 @@ router.delete("/:id", auth, checkTeacherRole, CourseController.deleteByID);
  * @desc  update course in database
  */
 router.post(
-  "/update/:id",
+  "/update/:course_id",
   auth,
   checkTeacherRole,
   checkCourse,
   validateCheckers,
+  courseIDParams,
   CourseController.updateByID
 );
 
