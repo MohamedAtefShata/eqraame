@@ -1,5 +1,6 @@
 import React from "react";
 import "../Styles/App.css";
+import "../Styles/EditProfile.css";
 import ProfileTemp from "../ProfileTemp";
 
 function EditProfile() {
