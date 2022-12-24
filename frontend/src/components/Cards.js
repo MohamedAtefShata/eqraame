@@ -27,7 +27,7 @@ function Cards() {
             label={d.name}
             path='/Courses'
             rate='4'
-            price={d.price}
+            price={d.price+"$"}
         /> 
     );
       return (
