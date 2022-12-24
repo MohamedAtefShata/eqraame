@@ -23,6 +23,7 @@
   }
   
   .cards__items {
+    list-style: none;
     display: grid;
     grid-template-columns: repeat(5, auto);
     margin-bottom: 24px;
@@ -31,6 +32,7 @@
   .cards__item {
     flex: 1;
     margin: 0 1rem;
+    margin-top: 20px;
     border-radius: 10px;
   }
   

@@ -70,7 +70,7 @@ function Log_in() {
             </Button>
             <h5>
               Don't have an account?
-              <Link to="/signup"> Sign up</Link>
+              <Link to="/signup">{"  Sign Up"}</Link>
             </h5>
           </div>
         </form>
