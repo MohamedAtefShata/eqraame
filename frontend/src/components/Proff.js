@@ -17,7 +17,7 @@ const Proff = () => {
       (error) => {
         console.log("Private page", error.response);
         // Invalid token
-        if (error.response && error.response.status === 403) {
+        if (error.response && error.response.status !== 200) {
           AuthService.logout();
           navigate("/login");
           window.location.reload();

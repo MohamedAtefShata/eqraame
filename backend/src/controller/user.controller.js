@@ -29,7 +29,7 @@ const addUser = async (req, res, next) => {
 
 const getAllTeachers = async (req, res, next) => {
   try {
-    let teachers = await User.find({ role: "teacher" });
+    let teachers = await User.find({ role: "teacher" }).select("-password");
 
     return res.json({ msg: "succuful request", data: teachers });
   } catch (error) {
