@@ -9,11 +9,11 @@ import { Button1 } from "../Button1";
 
 function EditProfile() {
   const [userinfo, setuserinfo] = useState([]);
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
-  // const [birthdate, setBirthdate] = useState("");
-  // const [name, setName] = useState("");
-  // const [selected, setSelected] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [birthdate, setBirthdate] = useState("");
+  const [name, setName] = useState("");
+  const [selected, setSelected] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -51,8 +51,8 @@ function EditProfile() {
                     maxlength="64"
                     data-purpose="edit-profile:name"
                     required="required"
-                    // onChange={(e) => setName(e.target.value)}
-                    value={userinfo.name}
+                    onChange={(e) => setName(e.target.value)}
+                    // value={userinfo.name}
                   />
                   <span>name</span>
                 </div>
@@ -60,8 +60,8 @@ function EditProfile() {
                   <input
                     type="date"
                     required="required"
-                    // onChange={(e) => setBirthdate(e.target.value)}
-                    value={userinfo.birthdate}
+                    onChange={(e) => setBirthdate(e.target.value)}
+                    // value={userinfo.birthdate}
                   />
                   <span className="birth-edit">birthdate</span>
                 </div>
