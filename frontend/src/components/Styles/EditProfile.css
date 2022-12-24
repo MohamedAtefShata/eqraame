@@ -1,6 +1,84 @@
 .editProfile-container {
     display: flex;
-    max-width: 116.4rem;
-    padding: 2.4rem 2.4rem 4.8rem;
-    margin: 40px;
+    justify-content: space-between;
+    padding: 0;
+    max-width: 1402px;
+    margin: 90px;
+    margin-left: 200px;
+    margin-right: 200px;
+    position: relative;
+    margin-bottom: 200px;
+    border: 1px solid #282828;
+    
+}
+
+.profil-Header {
+    text-align: center;
+    /* border-top: 1px solid #282828; */
+    border-bottom: 1px solid #282828;
+    height: 40%;
+    width: 1055px;
+}
+
+.center-handel {
+    display: grid;
+    grid-template-columns: repeat(1, auto);
+    /* border-bottom: 1px solid #282828; */
+}
+
+.profile-contanier {
+    margin-top: -90px;
+}
+
+.input-container
+{
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    margin: 0;
+    padding: 0;
+    margin-left: 40px;
+    box-sizing: border-box;
+}
+
+.input-field
+{
+    position: relative;
+    width: 400px;
+    margin-top: 15px;
+}
+
+.input-field:nth-child(2) span
+{
+    position: absolute;
+    transform: translateX(25px) translateY(-9px);
+    left: 0;
+    padding: 0px;
+    padding-left: 5px;
+    padding-right: 5px;
+    pointer-events: none;
+    font-size: 0.85rem;
+    color: #636161;
+    background: #fff;
+    /* text-transform: uppercase; */
+    font-family: 'PT Sans', sans-serif;
+}
+
+.input-field:nth-child(2) input:valid ~ span,
+.input-field:nth-child(2) input:focus ~ span
+{
+    color: #282828;
+    /* transform: translateX(25px) translateY(-9px); */
+    /* font-size: 0.85rem;
+    padding: 0 5px; */
+    background: #fff;
+    /* border-left: 1px solid #282828;
+    border-right: 1px solid #282828; */
+}
+
+
+.profile-contanier .btn{
+    margin-top: 40px;
+    margin-bottom: 5px;
+    margin-left: 250px;
+    width: 484px;
 }

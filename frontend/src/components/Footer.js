@@ -65,7 +65,7 @@ function Footer() {
           <div className="footer-logo">
             <Link to="/" className="social-logo">
               <img
-                src="./images/logoPSDWhite.png"
+                src="/images/logoPSDWhite.png"
                 alt=""
                 className="social-logo"
               />

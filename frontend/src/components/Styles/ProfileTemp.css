@@ -1,6 +1,10 @@
 .user-container {
     display: grid;
     grid-template-columns: repeat(1, auto);
+    border-right: 0;
+    width: 21.6rem;
+    border-right: 1px solid #282828;
+    margin-left: -1px;
     align-items: center;
     justify-content: center;
     width: 346PX;
