@@ -1,9 +1,9 @@
-import React ,{useState} from "react";
+import React, { useState } from "react";
 import { Button } from "./Button";
 import { Button1 } from "./Button1";
 import "./Styles/Log_in.css";
-import { Link,useNavigate } from "react-router-dom";
-import AuthService from "../services/auth.service"
+import { Link, useNavigate } from "react-router-dom";
+import AuthService from "../services/auth.service";
 function Log_in() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -14,7 +14,7 @@ function Log_in() {
     try {
       await AuthService.login(email, password).then(
         () => {
-          navigate("/prof");
+          navigate("/user/edit-profile");
           window.location.reload();
         },
         (error) => {
@@ -51,11 +51,19 @@ function Log_in() {
           </div>
           <div className="input-container">
             <div className="input-field">
-              <input type="text" required="required" onChange={e => setEmail(e.target.value)} />
+              <input
+                type="text"
+                required="required"
+                onChange={(e) => setEmail(e.target.value)}
+              />
               <span>email</span>
             </div>
             <div className="input-field">
-              <input type="password" required="required" onChange={e => setPassword(e.target.value)} />
+              <input
+                type="password"
+                required="required"
+                onChange={(e) => setPassword(e.target.value)}
+              />
               <span>password</span>
             </div>
           </div>

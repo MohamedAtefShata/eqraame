@@ -2,7 +2,6 @@ import Navbar from "./components/Navbar";
 import { React, useState, useEffect } from "react";
 import "./components/Styles/App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
 import Home from "./components/Pages/Home";
 import Courses from "./components/Pages/Courses";
 import Categories from "./components/Pages/Categories";
