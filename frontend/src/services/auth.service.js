@@ -8,7 +8,7 @@ const signup = (name,email, password,birthdate,role) => {
       ["password"]:password,
       ["confirm-password"] : password,
       ["birthdate"]:birthdate,
-      ["role"]:"student",
+      ["role"]:role.toLowerCase(),
       ["avatar"]:"default"
     })
     .then((response) => {
