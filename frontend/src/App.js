@@ -12,6 +12,7 @@ import EditAvatar from "./components/Pages/EditAvatar";
 import EditProfile from "./components/Pages/EditProfile";
 import AuthService from "./services/auth.service";
 import Prof from "./components/Pages/Prof";
+import Allcourses from "./components/Pages/Allcourses";
 
 function App(){
     const [currentUser, setCurrentUser] = useState(undefined);
@@ -39,6 +40,7 @@ function App(){
                 <Route path='/user/edit-profile' element={<EditProfile />} />
                 <Route path='/user/edit-avatar' element={<EditAvatar />} />
                 <Route path='/prof' element={<Prof />} />
+                <Route path='/allcourses' element={<Allcourses />} />
             </Routes>
             <Footer/>
         </Router>
