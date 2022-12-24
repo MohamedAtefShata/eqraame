@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { Button } from "./Button";
 import "./Styles/navbar.css";
 import { styled, alpha } from "@mui/material/styles";
 import Toolbar from "@mui/material/Toolbar";
 import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
+import AuthService from "../services/auth.service";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -52,6 +53,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 function Navbar() {
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
+  var [currentUser, setCurrentUser] = useState(undefined);
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
   const showButton = () => {
@@ -64,8 +66,16 @@ function Navbar() {
 
   useEffect(() => {
     showButton();
+    const user = AuthService.getCurrentUser();
+    if (user) {
+      setCurrentUser(user);
+    }
   }, []);
-
+  const logOut = () => {
+    AuthService.logout();
+    Navigate("/");
+    window.location.reload();
+  };
   window.addEventListener("resize", showButton);
 
   return (
@@ -105,25 +115,56 @@ function Navbar() {
               CATEGORIES
             </Link>
           </li>
-          <li className="nav-item">
-            <Link to="/login" className="nav-links" onClick={closeMobileMenu}>
-              LOG IN
-            </Link>
-          </li>
-          {button && (
-            <Button buttonStyle="btn--outline--nav" buttonPath="/signup">
-              SIGN UP
-            </Button>
+          {currentUser ? (
+            <>
+              <li className="nav-item">
+                <Link to="/" className="nav-links" onClick={logOut}>
+                  LOG OUT
+                </Link>
+              </li>
+              {button &&(<Button
+                buttonStyle="btn--outline--nav"
+                buttonPath="/user/edit-profile"
+              >
+                profile
+              </Button>
+                )}
+              <li className="nav-item">
+                <Link
+                  to="/user/edit-profile"
+                  className="nav-links-mobile"
+                  onClick={closeMobileMenu}
+                >
+                  profile
+                </Link>
+              </li>
+            </>
+          ) : (
+            <>
+              <li className="nav-item">
+                <Link
+                  to="/login"
+                  className="nav-links"
+                  onClick={closeMobileMenu}
+                >
+                  LOG IN
+                </Link>
+              </li>
+              {button && (<Button buttonStyle="btn--outline--nav" buttonPath="/signup">
+                SIGN UP
+              </Button>
+              )}
+              <li className="nav-item">
+                <Link
+                  to="/signup"
+                  className="nav-links-mobile"
+                  onClick={closeMobileMenu}
+                >
+                  SIGN UP
+                </Link>
+              </li>
+            </>
           )}
-          <li className="nav-item">
-            <Link
-              to="/signup"
-              className="nav-links-mobile"
-              onClick={closeMobileMenu}
-            >
-              SIGN UP
-            </Link>
-          </li>
         </ul>
       </nav>
     </>

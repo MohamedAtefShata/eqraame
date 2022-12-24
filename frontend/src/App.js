@@ -24,9 +24,6 @@ function App() {
       setCurrentUser(user);
     }
   }, []);
-  // const logOut = () => {
-  //   AuthService.logout();
-  // };
   return (
     <>
       <Router>
