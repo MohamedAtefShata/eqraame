@@ -1,8 +1,117 @@
-
-.signup-btn .btn {
-    margin-top: 15px;
-    width: 484px;
+.sign-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 150px;
+    margin-bottom: 150px;
+    flex-direction: column;
 }
+
+.sign-container  h5{
+    font-size: 1rem;
+}
+
+.sign-container:nth-child(2)  h5{
+    font-size: 1rem;
+    margin-left: 130px;
+}
+
+.input-container
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.login-heading
+{
+    justify-self: start;
+}
+
+.input-field
+{
+    position: relative;
+    width: 484px;
+    margin-top: 15px;
+}
+
+.input-field input
+{
+    width: 100%;
+    padding: 12px 26px;
+    border: 1px solid #636161;
+    /* outline: none; */
+    border-radius: 2px;
+    font-size: 1.19rem;
+    transition: 0.15s;
+}
+
+.input-field span
+{
+    position: absolute;
+    left: 0;
+    padding: 10px;
+    padding-left: 20px;
+    pointer-events: none;
+    font-size: 1.2rem;
+    color: #636161;
+    /* text-transform: uppercase; */
+    font-family: 'PT Sans', sans-serif;
+    transition: 0.15s;
+}
+
+.input-field:nth-child(4) span
+{
+    position: absolute;
+    transform: translateX(25px) translateY(-9px);
+    left: 0;
+    padding: 0px;
+    padding-left: 5px;
+    padding-right: 5px;
+    pointer-events: none;
+    font-size: 0.85rem;
+    color: #636161;
+    background: #fff;
+    /* text-transform: uppercase; */
+    font-family: 'PT Sans', sans-serif;
+}
+
+.input-field input:valid ~ span,
+.input-field input:focus ~ span
+{
+    color: #282828;
+    transform: translateX(25px) translateY(-9px);
+    font-size: 0.85rem;
+    padding: 0 5px;
+    background: #fff;
+    /* border-left: 1px solid #282828;
+    border-right: 1px solid #282828; */
+}
+.input-field input:valid,
+.input-field input:focus
+{
+    color: #282828;
+}
+
+.input-field:nth-child(4) input:valid ~ span,
+.input-field:nth-child(4) input:focus ~ span
+{
+    color: #282828;
+    /* transform: translateX(25px) translateY(-9px); */
+    /* font-size: 0.85rem;
+    padding: 0 5px; */
+    background: #fff;
+    /* border-left: 1px solid #282828;
+    border-right: 1px solid #282828; */
+}
+
+.sign-btn {
+    display: grid;
+    grid-template-columns: repeat(1, auto);
+    
+}
+
+
 .sign-btn .btn{
     margin-top: 15px;
     margin-bottom: 5px;

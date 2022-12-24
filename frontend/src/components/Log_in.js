@@ -2,9 +2,8 @@ import React ,{useState} from "react";
 import { Button } from "./Button";
 import { Button1 } from "./Button1";
 import "./Styles/Log_in.css";
-import { Link  } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
-import AuthService from "../services/auth.service";
+import axios from "axios";
+import { Link } from "react-router-dom";
 
 function Log_in() {
   const [email, setEmail] = useState("");
@@ -73,7 +72,7 @@ function Log_in() {
             </Button1>
             <h5>
               Don't have an account?
-              <Link to="/signup"> Sign up</Link>
+              <Link to="/signup">{"  Sign Up"}</Link>
             </h5>
           </div>
         </form>
