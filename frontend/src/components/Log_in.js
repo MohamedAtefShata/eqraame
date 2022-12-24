@@ -2,9 +2,8 @@ import React ,{useState} from "react";
 import { Button } from "./Button";
 import { Button1 } from "./Button1";
 import "./Styles/Log_in.css";
-import axios from "axios";
-import { Link } from "react-router-dom";
-
+import { Link,useNavigate } from "react-router-dom";
+import AuthService from "../services/auth.service"
 function Log_in() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -67,6 +66,7 @@ function Log_in() {
               buttonStyle="btn--primary--logsign"
               buttonSize="btn--large"
               buttonTrans="btn--logsign"
+              buttonPath="/myprofile"
             >
               log in
             </Button1>
