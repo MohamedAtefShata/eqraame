@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Button } from "./Button";
 import "./Styles/navbar.css";
 import { styled, alpha } from "@mui/material/styles";
@@ -73,7 +73,6 @@ function Navbar() {
   }, []);
   const logOut = () => {
     AuthService.logout();
-    Navigate("/");
     window.location.reload();
   };
   window.addEventListener("resize", showButton);
@@ -118,24 +117,23 @@ function Navbar() {
           {currentUser ? (
             <>
               <li className="nav-item">
-                <Link to="/" className="nav-links" onClick={logOut}>
-                  LOG OUT
+                <Link to="/user/edit-profile" className="nav-links" onClick={closeMobileMenu}>
+                  profile
                 </Link>
               </li>
               {button &&(<Button
                 buttonStyle="btn--outline--nav"
-                buttonPath="/user/edit-profile"
+                onClick={logOut}
               >
-                profile
+                LOG OUT
               </Button>
                 )}
               <li className="nav-item">
                 <Link
-                  to="/user/edit-profile"
                   className="nav-links-mobile"
-                  onClick={closeMobileMenu}
+                  onClick={() => { closeMobileMenu(); logOut();}}
                 >
-                  profile
+                  LOG OUT
                 </Link>
               </li>
             </>
