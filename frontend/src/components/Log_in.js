@@ -1,30 +1,36 @@
-import React from "react";
+import React ,{useState} from "react";
 import { Button } from "./Button";
+import { Button1 } from "./Button1";
 import "./Styles/Log_in.css";
-import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link  } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import AuthService from "../services/auth.service";
 
 function Log_in() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    const user = {
-      email: data.get("email"),
-      password: data.get("password"),
-    };
-    axios
-      .post("http://localhost:5000/api/auth", user)
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const navigate = useNavigate();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await AuthService.login(email, password).then(
+        () => {
+          navigate("/prof");
+          window.location.reload();
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    } catch (err) {
+      console.log(err);
+    }
   };
   return (
     <>
       <div className="login-container">
-        <form>
+        <form id="form" onSubmit={handleSubmit}>
           <h5 className="login-heading">log in to your eqraame account</h5>
           <div className="login-btn">
             <Button
@@ -32,7 +38,6 @@ function Log_in() {
               buttonStyle="btn--outline--scr"
               buttonSize="btn--large"
               buttonTrans="btn--scr"
-              buttonPath="/login"
             >
               {/* <img className='googl-icon' src='./icons/google-icon.png' alt=''/> */}
               continue with google
@@ -42,32 +47,30 @@ function Log_in() {
               buttonStyle="btn--outline--scr"
               buttonSize="btn--large"
               buttonTrans="btn--scr"
-              buttonPath="/login"
             >
               continue with facebook
             </Button>
           </div>
           <div className="input-container">
             <div className="input-field">
-              <input type="text" required="required" />
+              <input type="text" required="required" onChange={e => setEmail(e.target.value)} />
               <span>email</span>
             </div>
             <div className="input-field">
-              <input type="password" required="required" />
+              <input type="password" required="required" onChange={e => setPassword(e.target.value)} />
               <span>password</span>
             </div>
           </div>
           <div className="log-btn">
-            <Button
+            <Button1
               type="submit"
               className="btns"
               buttonStyle="btn--primary--logsign"
               buttonSize="btn--large"
               buttonTrans="btn--logsign"
-              buttonPath="/myprofile"
             >
               log in
-            </Button>
+            </Button1>
             <h5>
               Don't have an account?
               <Link to="/signup"> Sign up</Link>
