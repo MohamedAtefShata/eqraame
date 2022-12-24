@@ -9,11 +9,11 @@ import { Button1 } from "../Button1";
 
 function EditProfile() {
   const [userinfo, setuserinfo] = useState([]);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [birthdate, setBirthdate] = useState("");
-  const [name, setName] = useState("");
-  const [selected, setSelected] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
+  // const [birthdate, setBirthdate] = useState("");
+  // const [name, setName] = useState("");
+  // const [selected, setSelected] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -44,23 +44,23 @@ function EditProfile() {
           </div>
           <div className="profile-contanier">
             <form>
-              <div className="input-container">
-                <div className="input-field">
+              <div className="update-container">
+                <div className="update-field">
                   <input
                     type="text"
                     maxlength="64"
                     data-purpose="edit-profile:name"
                     required="required"
-                    onChange={(e) => setName(e.target.value)}
+                    // onChange={(e) => setName(e.target.value)}
                     value={userinfo.name}
                   />
                   <span>name</span>
                 </div>
-                <div className="input-field">
+                <div className="update-field">
                   <input
                     type="date"
                     required="required"
-                    onChange={(e) => setBirthdate(e.target.value)}
+                    // onChange={(e) => setBirthdate(e.target.value)}
                     value={userinfo.birthdate}
                   />
                   <span className="birth-edit">birthdate</span>

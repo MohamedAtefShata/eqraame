@@ -63,7 +63,6 @@ function Signup() {
               <input
                 type="text"
                 required="required"
-                maxlength="64"
                 onChange={(e) => setName(e.target.value)}
               />
               <span>name</span>
@@ -101,6 +100,7 @@ function Signup() {
               buttonStyle="btn--primary--logsign"
               buttonSize="btn--large"
               buttonTrans="btn--logsign"
+              buttonPath="/user/edit-profile"
             >
               Sign up
             </Button1>

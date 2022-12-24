@@ -74,7 +74,7 @@ function Log_in() {
               buttonStyle="btn--primary--logsign"
               buttonSize="btn--large"
               buttonTrans="btn--logsign"
-              buttonPath="/myprofile"
+              buttonPath="/login"
             >
               log in
             </Button1>
