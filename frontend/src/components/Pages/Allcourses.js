@@ -1,11 +1,11 @@
 import '../Styles/App.css';
 import React from 'react';
-import Cards2 from '../Cards2';
+import Cards from '../Cards';
 
 function Allcourses() {
   return (
     <>
-    <Cards2 />
+    <Cards />
     </>
   )
 }
