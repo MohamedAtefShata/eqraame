@@ -21,6 +21,7 @@ function Log_in() {
         console.log(error);
       });
   };
+
   return (
     <>
       <div className="login-container">
@@ -64,7 +65,7 @@ function Log_in() {
               buttonStyle="btn--primary--logsign"
               buttonSize="btn--large"
               buttonTrans="btn--logsign"
-              buttonPath="/myprofile"
+              buttonPath="/user/edit-profile"
             >
               log in
             </Button>

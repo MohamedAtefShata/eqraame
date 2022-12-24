@@ -5,9 +5,6 @@ import "./Styles/Signup.css";
 import Dropdown from "./Dropdown";
 // import axios from "axios";
 
-// const dropdown = document.querySelectorAll(".dropdown-container");
-// const options = ["Teacher", "Student"];
-
 function Signup() {
   const [selected, setSelected] = useState("");
 
@@ -85,7 +82,7 @@ function Signup() {
               buttonStyle="btn--primary--logsign"
               buttonSize="btn--large"
               buttonTrans="btn--logsign"
-              buttonPath="/myprofile"
+              buttonPath="/user/edit-profile"
             >
               Sign up
             </Button>
@@ -100,13 +97,3 @@ function Signup() {
   );
 }
 export default Signup;
-
-// Login /register gj
-// Add course
-// Add leason
-// View courses
-// Buy course
-// My courses
-// My wallet
-// Profile (avatar, birthdate, )
-// Searching

@@ -44,3 +44,19 @@
     background: #ececec;
 
 }
+
+.birth-edit
+{
+    position: absolute;
+    transform: translateX(25px) translateY(-9px);
+    left: 0;
+    padding: 0px;
+    padding-left: 5px;
+    padding-right: 5px;
+    pointer-events: none;
+    font-size: 0.85rem;
+    color: #282828;
+    background: #fff;
+    /* text-transform: uppercase; */
+    font-family: 'PT Sans', sans-serif;
+}

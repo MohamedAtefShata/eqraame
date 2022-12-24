@@ -8,6 +8,7 @@ function Dropdown({ selected, setSelected }) {
 
   return (
     <div className="dropdown">
+      <span className="birth-edit">role</span>
       <div className="dropdown-btn" onClick={(e) => setIsActive(!isActive)}>
         {selected}
         <span className="fas fa-caret-down"></span>
