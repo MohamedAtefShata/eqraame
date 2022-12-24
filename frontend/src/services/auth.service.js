@@ -1,10 +1,15 @@
 import axios from "axios";
 //add
-const signup = (email, password) => {
+const signup = (name,email, password,birthdate,role) => {
   return axios
     .post("http://localhost:5000/api/user/register", {
-      email,
-      password,
+      ["name"]:name,
+      ["email"]:email,
+      ["password"]:password,
+      ["confirm-password"] : password,
+      ["birthdate"]:birthdate,
+      ["role"]:"student",
+      ["avatar"]:"default"
     })
     .then((response) => {
         if (response.data.token) {
