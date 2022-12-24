@@ -1,16 +1,16 @@
-import React from 'react';
-import '../Styles/App.css';
-import ProfileTemp from '../ProfileTemp';
+import React from "react";
+import "../Styles/App.css";
+import ProfileTemp from "../ProfileTemp";
 
 function EditProfile() {
   return (
     <>
-    <ProfileTemp />
-    <div>
-      Hello guys
-    </div>
+      <div className="editProfile-container">
+        <ProfileTemp />
+        <div>Hello guys</div>
+      </div>
     </>
-  )
+  );
 }
 
 export default EditProfile;

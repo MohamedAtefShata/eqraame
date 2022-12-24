@@ -1,26 +1,26 @@
 import React from "react";
 import { Button } from "./Button";
 import "./Styles/Log_in.css";
-import axios from "axios";
+// import axios from "axios";
 import { Link } from "react-router-dom";
 
 function Log_in() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    const user = {
-      email: data.get("email"),
-      password: data.get("password"),
-    };
-    axios
-      .post("http://localhost:5000/api/auth", user)
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  };
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
+  //   const data = new FormData(event.currentTarget);
+  //   const user = {
+  //     email: data.get("email"),
+  //     password: data.get("password"),
+  //   };
+  //   axios
+  //     .post("http://localhost:5000/api/auth", user)
+  //     .then(function (response) {
+  //       console.log(response);
+  //     })
+  //     .catch(function (error) {
+  //       console.log(error);
+  //     });
+  // };
 
   return (
     <>

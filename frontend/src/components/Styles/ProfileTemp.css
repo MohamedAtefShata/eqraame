@@ -1,0 +1,32 @@
+.user-container {
+    display: grid;
+    grid-template-columns: repeat(1, auto);
+    align-items: center;
+    justify-content: center;
+    width: 346PX;
+}
+
+.user-avatar {
+    text-align: center;
+    font-size: 25px;
+}
+/* .user-name {
+    text-align: center;
+    font-size: 25px;
+} */
+
+.pages-menu {
+    display: grid;
+    grid-template-columns: repeat(1, auto);
+    margin-top: 20px; 
+    
+}
+
+.pages-menu .btn{
+    padding: 12px 10px;
+    margin-bottom: -1px;
+    border-radius: 0;
+    width: 346PX;
+    font-size: 15px;
+    text-align: start;
+}
