@@ -1,0 +1,98 @@
+.editPassword-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    max-width: 1402px;
+    margin: 90px;
+    margin-left: 200px;
+    margin-right: 200px;
+    position: relative;
+    margin-bottom: 200px;
+    border: 1px solid #282828;
+    
+}
+
+.password-Header {
+    text-align: center;
+    /* border-top: 1px solid #282828; */
+    border-bottom: 1px solid #282828;
+    height: 40%;
+    width: 1055px;
+}
+
+.center-handel {
+    display: grid;
+    grid-template-columns: repeat(1, auto);
+    /* border-bottom: 1px solid #282828; */
+}
+
+.password-contanier {
+    margin-top: -90px;
+}
+
+.updatePassword-container
+{
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    margin: 0;
+    padding: 0;
+    margin-left: 40px;
+    box-sizing: border-box;
+}
+
+.updatePassword-field
+{
+    position: relative;
+    width: 400px;
+    margin-top: 15px;
+}
+
+
+.updatePassword-field input
+{
+    width: 100%;
+    padding: 12px 26px;
+    border: 1px solid #636161;
+    /* outline: none; */
+    border-radius: 2px;
+    font-size: 1.19rem;
+    transition: 0.15s;
+}
+
+.updatePassword-field span
+{
+    position: absolute;
+    left: 0;
+    padding: 10px;
+    padding-left: 20px;
+    pointer-events: none;
+    font-size: 1.2rem;
+    color: #636161;
+    /* text-transform: uppercase; */
+    font-family: 'PT Sans', sans-serif;
+    transition: 0.15s;
+}
+
+.updatePassword-field input:valid ~ span,
+.updatePassword-field input:focus ~ span
+{
+    color: #282828;
+    transform: translateX(25px) translateY(-9px);
+    font-size: 0.85rem;
+    padding: 0 5px;
+    background: #fff;
+    /* border-left: 1px solid #282828;
+    border-right: 1px solid #282828; */
+}
+.updatePassword-field input:valid,
+.updatePassword-field input:focus
+{
+    color: #282828;
+}
+
+.password-contanier .btn{
+    margin-top: 40px;
+    margin-bottom: 5px;
+    margin-left: 250px;
+    width: 484px;
+}

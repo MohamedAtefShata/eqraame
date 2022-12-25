@@ -4,11 +4,11 @@ import React, { useState, useEffect } from "react";
 import PostService from "../../services/post.service";
 import AuthService from "../../services/auth.service";
 import { useNavigate } from "react-router-dom";
-import "../Styles/EditAvatar.css";
+import "../Styles/EditSecurity.css";
 import { Button1 } from "../Button1";
 import "../Styles/loading.css";
 
-function EditAvatar() {
+function EditSecurity() {
   const [userinfo, setuserinfo] = useState([]);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -62,26 +62,37 @@ function EditAvatar() {
   }
   return (
     <>
-      <div className="EditAvatar-container">
+      <div className="editPassword-container">
         <ProfileTemp />
         <div className="center-handel">
-          <div className="profil-Header">
+          <div className="password-Header">
             <h1 className="header">Profile Page</h1>
             <h3 className="disc">Add & edit information about yourself</h3>
           </div>
-          <div className="avatar-contanier">
+          <div className="password-contanier">
             <form>
-              <div className="updateAvatar-container">
-                <div className="updateAvatar-field">
+              <div className="updatePassword-container">
+                <div className="updatePassword-field">
                   <input
-                    type="file"
+                    type="password"
                     // maxlength="26"
                     // data-purpose="edit-profile:name"
                     required="required"
-                    onChange={(e) => setName(e.target.value)}
+                    onChange={(e) => setPassword(e.target.value)}
                     // value={userinfo.name}
                   />
-                  <span>name</span>
+                  <span>current password</span>
+                </div>
+                <div className="updatePassword-field">
+                  <input
+                    type="password"
+                    // maxlength="26"
+                    // data-purpose="edit-profile:name"
+                    required="required"
+                    onChange={(e) => setPassword(e.target.value)}
+                    // value={userinfo.name}
+                  />
+                  <span>new password</span>
                 </div>
               </div>
               <Button1
@@ -102,4 +113,4 @@ function EditAvatar() {
   );
 }
 
-export default EditAvatar;
+export default EditSecurity;
