@@ -41,6 +41,11 @@ const CourseScheme = new mongoose.Schema(
     descreption: {
       type: String,
     },
+    cover: {
+      type: String,
+      required: true,
+      default: "default",
+    },
     price: {
       type: Number,
       min: 0,

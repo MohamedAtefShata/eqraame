@@ -50,7 +50,7 @@ const deleteByID = async (req, res, next) => {
 const updateByID = async (req, res, next) => {
   try {
     // get request data
-    const { name, price, descreption, category } = req.body;
+    const { name, price, descreption, category, cover } = req.body;
     const author_id = req.user.id;
     const course = req.course;
 
@@ -62,6 +62,7 @@ const updateByID = async (req, res, next) => {
     if (price) course.price = price;
     if (descreption) course.descreption = descreption;
     if (category) course.category = category;
+    if (cover) course.cover = cover;
 
     // saving updates
     await course.save();
@@ -76,10 +77,10 @@ const updateByID = async (req, res, next) => {
 const addNewCourse = async (req, res, next) => {
   try {
     const author_id = req.user.id;
-    const { name, price, descreption, category } = req.body;
+    const { name, price, descreption, category, cover } = req.body;
 
     // servies
-    let course = new CourseModel({ name, price, author_id, category });
+    let course = new CourseModel({ name, price, author_id, category, cover });
     if (descreption) course.descreption = descreption;
     await course.save();
 

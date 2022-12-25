@@ -136,7 +136,12 @@ const checkLogin = [
   checkEmail(),
   check("password", "Password is required").not().isEmpty(),
 ];
-const checkCourse = [checkCourseLessonName(), checkPrice(), checkCategory()];
+const checkCourse = [
+  checkCourseLessonName(),
+  checkPrice(),
+  checkCategory(),
+  checkRequire("cover"),
+];
 const checkLesson = [
   checkCourseLessonName(),
   checkContentType(),
