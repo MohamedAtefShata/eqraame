@@ -4,15 +4,19 @@ import React, { useState, useEffect } from "react";
 import PostService from "../../services/post.service";
 import AuthService from "../../services/auth.service";
 import { useNavigate } from "react-router-dom";
-import "../Styles/EditAvatar.css";
+import "../Styles/EditSecurity.css";
 import { Button1 } from "../Button1";
 import "../Styles/loading.css";
 
-function EditAvatar() {
+function EditSecurity() {
   const [userinfo, setuserinfo] = useState([]);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [birthdate, setBirthdate] = useState("");
+  const [name, setName] = useState("");
   const [loading, setloading] = useState(true);
+  const [selected, setSelected] = useState("");
   const navigate = useNavigate();
-  const [image, setImage] = useState("");
 
   useEffect(() => {
     setloading(true);
@@ -58,34 +62,37 @@ function EditAvatar() {
   }
   return (
     <>
-      <div className="EditAvatar-container">
+      <div className="editPassword-container">
         <ProfileTemp />
         <div className="center-handel">
-          <div className="profil-Header">
-            <h1 className="header">Profile photo</h1>
-            <h3 className="disc">Add & edit your personal photo</h3>
+          <div className="password-Header">
+            <h1 className="header">Account security</h1>
+            <h3 className="disc">Change your current password</h3>
           </div>
-          <div className="avatar-contanier">
+          <div className="password-contanier">
             <form>
-              <div className="updateAvatar-container">
-                <div className="updateAvatar-field">
-                  <dialog></dialog>
+              <div className="updatePassword-container">
+                <div className="updatePassword-field">
                   <input
-                    type="file"
+                    type="password"
+                    // maxlength="26"
+                    // data-purpose="edit-profile:name"
                     required="required"
-                    accept="/image/*"
-                    onChange={(e) => {
-                      const file = e.target.files[0];
-                      if (file && file.type.substring(0, 5) === "image") {
-                        setImage(file);
-                      } else {
-                        setImage(
-                          "https://www.kindpng.com/picc/m/78-785827_user-profile-avatar-login-account-male-user-icon.png"
-                        );
-                      }
-                    }}
+                    onChange={(e) => setPassword(e.target.value)}
+                    // value={userinfo.name}
                   />
-                  <span>upload photo</span>
+                  <span>current password</span>
+                </div>
+                <div className="updatePassword-field">
+                  <input
+                    type="password"
+                    // maxlength="26"
+                    // data-purpose="edit-profile:name"
+                    required="required"
+                    onChange={(e) => setPassword(e.target.value)}
+                    // value={userinfo.name}
+                  />
+                  <span>new password</span>
                 </div>
               </div>
               <Button1
@@ -106,4 +113,4 @@ function EditAvatar() {
   );
 }
 
-export default EditAvatar;
+export default EditSecurity;

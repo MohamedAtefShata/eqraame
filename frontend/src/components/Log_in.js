@@ -11,19 +11,25 @@ function Log_in() {
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      await AuthService.login(email, password).then(
-        () => {
-          navigate("/user/edit-profile");
-          window.location.reload();
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
-    } catch (err) {
-      console.log(err);
-    }
+    const emailValid = email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
+    if(emailValid){
+      try {
+        await AuthService.login(email, password).then(
+          () => {
+            navigate("/user/edit-profile");
+            window.location.reload();
+          },
+          (error) => {
+            alert(error.response.data.errors[0].msg);
+          }
+        );
+      } catch (err) {
+        console.log(err);
+      }
+  }
+  else{
+    alert("aktb 3dl ya w74 llasf mynf34 a4tm 3l4an a7na fe proj mo7trm ");
+  }
   };
   return (
     <>

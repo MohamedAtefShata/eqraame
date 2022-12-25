@@ -24,7 +24,7 @@ function Signup() {
           window.location.reload();
         },
         (error) => {
-          console.log(error);
+          alert(error.response.data.errors[0].msg);
         }
       );
     } catch (err) {
@@ -63,6 +63,7 @@ function Signup() {
               <input
                 type="text"
                 required="required"
+                maxlength="26"
                 onChange={(e) => setName(e.target.value)}
               />
               <span>name</span>
