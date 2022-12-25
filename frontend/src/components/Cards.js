@@ -29,14 +29,25 @@ function Cards() {
       price={d.price + "$"}
     />
   ));
+  const notAvilable = (
+    <h1 className="not--avilable--label">
+      OPS!😥
+      <br /> No courses available
+    </h1>
+  );
+
+  const listView = (
+    <div className="cards__wrapper">
+      <ul className="cards__items">{list}</ul>
+    </div>
+  );
+
   return (
     <div className="cards">
       {/* Header of countainer */}
       <h1>Learn what you want from our courses</h1>
       <div className="cards__container">
-        <div className="cards__wrapper">
-          <ul className="cards__items">{list}</ul>
-        </div>
+        {!courses.length ? notAvilable : listView}
       </div>
     </div>
   );

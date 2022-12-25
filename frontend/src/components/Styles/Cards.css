@@ -132,3 +132,10 @@
       margin-bottom: 2rem;
     }
   }
+  .not--avilable--label{
+    /* height: 100px; */
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    align-content: space-around;
+  }
