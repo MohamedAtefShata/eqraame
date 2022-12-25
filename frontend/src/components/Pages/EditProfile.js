@@ -6,7 +6,7 @@ import "../Styles/App.css";
 import "../Styles/EditProfile.css";
 import ProfileTemp from "../ProfileTemp";
 import { Button1 } from "../Button1";
-import '../Styles/loading.css'
+import "../Styles/loading.css";
 
 function EditProfile() {
   const [userinfo, setuserinfo] = useState([]);
@@ -37,20 +37,28 @@ function EditProfile() {
       }
     );
   }, []);
-  if(loading){
-    return( 
+  if (loading) {
+    return (
       <>
-      <div id="wrapper">
+        <div id="wrapper">
           <div className="profile-main-loader">
-              <div className="loader">
-                  <svg className="circular-loader"viewBox="25 25 50 50" >
-                      <circle className="loader-path" cx="50" cy="50" r="20" fill="none" stroke="#70c542" stroke-width="2" />
-                  </svg>
-              </div>
+            <div className="loader">
+              <svg className="circular-loader" viewBox="25 25 50 50">
+                <circle
+                  className="loader-path"
+                  cx="50"
+                  cy="50"
+                  r="20"
+                  fill="none"
+                  stroke="#70c542"
+                  stroke-width="2"
+                />
+              </svg>
+            </div>
           </div>
-      </div>
+        </div>
       </>
-      )
+    );
   }
   return (
     <>
@@ -67,7 +75,7 @@ function EditProfile() {
                 <div className="update-field">
                   <input
                     type="text"
-                    maxlength="64"
+                    maxlength="26"
                     data-purpose="edit-profile:name"
                     required="required"
                     onChange={(e) => setName(e.target.value)}

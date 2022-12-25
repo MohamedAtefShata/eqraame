@@ -59,7 +59,7 @@ function ProfileTemp() {
             buttonStyle="btn--outline--scr"
             buttonSize="btn--large"
             buttonTrans="btn--scr"
-            buttonPath="/user/edit-avatar"
+            buttonPath="/user/edit-account"
           >
             Account Security
           </Button>
@@ -68,7 +68,7 @@ function ProfileTemp() {
             buttonStyle="btn--outline--scr"
             buttonSize="btn--large"
             buttonTrans="btn--scr"
-            buttonPath="/user/edit-avatar"
+            buttonPath="/user/my-wallet"
           >
             My wallet
           </Button>
@@ -77,7 +77,7 @@ function ProfileTemp() {
             buttonStyle="btn--outline--scr"
             buttonSize="btn--large"
             buttonTrans="btn--scr"
-            buttonPath="/user/edit-avatar"
+            buttonPath="/user/my-courses"
           >
             My courses
           </Button>
@@ -86,7 +86,7 @@ function ProfileTemp() {
             buttonStyle="btn--outline--scr"
             buttonSize="btn--large"
             buttonTrans="btn--scr"
-            buttonPath="/user/edit-avatar"
+            buttonPath="/user/remove-account"
           >
             Remove account
           </Button>
