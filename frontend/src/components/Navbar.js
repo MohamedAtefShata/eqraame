@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link,useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "./Button";
 import "./Styles/navbar.css";
 import { styled, alpha } from "@mui/material/styles";
@@ -102,38 +102,47 @@ function Navbar() {
           <i className={click ? "fas fa-times" : "fas fa-bars"} />
         </div>
         <ul className={click ? "nav-menu active" : "nav-menu"}>
-          <li className="nav-item">
-            <Link to="/Courses" className="nav-links" onClick={closeMobileMenu}>
-              NEW COURSES
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link
-              to="/Categories"
-              className="nav-links"
-              onClick={closeMobileMenu}
-            >
-              CATEGORIES
-            </Link>
-          </li>
           {currentUser ? (
             <>
               <li className="nav-item">
-                <Link to="/user/edit-profile" className="nav-links" onClick={closeMobileMenu}>
+                <Link
+                  to="/user/my-courses"
+                  className="nav-links"
+                  onClick={closeMobileMenu}
+                >
+                  MY COURSES
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link
+                  to="/user/my-wallet"
+                  className="nav-links"
+                  onClick={closeMobileMenu}
+                >
+                  MY WALLET
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link
+                  to="/user/edit-profile"
+                  className="nav-links"
+                  onClick={closeMobileMenu}
+                >
                   PROFILE
                 </Link>
               </li>
-              {button &&(<Button
-                buttonStyle="btn--outline--nav"
-                onClick={logOut}
-              >
-                LOG OUT
-              </Button>
-                )}
+              {button && (
+                <Button buttonStyle="btn--outline--nav" onClick={logOut}>
+                  LOG OUT
+                </Button>
+              )}
               <li className="nav-item">
                 <Link
                   className="nav-links-mobile"
-                  onClick={() => { closeMobileMenu(); logOut();}}
+                  onClick={() => {
+                    closeMobileMenu();
+                    logOut();
+                  }}
                 >
                   LOG OUT
                 </Link>
@@ -143,6 +152,24 @@ function Navbar() {
             <>
               <li className="nav-item">
                 <Link
+                  to="/Courses"
+                  className="nav-links"
+                  onClick={closeMobileMenu}
+                >
+                  NEW COURSES
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link
+                  to="/Categories"
+                  className="nav-links"
+                  onClick={closeMobileMenu}
+                >
+                  CATEGORIES
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link
                   to="/login"
                   className="nav-links"
                   onClick={closeMobileMenu}
@@ -150,9 +177,10 @@ function Navbar() {
                   LOG IN
                 </Link>
               </li>
-              {button && (<Button buttonStyle="btn--outline--nav" buttonPath="/signup">
-                SIGN UP
-              </Button>
+              {button && (
+                <Button buttonStyle="btn--outline--nav" buttonPath="/signup">
+                  SIGN UP
+                </Button>
               )}
               <li className="nav-item">
                 <Link
