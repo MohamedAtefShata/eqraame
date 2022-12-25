@@ -66,4 +66,11 @@ router.post(
   CourseController.addNewCourse
 );
 
+/**
+ * @route POST /api/course/teacher/
+ * @acess private
+ * @desc  add course in database
+ */
+router.get("/teacher/:id", CourseController.getByTeacher);
+
 module.exports = router;

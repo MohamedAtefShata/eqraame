@@ -3,6 +3,7 @@
  * @author Mahmoud Atef
  */
 
+const { default: mongoose } = require("mongoose");
 const CourseModel = require("../models/Course.model");
 const ResponseError = require("../utils/ResponseError");
 
@@ -87,10 +88,26 @@ const addNewCourse = async (req, res, next) => {
   }
 };
 
+const getByTeacher = async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    let data = [];
+    if (mongoose.isValidObjectId(id))
+      data = await CourseModel.find({ author_id: id }).select("-lessons");
+
+    msg = data.length ? "successful requeset" : "user has no course";
+
+    return res.json({ msg, data });
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   getAllCourses,
   getCourseByID,
   deleteByID,
   updateByID,
   addNewCourse,
+  getByTeacher,
 };
