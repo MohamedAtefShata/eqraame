@@ -14,6 +14,7 @@ import AuthService from "./services/auth.service";
 import Prof from "./components/Pages/Prof";
 import Allcourses from "./components/Pages/Allcourses";
 import EditSecurity from "./components/Pages/EditSecurity";
+import RemoveAccount from "./components/Pages/RemoveAccount";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(undefined);
@@ -38,6 +39,7 @@ function App() {
           <Route path="/user/edit-profile" element={<EditProfile />} />
           <Route path="/user/edit-avatar" element={<EditAvatar />} />
           <Route path="/user/edit-account" element={<EditSecurity />} />
+          <Route path="/user/remove-account" element={<RemoveAccount />} />
           <Route path="/prof" element={<Prof />} />
           <Route path="/allcourses" element={<Allcourses />} />
         </Routes>
