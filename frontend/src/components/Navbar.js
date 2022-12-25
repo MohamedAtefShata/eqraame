@@ -120,7 +120,7 @@ function Navbar() {
             <>
               <li className="nav-item">
                 <Link to="/user/edit-profile" className="nav-links" onClick={closeMobileMenu}>
-                  profile
+                  PROFILE
                 </Link>
               </li>
               {button &&(<Button
