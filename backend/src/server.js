@@ -32,29 +32,19 @@ const Main = async () => {
     process.exit();
   }
 };
-// run Main function
+const loadExpressRoutesAndMiddleWares = () => {
+  // Init Middlewares
+  app.use(cors());
+  app.use(express.json({ limit: "50mb" }));
+  app.use(express.urlencoded({ limit: "50mb", extended: true }));
+  app.use(morgan("dev"));
+  // load routes
+  app.use("/", mainRoute);
+
+  // error middleware
+  app.use(ErrorHandler);
+};
+
+// run functions
+loadExpressRoutesAndMiddleWares();
 Main();
-
-// Init Middlewares
-app.use(cors());
-app.use(express.json({ limit: "50mb" }));
-app.use(express.urlencoded({ limit: "50mb", extended: true }));
-app.use(
-  morgan(function (tokens, req, res) {
-    return [
-      tokens.method(req, res),
-      tokens.url(req, res),
-      tokens.status(req, res),
-      "header is : ",
-      JSON.stringify(req.headers),
-      "  \n ",
-      JSON.stringify(req.body),
-      "} -",
-    ].join(" ");
-  })
-);
-// load routes
-app.use("/", mainRoute);
-
-// error middleware
-app.use(ErrorHandler);
