@@ -42,7 +42,7 @@ function App() {
           <Route path="/user/remove-account" element={<RemoveAccount />} />
           <Route path="/prof" element={<Prof />} />
           <Route path="/allcourses" element={<Allcourses />} />
-          <Route path="/pay" element={<Pay />}/>
+          <Route path="/pay" element={currentUser ? <Pay /> : <Login />} />
         </Routes>
         <Footer />
       </Router>
