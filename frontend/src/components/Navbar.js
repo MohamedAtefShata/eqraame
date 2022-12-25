@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import { Button } from "./Button";
 import "./Styles/navbar.css";
 import { styled, alpha } from "@mui/material/styles";
@@ -56,6 +56,7 @@ function Navbar() {
   var [currentUser, setCurrentUser] = useState(undefined);
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
+  const navigate = useNavigate();
   const showButton = () => {
     if (window.innerWidth <= 960) {
       setButton(false);
@@ -73,6 +74,7 @@ function Navbar() {
   }, []);
   const logOut = () => {
     AuthService.logout();
+    navigate("/");
     window.location.reload();
   };
   window.addEventListener("resize", showButton);
