@@ -67,10 +67,17 @@ router.post(
 );
 
 /**
- * @route POST /api/course/teacher/
+ * @route GET /api/course/teacher/
  * @acess private
- * @desc  add course in database
+ * @desc  get by teacher id
  */
 router.get("/teacher/:id", CourseController.getByTeacher);
+
+/**
+ * @route GET /api/course/category/:category
+ * @acess private
+ * @desc  get by teacher id
+ */
+router.get("/category/:category", CourseController.getByCategory);
 
 module.exports = router;

@@ -104,6 +104,17 @@ const getByTeacher = async (req, res, next) => {
     next(error);
   }
 };
+const getByCategory = async (req, res, next) => {
+  try {
+    const category = req.params.category;
+    let data = await CourseModel.find({ category }).select("-lessons");
+    msg = data.length ? "successful requeset" : "No course in this category";
+
+    return res.json({ msg, data });
+  } catch (error) {
+    next(error);
+  }
+};
 
 module.exports = {
   getAllCourses,
@@ -112,4 +123,5 @@ module.exports = {
   updateByID,
   addNewCourse,
   getByTeacher,
+  getByCategory,
 };
