@@ -24,7 +24,7 @@ function Signup() {
           window.location.reload();
         },
         (error) => {
-          console.log(error);
+          alert(error.response.data.errors[0].msg);
         }
       );
     } catch (err) {
