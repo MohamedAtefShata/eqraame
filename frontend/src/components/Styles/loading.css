@@ -5,17 +5,17 @@ html,body{
 #wrapper{
     position:relative;
     /*background:#333;*/
-    height:70vh;
+    height:75vh;
 }
 
 .profile-main-loader{
     left: 50% !important;
     margin-left:-100px;
-    position: fixed !important;
+    position: relative !important;
     top: 50% !important;
     margin-top: -100px;
     width: 45px;
-    z-index: 9000 !important;
+    z-index: 888 !important;
 }
 
 .profile-main-loader .loader {
