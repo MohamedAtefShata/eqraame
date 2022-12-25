@@ -3,18 +3,24 @@ import CardItem from "./CardItem"; /*import card js temp*/
 import "./Styles/Cards.css"; /*import css style of cards*/
 import PostService from "../services/post.service";
 import { useNavigate } from "react-router-dom";
+import LoadingPage from "./Pages/LoadingPage";
 
 function Cards() {
   var [courses, setcourses] = useState([]);
+  const [loading, setloading] = useState(true);
+
   // nav to courses page
   // const navigate = useNavigate();
   useEffect(() => {
+    setloading(true);
     PostService.getcourseinfo().then(
       (response) => {
+        setloading(false);
         setcourses(response.data.data);
         console.log(courses);
       },
       (error) => {
+        setloading(false);
         console.log("allcourse", error.response);
       }
     );
@@ -42,7 +48,9 @@ function Cards() {
     </div>
   );
 
-  return (
+  return loading ? (
+    <LoadingPage />
+  ) : (
     <div className="cards">
       {/* Header of countainer */}
       <h1>Learn what you want from our courses</h1>
