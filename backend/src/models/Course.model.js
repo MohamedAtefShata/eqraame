@@ -6,6 +6,7 @@
  */
 
 const mongoose = require("mongoose");
+const CategoriesEnum = require("./Categories.enum");
 
 const lessonScheme = new mongoose.Schema({
   name: { type: String, required: true, trim: true },
@@ -30,6 +31,12 @@ const CourseScheme = new mongoose.Schema(
       required: true,
       immutable: true,
       index: true,
+    },
+    category: {
+      type: String,
+      required: true,
+      index: true,
+      enum: CategoriesEnum,
     },
     descreption: {
       type: String,

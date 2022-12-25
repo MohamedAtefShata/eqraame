@@ -7,6 +7,7 @@
  */
 
 const { check, validationResult } = require("express-validator");
+const CategoriesEnum = require("../models/Categories.enum");
 
 /***************************************************************
  *          Checkers for custom field
@@ -100,6 +101,13 @@ const checkRequire = (field) => {
   return check(field, `${field} is require`).not().isEmpty();
 };
 
+const checkCategory = () => {
+  return check(
+    "category",
+    `category sholud be one of [${CategoriesEnum.join(",")}]`
+  ).isIn(CategoriesEnum);
+};
+
 /******************************************************************************/
 
 /**
@@ -109,7 +117,7 @@ const checkRequire = (field) => {
 const validateCheckers = (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty())
-    return res.status(401).json({ errors: errors.array() });
+    return res.status(400).json({ errors: errors.array() });
   next();
 };
 
@@ -128,7 +136,7 @@ const checkLogin = [
   checkEmail(),
   check("password", "Password is required").not().isEmpty(),
 ];
-const checkCourse = [checkCourseLessonName(), checkPrice()];
+const checkCourse = [checkCourseLessonName(), checkPrice(), checkCategory()];
 const checkLesson = [
   checkCourseLessonName(),
   checkContentType(),
