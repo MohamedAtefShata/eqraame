@@ -39,7 +39,7 @@
   .cards__item__link {
     display: flex;
     flex-flow: column;
-    width: 100%;
+    width: 200px;
     height: 100%;
     box-shadow: 0 6px 20px rgba(56, 125, 255, 0.17);
     -webkit-filter: drop-shadow(0 6px 20px rgba(56, 125, 255, 0.017));
@@ -102,6 +102,11 @@
     color: #252e48;
     font-size: 18px;
     line-height: 24px;
+   
+    width: 150px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .cards__item__price {
