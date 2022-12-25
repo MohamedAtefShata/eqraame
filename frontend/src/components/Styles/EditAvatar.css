@@ -23,6 +23,8 @@
 .EditAvatar-container .center-handel {
     display: grid;
     grid-template-columns: repeat(1, auto);
+    border-left: 1px solid #282828;
+    margin-left: -1px;
     /* border-bottom: 1px solid #282828; */
 }
 
