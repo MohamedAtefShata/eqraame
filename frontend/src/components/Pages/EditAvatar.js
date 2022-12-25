@@ -66,8 +66,8 @@ function EditAvatar() {
         <ProfileTemp />
         <div className="center-handel">
           <div className="profil-Header">
-            <h1 className="header">Profile Page</h1>
-            <h3 className="disc">Add & edit information about yourself</h3>
+            <h1 className="header">Profile photo</h1>
+            <h3 className="disc">Add & edit your personal photo</h3>
           </div>
           <div className="avatar-contanier">
             <form>

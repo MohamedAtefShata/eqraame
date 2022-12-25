@@ -66,8 +66,8 @@ function EditSecurity() {
         <ProfileTemp />
         <div className="center-handel">
           <div className="password-Header">
-            <h1 className="header">Profile Page</h1>
-            <h3 className="disc">Add & edit information about yourself</h3>
+            <h1 className="header">Account security</h1>
+            <h3 className="disc">Change your current password</h3>
           </div>
           <div className="password-contanier">
             <form>
