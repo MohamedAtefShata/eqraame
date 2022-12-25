@@ -6,7 +6,13 @@
     margin-bottom: 150px;
     flex-direction: column;
 }
-
+span.price {
+    float: right;
+    color: grey;
+}
+p{
+  margin-top: 10px;
+}
 .login-container  h5{
     font-size: 1rem;
 }

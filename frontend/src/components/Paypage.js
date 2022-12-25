@@ -9,6 +9,7 @@ function Paypage() {
   const [cvv, setCvv] = useState("");
   const [expm, setExpm] = useState("");
   const [expy, setExpy] = useState("");
+  const [course] = useState("courseay7aga");
   //   const navigate = useNavigate();
     const handleSubmit = async (e) => {}
   return (
@@ -59,6 +60,8 @@ function Paypage() {
               <span>expYear</span>
             </div>
           </div>
+          <p><a>{course} </a>
+          <span className="price">$15</span></p>
           <div className="log-btn">
             <Button1
               type="submit"
