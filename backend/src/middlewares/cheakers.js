@@ -96,6 +96,9 @@ const checkContentType = () => {
     "video",
   ]);
 };
+const checkRequire = (field) => {
+  return check(field, `${field} is require`).not().isEmpty();
+};
 
 /******************************************************************************/
 
@@ -138,6 +141,7 @@ module.exports = {
   checkPassword,
   checkPasswordConfirmation,
   checkRole,
+  checkRequire,
   // collections
   checkUserRegistration,
   checkLogin,

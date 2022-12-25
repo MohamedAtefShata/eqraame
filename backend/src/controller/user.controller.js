@@ -53,4 +53,22 @@ const getTeacherByID = async (req, res, next) => {
   }
 };
 
-module.exports = { addUser, getAllTeachers, getTeacherByID };
+const changePassword = async (req, res, next) => {
+  try {
+    const { password } = req.body;
+    const old_password = req.body["old-password"];
+    const user = await User.findById(req.user.id);
+
+    if (!(await user.comparePassword(old_password)))
+      throw new ResponseError("invalid old password", 401);
+
+    // do servies
+    user.password = password;
+    await user.encryptPassword();
+    await user.save();
+    return res.json({ msg: "password changed succuffuly" });
+  } catch (error) {
+    next(error);
+  }
+};
+module.exports = { addUser, getAllTeachers, getTeacherByID, changePassword };
