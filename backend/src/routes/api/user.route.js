@@ -68,4 +68,17 @@ router.post(
   validateCheckers,
   UserController.changePassword
 );
+
+/**
+ * @route POST /api/user/............
+ * @acess
+ * @desc
+ */
+router.post(
+  // path,
+  "/updateavatar",
+  auth,
+  validateCheckers,
+  UserController.updateAvatar
+);
 module.exports = router;

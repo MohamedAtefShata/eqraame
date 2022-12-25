@@ -7,6 +7,7 @@
 const { default: mongoose } = require("mongoose");
 const User = require("../models/User.model");
 const UserService = require("../services/user.service");
+const { cloudinary } = require("../utils/cloudinary");
 const ResponseError = require("../utils/ResponseError");
 
 const addUser = async (req, res, next) => {
@@ -71,4 +72,29 @@ const changePassword = async (req, res, next) => {
     next(error);
   }
 };
-module.exports = { addUser, getAllTeachers, getTeacherByID, changePassword };
+
+const updateAvatar = async (req, res, next) => {
+  try {
+    const user = await User.findById(req.user.id).select("-passowrd");
+    const avatar = req.body.avatar;
+
+    const uploadResponse = await cloudinary.uploader.upload(avatar, {
+      upload_preset: "course-websiste-avatar",
+      public_id: `profile_${user.id}`,
+    });
+
+    user.avatar = uploadResponse.url;
+    await user.save();
+
+    return res.json({ msg: "avatar updated", user });
+  } catch (error) {
+    next(error);
+  }
+};
+module.exports = {
+  addUser,
+  getAllTeachers,
+  getTeacherByID,
+  changePassword,
+  updateAvatar,
+};
