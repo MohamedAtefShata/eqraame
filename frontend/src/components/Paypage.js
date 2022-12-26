@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button1 } from "./Button1";
-import "./Styles/Log_in.css";
+import "./Styles/paypage.css";
 // import { Link, useNavigate } from "react-router-dom";
 // import AuthService from "../services/auth.service";
 function Paypage() {
@@ -11,58 +11,59 @@ function Paypage() {
   const [expy, setExpy] = useState("");
   const [course] = useState("courseay7aga");
   //   const navigate = useNavigate();
-    const handleSubmit = async (e) => {}
+  const handleSubmit = async (e) => {};
   return (
     <>
-      <div className="login-container">
+      <div className="payment-container">
         <form id="form" onSubmit={handleSubmit}>
-          <h2 className="login-heading">Payment</h2>
-          <div className="input-container">
-            <div className="input-field">
+          <h2 className="payment-heading">
+            <img className="payimg" src="/icons/credit.png" alt="" />
+            Payment
+          </h2>
+          <div className="pay-container">
+            <div className="pay-field">
               <input
                 type="text"
                 required="required"
                 onChange={(e) => setName(e.target.value)}
               />
-              <span>Name on Card</span>
+              <span>card name</span>
             </div>
-            <div className="input-field">
+            <div className="pay-field">
               <input
                 required="required"
                 onChange={(e) => setCard(e.target.value)}
               />
-              <span>Credit card number</span>
+              <span>card number</span>
             </div>
-            <div className="input-field">
-              <input
-                type="card"
-                required="required"
-                onChange={(e) => setExpm(e.target.value)}
-              />
-              <span>expMonth</span>
+            <div className="text-grid">
+              <div className="pay-field">
+                <input
+                  type="month"
+                  required="required"
+                  onChange={(e) => setExpm(e.target.value)}
+                />
+                <span>exp date</span>
+              </div>
+              <div className="pay-field">
+                <input
+                  type="card"
+                  required="required"
+                  onChange={(e) => setCvv(e.target.value)}
+                />
+                <span>CV2</span>
+              </div>
             </div>
-          </div>
-          <div className="input-container">
-            <div className="input-field">
+            <div className="pay-field">
               <input
-                type="card"
-                required="required"
-                onChange={(e) => setCvv(e.target.value)}
-              />
-              <span>Cvv</span>
-            </div>
-            <div className="input-field">
-              <input
-                type="card"
+                type="number"
                 required="required"
                 onChange={(e) => setExpy(e.target.value)}
               />
-              <span>expYear</span>
+              <span>amount</span>
             </div>
           </div>
-          <p><a>{course} </a>
-          <span className="price">$15</span></p>
-          <div className="log-btn">
+          <div className="pay-btn">
             <Button1
               type="submit"
               className="btns"
@@ -71,7 +72,7 @@ function Paypage() {
               buttonTrans="btn--logsign"
               buttonPath="/login"
             >
-              Checkout
+              Add Money
             </Button1>
           </div>
         </form>
