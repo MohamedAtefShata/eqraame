@@ -12,7 +12,7 @@ function Log_in() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const emailValid = email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
-    if(emailValid){
+    if (emailValid) {
       try {
         await AuthService.login(email, password).then(
           () => {
@@ -26,10 +26,9 @@ function Log_in() {
       } catch (err) {
         console.log(err);
       }
-  }
-  else{
-    alert("aktb 3dl ya w74 llasf mynf34 a4tm 3l4an a7na fe proj mo7trm ");
-  }
+    } else {
+      alert("aktb 3dl ya w74 llasf mynf34 a4tm 3l4an a7na fe proj mo7trm ");
+    }
   };
   return (
     <>
@@ -43,7 +42,7 @@ function Log_in() {
               buttonSize="btn--large"
               buttonTrans="btn--scr"
             >
-              {/* <img className='googl-icon' src='./icons/google-icon.png' alt=''/> */}
+              <img className="googl-icon" src="/icons/google.png" alt="" />
               continue with google
             </Button>
             <Button
@@ -52,6 +51,7 @@ function Log_in() {
               buttonSize="btn--large"
               buttonTrans="btn--scr"
             >
+              <img className="googl-icon" src="/icons/facebook.png" alt="" />
               continue with facebook
             </Button>
           </div>
@@ -84,7 +84,7 @@ function Log_in() {
             >
               log in
             </Button1>
-            <h5>
+            <h5 className="signask">
               Don't have an account?
               <Link to="/signup">{"  Sign Up"}</Link>
             </h5>

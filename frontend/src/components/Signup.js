@@ -45,7 +45,7 @@ function Signup() {
               buttonTrans="btn--scr"
               buttonPath="/login"
             >
-              {/* <img className='googl-icon' src='./icons/google-icon.png' alt=''/> */}
+              <img className="googl-icon" src="/icons/google.png" alt="" />
               continue with google
             </Button>
             <Button
@@ -55,6 +55,7 @@ function Signup() {
               buttonTrans="btn--scr"
               buttonPath="/login"
             >
+              <img className="googl-icon" src="/icons/facebook.png" alt="" />
               continue with facebook
             </Button>
           </div>
@@ -94,7 +95,7 @@ function Signup() {
             </div>
           </div>
           <Dropdown selected={selected} setSelected={setSelected} />
-          <div className="sign-btn">
+          <div className="signup-btn">
             <Button1
               type="submit"
               className="btns"
@@ -105,7 +106,7 @@ function Signup() {
             >
               Sign up
             </Button1>
-            <h5>
+            <h5 className="logask">
               Already have account?
               <Link to="/signup">{"  Log In"}</Link>
             </h5>

@@ -11,7 +11,7 @@
     font-size: 1rem;
 }
 
-.sign-container:nth-child(2)  h5{
+.logask{
     font-size: 1rem;
     margin-left: 130px;
 }
@@ -111,15 +111,13 @@
     
 }
 
-
 .sign-btn .btn{
     margin-top: 15px;
-    margin-bottom: 5px;
     width: 484px;
 }
 
-.googl-icon{
-    width: 25px;
-    height: auto;
-    align-self: center;
+.signup-btn .btn{
+    margin-top: 15px;
+    margin-bottom: 5px;
+    width: 484px;
 }

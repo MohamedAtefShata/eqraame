@@ -11,7 +11,7 @@
     font-size: 1rem;
 }
 
-.login-container:nth-child(2)  h5{
+.signask{
     font-size: 1rem;
     margin-left: 130px;
 }
@@ -84,7 +84,7 @@
 }
 
 .login-btn .btn {
-    margin-top: 15px;
+    margin-top: 15px;   
     width: 484px;
 }
 .log-btn .btn{
@@ -96,5 +96,5 @@
 .googl-icon{
     width: 25px;
     height: auto;
-    align-self: center;
+    margin-right: 10px;
 }
