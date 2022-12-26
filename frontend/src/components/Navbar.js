@@ -106,6 +106,24 @@ function Navbar() {
             <>
               <li className="nav-item">
                 <Link
+                  to="/courses"
+                  className="nav-links"
+                  onClick={closeMobileMenu}
+                >
+                  NEW COURSES
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link
+                  to="/categories"
+                  className="nav-links"
+                  onClick={closeMobileMenu}
+                >
+                  CATEGORIES
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link
                   to="/user/my-courses"
                   className="nav-links"
                   onClick={closeMobileMenu}
@@ -152,7 +170,7 @@ function Navbar() {
             <>
               <li className="nav-item">
                 <Link
-                  to="/Courses"
+                  to="/courses"
                   className="nav-links"
                   onClick={closeMobileMenu}
                 >
@@ -161,7 +179,7 @@ function Navbar() {
               </li>
               <li className="nav-item">
                 <Link
-                  to="/Categories"
+                  to="/categories"
                   className="nav-links"
                   onClick={closeMobileMenu}
                 >
