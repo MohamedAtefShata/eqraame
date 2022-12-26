@@ -150,7 +150,11 @@ function Navbar() {
                 </Link>
               </li>
               {button && (
-                <Button buttonStyle="btn--outline--nav" onClick={logOut}>
+                <Button
+                  buttonStyle="btn--outline--nav"
+                  buttonSize="btn--small"
+                  onClick={logOut}
+                >
                   LOG OUT
                 </Button>
               )}

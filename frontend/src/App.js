@@ -39,7 +39,7 @@ function App() {
           <Route path="/user/edit-avatar" element={<EditAvatar />} />
           <Route path="/user/edit-account" element={<EditSecurity />} />
           <Route path="/user/remove-account" element={<RemoveAccount />} />
-          <Route path="/allcourses" element={<Allcourses />} />
+          <Route path="/all-courses" element={<Allcourses />} />
           <Route path="/pay" element={currentUser ? <Pay /> : <Login />} />
         </Routes>
         <Footer />

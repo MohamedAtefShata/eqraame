@@ -47,6 +47,11 @@
     border: 1px solid var(--main);
 }
 
+.btn--small {
+    padding: 7px 15px;
+    font-size: 14px;
+}
+
 .btn--medium{
     padding: 8px 20px;
     font-size: 20px;
