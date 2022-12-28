@@ -27,7 +27,6 @@
     font-size: inherit;
     font-weight: 400;
     max-width: 500px;
-    margin-left: 300px;
 }
 
 .wo {
@@ -36,13 +35,16 @@
 }
 
 .remove-contanier {
-    margin-top: 120px;
-    margin-left: -20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 100px;
 }
 
 .remove-contanier .btn{
     margin-top: 10px;
     margin-bottom: 5px;
-    margin-left: 300px;
+    margin-left: -250px;
     width: 200px;
 }
