@@ -2,7 +2,7 @@ import React, { useState, useEffect, useParams } from "react";
 import { Button1 } from "./Button1";
 import { Link, useNavigate } from "react-router-dom";
 import postService from "../services/post.service";
-import AuthService from "../services/post.service";
+import AuthService from "../services/auth.service";
 import "./Styles/MainCourse.css";
 
 function Mcourse(props) {
