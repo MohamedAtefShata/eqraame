@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useParams } from "react";
 import CardItem from "./CardItem"; /*import card js temp*/
 import "./Styles/Cards.css"; /*import css style of cards*/
 import PostService from "../services/post.service";
@@ -30,7 +30,7 @@ function Cards() {
       src="images/55555555.jpg"
       text={d.name}
       label={d.category}
-      path="/Courses"
+      path={"/course/" + d._id}
       rate="4"
       price={d.price + "$"}
     />

@@ -1,14 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useParams } from "react";
 import { Button1 } from "./Button1";
 import { Link, useNavigate } from "react-router-dom";
 import postService from "../services/post.service";
+import AuthService from "../services/post.service";
 import "./Styles/MainCourse.css";
 
-function Mcourse() {
+function Mcourse(props) {
   const [user, setUser] = useState([]);
   const [course, setCourse] = useState([]);
   const [Lessons, setLessons] = useState([]);
   const [Lesson, setLesson] = useState(0);
+  const { courseID } = props;
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -25,7 +27,7 @@ function Mcourse() {
         }
       }
     );
-    postService.getcourse().then(
+    postService.getcourse(courseID).then(
       (response) => {
         setCourse(response.data.data);
         setLessons(response.data.data.lessons);

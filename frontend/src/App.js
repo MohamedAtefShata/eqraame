@@ -1,5 +1,5 @@
 import Navbar from "./components/Navbar";
-import { React, useState, useEffect } from "react";
+import { React, useState, useEffect, useParams } from "react";
 import "./components/Styles/App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./components/Pages/Home";
@@ -60,7 +60,9 @@ function App() {
             path="/user/remove-account"
             element={currentUser ? <RemoveAccount /> : <Login />}
           />
-          <Route path="/course" element={<MainCourse />} />
+          <Route path="course">
+            <Route path=":courseID" element={<MainCourse />} />
+          </Route>
           <Route path="/all-courses" element={<Allcourses />} />
           <Route path="/pay" element={currentUser ? <Pay /> : <Login />} />
         </Routes>
