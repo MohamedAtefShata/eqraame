@@ -47,7 +47,7 @@ function HeroSection() {
                   buttonStyle="btn--outline--scr"
                   buttonSize="btn--large"
                   buttonTrans="btn--scr"
-                  buttonPath="/signup"
+                  buttonPath="/courses"
                 >
                   NEW COURSES
                 </Button>

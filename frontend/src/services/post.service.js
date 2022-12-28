@@ -14,9 +14,15 @@ const getcourse = (ID) => {
     headers: authHeader(),
   });
 };
+const getwallet = () => {
+  return axios.get(HOST + "/api/wallet", {
+    headers: authHeader(),
+  });
+};
 const postService = {
   getuserinfo,
   getcourseinfo,
   getcourse,
+  getwallet,
 };
 export default postService;

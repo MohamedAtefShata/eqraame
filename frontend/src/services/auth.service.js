@@ -1,4 +1,5 @@
 import axios from "axios";
+import authHeader from "./auth-header";
 const HOST = "http://localhost:5000";
 //add
 const signup = (name, email, password, birthdate, role) => {
@@ -34,6 +35,21 @@ const login = (email, password) => {
     });
 };
 
+const addlesson = (ID, body) => {
+  return axios.post(HOST + "/api/course/" + ID, body, {
+    headers: authHeader(),
+  });
+};
+const updatelesson = (cID, lID, body) => {
+  return axios.post(HOST + "/api/course/" + cID + "/lesson/" + lID, body, {
+    headers: authHeader(),
+  });
+};
+const deletelesson = (cID, lID) => {
+  return axios.post(HOST + "/api/course/" + cID + "/lesson/" + lID, {
+    headers: authHeader(),
+  });
+};
 const logout = () => {
   localStorage.removeItem("user");
 };
@@ -41,12 +57,36 @@ const logout = () => {
 const getCurrentUser = () => {
   return localStorage.getItem("user");
 };
-
+const chargeWallet = (body) => {
+  return axios.post(HOST + "/api/wallet/charge", body, {
+    headers: authHeader(),
+  });
+};
+const virtualcreditcard = (body) => {
+  return axios.post(HOST + "/virtual/paymentmethod/creditcard", body, {
+    headers: authHeader(),
+  });
+};
+const payCourse = (ID) => {
+  return axios.post(
+    HOST + "/api/wallet/pay/course/" + ID,
+    {},
+    {
+      headers: authHeader(),
+    }
+  );
+};
 const authService = {
   signup,
   login,
   logout,
   getCurrentUser,
+  addlesson,
+  updatelesson,
+  deletelesson,
+  chargeWallet,
+  virtualcreditcard,
+  payCourse,
 };
 
 export default authService;

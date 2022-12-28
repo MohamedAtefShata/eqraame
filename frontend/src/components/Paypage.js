@@ -1,17 +1,45 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router";
 import { Button1 } from "./Button1";
 import "./Styles/paypage.css";
 // import { Link, useNavigate } from "react-router-dom";
-// import AuthService from "../services/auth.service";
+import AuthService from "../services/auth.service";
+
+// charge wallet
+
 function Paypage() {
   const [name, setName] = useState("");
   const [card, setCard] = useState("");
   const [cvv, setCvv] = useState("");
-  const [expm, setExpm] = useState("");
-  const [expy, setExpy] = useState("");
-  const [course] = useState("courseay7aga");
-  //   const navigate = useNavigate();
-  const handleSubmit = async (e) => {};
+  const [exp, setExp] = useState("");
+  const [amount, setAmount] = useState("");
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (card.match(/^\d{16}$/ && cvv.match(/^\d{3}$/))) {
+      AuthService.chargeWallet({
+        method: "creditcard",
+        data: {
+          number: card,
+          cvv: cvv,
+          brand: "MasterCard",
+          expired: exp,
+          amount: amount,
+        },
+      }).then(
+        () => {
+          navigate("/user/my-wallet");
+          window.location.reload();
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    } else {
+      alert("d5l number s7 lwsma7t");
+    }
+  };
   return (
     <>
       <div className="payment-container">
@@ -41,7 +69,7 @@ function Paypage() {
                 <input
                   type="month"
                   required="required"
-                  onChange={(e) => setExpm(e.target.value)}
+                  onChange={(e) => setExp(e.target.value)}
                 />
                 <span>exp date</span>
               </div>
@@ -58,7 +86,7 @@ function Paypage() {
               <input
                 type="number"
                 required="required"
-                onChange={(e) => setExpy(e.target.value)}
+                onChange={(e) => setAmount(e.target.value)}
               />
               <span>amount</span>
             </div>
