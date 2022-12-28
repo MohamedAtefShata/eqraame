@@ -1,44 +1,39 @@
 .EditAvatar-container {
     display: flex;
-    justify-content: space-between;
-    padding: 0;
-    max-width: 1402px;
-    margin: 90px;
-    margin-left: 200px;
-    margin-right: 200px;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: row;
+    margin-top: 150px;
     position: relative;
     margin-bottom: 200px;
-    border: 1px solid #282828;
     
 }
 
 .EditAvatar-container .profil-Header {
     text-align: center;
-    /* border-top: 1px solid #282828; */
+    padding-bottom: 12px;
+    width: 850px;
     border-bottom: 1px solid #282828;
-    height: 40%;
-    width: 1055px;
 }
 
 .EditAvatar-container .center-handel {
-    display: grid;
-    grid-template-columns: repeat(1, auto);
-    border-left: 1px solid #282828;
-    margin-left: -1px;
-    /* border-bottom: 1px solid #282828; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .avatar-contanier {
-    margin-top: -90px;
+    margin-top: 120px;
+    margin-left: 20px;
 }
 
 .updateAvatar-container
 {
-    display: grid;
-    grid-template-columns: repeat(2, auto);
-    margin: 0;
-    padding: 0;
-    margin-left: 340px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: row;
     box-sizing: border-box;
 }
 
@@ -61,7 +56,6 @@
     font-size: 0.85rem;
     color: #636161;
     background: #fff;
-    /* text-transform: uppercase; */
     font-family: 'PT Sans', sans-serif;
 }
 
@@ -69,12 +63,7 @@
 .updateAvatar-field:nth-child(1) input:focus ~ span
 {
     color: #282828;
-    /* transform: translateX(25px) translateY(-9px); */
-    /* font-size: 0.85rem;
-    padding: 0 5px; */
     background: #fff;
-    /* border-left: 1px solid #282828;
-    border-right: 1px solid #282828; */
 }
 
 .updateAvatar-field input
@@ -82,7 +71,6 @@
     width: 100%;
     padding: 12px 26px;
     border: 1px solid #636161;
-    /* outline: none; */
     border-radius: 2px;
     font-size: 1.19rem;
     transition: 0.15s;
@@ -97,7 +85,6 @@
     pointer-events: none;
     font-size: 1.2rem;
     color: #636161;
-    /* text-transform: uppercase; */
     font-family: 'PT Sans', sans-serif;
     transition: 0.15s;
 }
@@ -110,8 +97,6 @@
     font-size: 0.85rem;
     padding: 0 5px;
     background: #fff;
-    /* border-left: 1px solid #282828;
-    border-right: 1px solid #282828; */
 }
 .updateAvatar-field input:valid,
 .updateAvatar-field input:focus
@@ -120,8 +105,7 @@
 }
 
 .avatar-contanier .btn{
-    margin-top: 20px;
+    margin-top: 40px;
     margin-bottom: 5px;
-    margin-left: 340px;
-    width: 400PX;
+    width: 400px;
 }
