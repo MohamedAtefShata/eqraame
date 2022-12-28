@@ -17,6 +17,7 @@ import RemoveAccount from "./components/Pages/RemoveAccount";
 import Pay from "./components/Pages/Pay";
 import BuyCourse from "./components/Pages/BuyCourse";
 import MainCourse from "./components/Pages/MainCourse";
+import MyWallet from "./components/Pages/MyWallet";
 function App() {
   const [currentUser, setCurrentUser] = useState(undefined);
 
@@ -60,6 +61,10 @@ function App() {
           <Route
             path="/user/remove-account"
             element={currentUser ? <RemoveAccount /> : <Login />}
+          />
+          <Route
+            path="/user/my-wallet"
+            element={currentUser ? <MyWallet /> : <Login />}
           />
           <Route path="course">
             <Route path=":courseID" element={<MainCourse />} />
