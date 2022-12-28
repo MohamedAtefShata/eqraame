@@ -33,7 +33,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" exact element={<Home />} />
-          <Route path="/Courses" element={<Courses />} />
+          <Route path="/Courses" element={<Allcourses />} />
           <Route path="/Categories" element={<Categories />} />
           <Route
             path="/login"
@@ -66,10 +66,12 @@ function App() {
           </Route>
           <Route path="/all-courses" element={<Allcourses />} />
           <Route path="/charging" element={currentUser ? <Pay /> : <Login />} />
-          <Route
-            path="/buy-course"
-            element={currentUser ? <BuyCourse /> : <Login />}
-          />
+          <Route path="/buy-course/">
+            <Route
+              path=":courseID"
+              element={currentUser ? <BuyCourse /> : <Login />}
+            />
+          </Route>
         </Routes>
         <Footer />
       </Router>

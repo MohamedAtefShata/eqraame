@@ -1,32 +1,31 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router";
 import PostService from "../services/post.service";
 import LoadingPage from "./Pages/LoadingPage";
 import Rating from "@mui/material/Rating";
 import { Button1 } from "./Button1";
+import AuthService from "../services/auth.service";
 import "./Styles/BuyComp.css";
 
-function BuyComp() {
+function BuyComp(props) {
   var [courses, setcourses] = useState([]);
-  const [loading, setloading] = useState(true);
-
+  const [loading, setloading] = useState(false);
+  const { courseID } = props;
   // nav to courses page
-  // const navigate = useNavigate();
-  useEffect(() => {
-    setloading(true);
-    PostService.getcourseinfo().then(
-      (response) => {
-        setloading(false);
-        setcourses(response.data.data);
-        console.log(courses);
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    AuthService.payCourse(courseID).then(
+      () => {
+        navigate("/user/my-courses");
+        window.location.reload();
       },
       (error) => {
-        setloading(false);
-        console.log("allcourse", error.response);
+        console.log(error);
       }
     );
-  }, []);
-
-  const handleSubmit = async (e) => {};
+  };
 
   return loading ? (
     <LoadingPage />
@@ -35,7 +34,7 @@ function BuyComp() {
       <div className="buying-container">
         <div className="cours-container">
           <h2 className="buying-heading">Buying new course</h2>
-          <img src="images/55555555.jpg" alt="course-photo" />
+          <img src="/images/55555555.jpg" alt="course-photo" />
           <h3 className="courseName">{"Course name: " + courses.name}</h3>
           <h4 className="coursCategory">
             {"Course category: " + courses.category}
