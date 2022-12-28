@@ -1,31 +1,26 @@
 .removeAccount-container {
     display: flex;
-    justify-content: space-between;
-    padding: 0;
-    max-width: 1402px;
-    margin: 90px;
-    margin-left: 200px;
-    margin-right: 200px;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: row;
+    margin-top: 150px;
     position: relative;
     margin-bottom: 200px;
-    border: 1px solid #282828;
     
 }
 
 .remove-Header {
     text-align: center;
-    /* border-top: 1px solid #282828; */
+    padding-bottom: 12px;
+    width: 850px;
     border-bottom: 1px solid #282828;
-    height: 40%;
-    width: 1055px;
 }
 
 .removeAccount-container .center-handel {
-    display: grid;
-    grid-template-columns: repeat(1, auto);
-    border-left: 1px solid #282828;
-    margin-left: -1px;
-    /* border-bottom: 1px solid #282828; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .worning {
@@ -41,7 +36,8 @@
 }
 
 .remove-contanier {
-    margin-top: -90px;
+    margin-top: 120px;
+    margin-left: -20px;
 }
 
 .remove-contanier .btn{
