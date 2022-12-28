@@ -3,6 +3,7 @@ import PostService from "../services/post.service";
 import LoadingPage from "./Pages/LoadingPage";
 import Rating from "@mui/material/Rating";
 import { Button1 } from "./Button1";
+import "./Styles/BuyComp.css";
 
 function BuyComp() {
   var [courses, setcourses] = useState([]);
