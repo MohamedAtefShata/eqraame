@@ -13,7 +13,6 @@ function Paypage() {
   const [cvv, setCvv] = useState("");
   const [exp, setExp] = useState("");
   const [amount, setAmount] = useState("");
-  const [course] = useState("courseay7aga");
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
