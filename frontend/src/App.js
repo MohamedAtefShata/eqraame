@@ -16,6 +16,7 @@ import EditSecurity from "./components/Pages/EditSecurity";
 import RemoveAccount from "./components/Pages/RemoveAccount";
 import Pay from "./components/Pages/Pay";
 import BuyCourse from "./components/Pages/BuyCourse";
+import MainCourse from "./components/Pages/MainCourse";
 function App() {
   const [currentUser, setCurrentUser] = useState(undefined);
 
@@ -60,6 +61,7 @@ function App() {
             path="/user/remove-account"
             element={currentUser ? <RemoveAccount /> : <Login />}
           />
+          <Route path="/course" element={<MainCourse />} />
           <Route path="/all-courses" element={<Allcourses />} />
           <Route path="/charging" element={currentUser ? <Pay /> : <Login />} />
           <Route
