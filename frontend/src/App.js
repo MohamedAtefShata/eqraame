@@ -15,6 +15,7 @@ import Allcourses from "./components/Pages/Allcourses";
 import EditSecurity from "./components/Pages/EditSecurity";
 import RemoveAccount from "./components/Pages/RemoveAccount";
 import Pay from "./components/Pages/Pay";
+import MainCourse from "./components/Pages/MainCourse";
 function App() {
   const [currentUser, setCurrentUser] = useState(undefined);
 
@@ -33,12 +34,33 @@ function App() {
           <Route path="/" exact element={<Home />} />
           <Route path="/Courses" element={<Courses />} />
           <Route path="/Categories" element={<Categories />} />
-          <Route path="/login" exact element={currentUser ? <Home /> : <Login />} />
-          <Route path="/signup" exact element={currentUser ? <Home /> : <Register />} />
-          <Route path="/user/edit-profile" element={currentUser ? <EditProfile /> : <Login />} />
-          <Route path="/user/edit-avatar" element={currentUser ? <EditAvatar /> : <Login />} />
-          <Route path="/user/edit-account" element={currentUser ? <EditSecurity /> : <Login />} />
-          <Route path="/user/remove-account" element={currentUser ? <RemoveAccount /> : <Login />} />
+          <Route
+            path="/login"
+            exact
+            element={currentUser ? <Home /> : <Login />}
+          />
+          <Route
+            path="/signup"
+            exact
+            element={currentUser ? <Home /> : <Register />}
+          />
+          <Route
+            path="/user/edit-profile"
+            element={currentUser ? <EditProfile /> : <Login />}
+          />
+          <Route
+            path="/user/edit-avatar"
+            element={currentUser ? <EditAvatar /> : <Login />}
+          />
+          <Route
+            path="/user/edit-account"
+            element={currentUser ? <EditSecurity /> : <Login />}
+          />
+          <Route
+            path="/user/remove-account"
+            element={currentUser ? <RemoveAccount /> : <Login />}
+          />
+          <Route path="/course" element={<MainCourse />} />
           <Route path="/all-courses" element={<Allcourses />} />
           <Route path="/pay" element={currentUser ? <Pay /> : <Login />} />
         </Routes>
