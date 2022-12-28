@@ -56,7 +56,21 @@ const logout = () => {
 const getCurrentUser = () => {
   return localStorage.getItem("user");
 };
-
+const chargeWallet = (body) => {
+  return axios.post(HOST + "/api/wallet/charge", body, {
+    headers: authHeader(),
+  });
+};
+const virtualcreditcard = (body) => {
+  return axios.post(HOST + "/virtual/paymentmethod/creditcard", body, {
+    headers: authHeader(),
+  });
+};
+const payCourse = (ID) => {
+  return axios.post(HOST + "api/wallet/pay/course/" + ID, {
+    headers: authHeader(),
+  });
+};
 const authService = {
   signup,
   login,
@@ -65,6 +79,9 @@ const authService = {
   addlesson,
   updatelesson,
   deletelesson,
+  chargeWallet,
+  virtualcreditcard,
+  payCourse,
 };
 
 export default authService;

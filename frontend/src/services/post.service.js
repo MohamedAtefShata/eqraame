@@ -19,22 +19,10 @@ const getwallet = () => {
     headers: authHeader(),
   });
 };
-const chargeWallet = (body) => {
-  return axios.get(HOST + "/api/wallet/charge", body, {
-    headers: authHeader(),
-  });
-};
-const virtualcreditcard = (body) => {
-  return axios.get(HOST + "/virtual/paymentmethod/creditcard", body, {
-    headers: authHeader(),
-  });
-};
 const postService = {
   getuserinfo,
   getcourseinfo,
   getcourse,
   getwallet,
-  chargeWallet,
-  virtualcreditcard,
 };
 export default postService;
