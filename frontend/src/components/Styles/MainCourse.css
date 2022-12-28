@@ -1,0 +1,36 @@
+.row {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+  margin: 50px 50px;
+  }
+  
+  .list{
+    -ms-flex: 25%;
+    flex: 25%;
+  }
+  
+  .lesson {
+    -ms-flex: 75%; 
+    flex: 75%;
+    padding: 0 16px;
+  }
+  .par {
+    word-wrap: break-word;
+    width: 1200px;
+  }
+  .container {
+    background-color: #f2f2f2;
+    padding: 5px 20px 15px 20px;
+    border: 1px solid lightgrey;
+    border-radius: 3px;
+  }
+  @media (max-width: 800px) {
+    .row {
+      flex-direction: column-reverse;
+    }
+    .col-25 {
+      margin-bottom: 20px;
+    }
+  }
