@@ -33,25 +33,25 @@ function BuyComp() {
   ) : (
     <>
       <div className="buying-container">
-        <h2 className="buying-heading">Buying new course</h2>
-        <div className="buy-container">
+        <div className="cours-container">
+          <h2 className="buying-heading">Buying new course</h2>
           <img src="images/55555555.jpg" alt="course-photo" />
-          <h5 className="courseName">{"Course name: " + courses.name}</h5>
-          <h5 className="coursCategory">
+          <h3 className="courseName">{"Course name: " + courses.name}</h3>
+          <h4 className="coursCategory">
             {"Course category: " + courses.category}
-          </h5>
+          </h4>
           <Rating
             className="cards__item__rating"
             name="read-only"
             value="4"
             readOnly
           />
-          <h3 className="coursePrice">{courses.price + "$"}</h3>
+          {/* <h3 className="coursePrice">{courses.price + "$"}</h3> */}
         </div>
         <div className="buy-container">
           <form id="form" onSubmit={handleSubmit}>
-            <h5>Your amount</h5>
-            <h3>Course Fees</h3>
+            <h5>{"Your balance: "}</h5>
+            <h3>{"Course Fees: "}</h3>
             <div className="buy-btn">
               <Button1
                 type="submit"

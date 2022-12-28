@@ -1,7 +1,45 @@
 .buying-container {
-    width: 1400px;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: center;
+    margin-top: 150px;
+    margin-bottom: 150px;
+    flex-direction: row;
+    
 }
 
+.cours-container {
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+    flex-direction: column;
+    width: 600px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #282828;
+}
+
+.buying-heading {
+    /* font-size: 2rem; */
+    border-bottom: 1px solid #282828;
+    margin-bottom: 19px;
+}
+
+.cours-container >img {
+    width: 150px;
+    height: auto;
+    padding: auto;
+}
+
+.buy-container {
+    height: 100%;
+    border-bottom: 1px solid #282828;
+    padding-left: 15px;
+    padding-bottom: 15px;
+    /* border: 1px solid #282828; */
+}
+
+.buy-container .btn{
+    margin-top: 15px;
+    margin-bottom: 5px;
+    width: 190px;
+}
