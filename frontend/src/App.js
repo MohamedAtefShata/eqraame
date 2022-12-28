@@ -33,14 +33,34 @@ function App() {
           <Route path="/" exact element={<Home />} />
           <Route path="/Courses" element={<Courses />} />
           <Route path="/Categories" element={<Categories />} />
-          <Route path="/login" exact element={currentUser ? <Home /> : <Login />} />
-          <Route path="/signup" exact element={currentUser ? <Home /> : <Register />} />
-          <Route path="/user/edit-profile" element={currentUser ? <EditProfile /> : <Login />} />
-          <Route path="/user/edit-avatar" element={currentUser ? <EditAvatar /> : <Login />} />
-          <Route path="/user/edit-account" element={currentUser ? <EditSecurity /> : <Login />} />
-          <Route path="/user/remove-account" element={currentUser ? <RemoveAccount /> : <Login />} />
+          <Route
+            path="/login"
+            exact
+            element={currentUser ? <Home /> : <Login />}
+          />
+          <Route
+            path="/signup"
+            exact
+            element={currentUser ? <Home /> : <Register />}
+          />
+          <Route
+            path="/user/edit-profile"
+            element={currentUser ? <EditProfile /> : <Login />}
+          />
+          <Route
+            path="/user/edit-avatar"
+            element={currentUser ? <EditAvatar /> : <Login />}
+          />
+          <Route
+            path="/user/edit-account"
+            element={currentUser ? <EditSecurity /> : <Login />}
+          />
+          <Route
+            path="/user/remove-account"
+            element={currentUser ? <RemoveAccount /> : <Login />}
+          />
           <Route path="/all-courses" element={<Allcourses />} />
-          <Route path="/pay" element={currentUser ? <Pay /> : <Login />} />
+          <Route path="/charging" element={currentUser ? <Pay /> : <Login />} />
         </Routes>
         <Footer />
       </Router>
