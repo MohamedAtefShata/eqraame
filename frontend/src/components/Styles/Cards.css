@@ -34,6 +34,7 @@
     margin: 0 1rem;
     margin-top: 20px;
     border-radius: 10px;
+    margin-bottom: 2rem;
   }
   
   .cards__item__link {
@@ -121,19 +122,21 @@
     }
   }
   
-  @media only screen and (min-width: 1024px) {
+  @media only screen and (max-width: 1180px) {
     .cards__items {
       display: grid;
+      grid-template-columns: repeat(2, auto);
     }
   }
   
   @media only screen and (max-width: 1024px) {
     .cards__item {
+      margin-top: 20px;
       margin-bottom: 2rem;
     }
   }
   .not--avilable--label{
-    /* height: 100px; */
+    height: 100px;
     margin-top: 50px;
     display: flex;
     align-items: center;

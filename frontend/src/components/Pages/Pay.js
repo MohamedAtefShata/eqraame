@@ -1,10 +1,12 @@
-import '../Styles/App.css';
-import React from 'react';
-import Paypage from '../Paypage';
+import "../Styles/App.css";
+import React from "react";
+import Paypage from "../Paypage";
 
 function Pay() {
   return (
-    <Paypage />
-  )
+    <>
+      <Paypage />
+    </>
+  );
 }
 export default Pay;

@@ -1,10 +1,12 @@
-import '../Styles/App.css';
-import React from 'react';
-import Signup from '../Signup';
+import "../Styles/App.css";
+import React from "react";
+import Signup from "../Signup";
 
 function Register() {
   return (
-    <Signup />
-  )
+    <>
+      <Signup />
+    </>
+  );
 }
 export default Register;
