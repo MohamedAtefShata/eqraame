@@ -33,8 +33,8 @@ function BuyComp() {
   ) : (
     <>
       <div className="buying-container">
-        <h2 className="buying-heading">Buying new course</h2>
-        <div className="buy-container">
+        <div className="cours-container">
+          <h2 className="buying-heading">Buying new course</h2>
           <img src="images/55555555.jpg" alt="course-photo" />
           <h5 className="courseName">{"Course name: " + courses.name}</h5>
           <h5 className="coursCategory">
