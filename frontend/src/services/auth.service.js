@@ -68,9 +68,13 @@ const virtualcreditcard = (body) => {
   });
 };
 const payCourse = (ID) => {
-  return axios.post(HOST + "api/wallet/pay/course/" + ID, {
-    headers: authHeader(),
-  });
+  return axios.post(
+    HOST + "/api/wallet/pay/course/" + ID,
+    {},
+    {
+      headers: authHeader(),
+    }
+  );
 };
 const authService = {
   signup,
