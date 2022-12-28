@@ -56,7 +56,7 @@ function HeroSection() {
                   buttonStyle="btn--primary--scr"
                   buttonSize="btn--large"
                   buttonTrans="btn--scr"
-                  buttonPath="/signup"
+                  buttonPath="/categories"
                 >
                   CATEGORIES
                 </Button>
@@ -68,7 +68,7 @@ function HeroSection() {
                   buttonStyle="btn--outline--scr"
                   buttonSize="btn--large"
                   buttonTrans="btn--scr"
-                  buttonPath="/signup"
+                  buttonPath="/courses"
                 >
                   join as teacher
                 </Button>
