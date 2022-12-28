@@ -34,6 +34,21 @@ const login = (email, password) => {
     });
 };
 
+const addlesson = (ID, body) => {
+  return axios.post(HOST + "/api/course/" + ID, body, {
+    headers: authHeader(),
+  });
+};
+const updatelesson = (cID, lID, body) => {
+  return axios.post(HOST + "/api/course/" + cID + "/lesson/" + lID, body, {
+    headers: authHeader(),
+  });
+};
+const deletelesson = (cID, lID) => {
+  return axios.post(HOST + "/api/course/" + cID + "/lesson/" + lID, {
+    headers: authHeader(),
+  });
+};
 const logout = () => {
   localStorage.removeItem("user");
 };
@@ -47,6 +62,9 @@ const authService = {
   login,
   logout,
   getCurrentUser,
+  addlesson,
+  updatelesson,
+  deletelesson,
 };
 
 export default authService;
