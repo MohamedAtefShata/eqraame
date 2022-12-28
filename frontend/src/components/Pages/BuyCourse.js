@@ -1,5 +1,5 @@
 import React from "react";
-import "../BuyComp";
+import BuyComp from "../BuyComp";
 
 function BuyCourse() {
   return (

@@ -25,6 +25,7 @@ function Cards() {
       }
     );
   }, []);
+
   const list = courses.map((d) => (
     <CardItem
       src="images/55555555.jpg"
@@ -35,6 +36,7 @@ function Cards() {
       price={d.price + "$"}
     />
   ));
+
   const notAvilable = (
     <h1 className="not--avilable--label">
       OPS!😥
