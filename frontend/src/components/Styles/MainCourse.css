@@ -1,7 +1,7 @@
-.row {
-  display: -ms-flexbox; /* IE10 */
+  .row {
+  display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap; /* IE10 */
+  -ms-flex-wrap: wrap; 
   flex-wrap: wrap;
   margin: 50px 50px;
   }
@@ -9,28 +9,59 @@
   .list{
     -ms-flex: 25%;
     flex: 25%;
+    padding: 0px 0px;
   }
   
   .lesson {
     -ms-flex: 75%; 
-    flex: 75%;
+    width: 75%;
     padding: 0 16px;
   }
   .par {
     word-wrap: break-word;
-    width: 1200px;
+    width: 100%;
+    padding: 20px;
   }
   .container {
     background-color: #f2f2f2;
-    padding: 5px 20px 15px 20px;
+    padding: 0px 0px 0px 0px;
     border: 1px solid lightgrey;
-    border-radius: 3px;
+    border-radius: 1px;
   }
   @media (max-width: 800px) {
     .row {
       flex-direction: column-reverse;
     }
-    .col-25 {
+    .list {
       margin-bottom: 20px;
     }
+  }
+  .lii {
+    list-style: none;
+    list-style-position: outside;
+    list-style-image: none;
+    list-style-type: none;
+    list-style-position: outside;
+    list-style-image: none;
+    list-style-type: none;
+  }
+  .title{
+    background-color: #ffc727;
+    color: #282828;
+    text-align: center;
+    padding: 10px;
+    font-size: 14px;
+    margin-bottom: 0px;
+  }
+  .aa {
+    display: block;
+    padding: 13px 5px;
+    color: #282828;
+    margin: 0px 0;
+    font-size: 14px;
+    border-bottom: solid 1px #ececec;
+  }
+  .aa:hover {
+    background-color: #282828;
+    color: #fff;
   }

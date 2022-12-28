@@ -28,8 +28,8 @@ function Mcourse() {
     postService.getcourse().then(
       (response) => {
         setCourse(response.data.data);
-        console.log(course);
         setLessons(response.data.data.lessons);
+        console.log(course);
       },
       (error) => {
         // Invalid request
@@ -40,39 +40,56 @@ function Mcourse() {
       }
     );
   }, []);
-  const isteacher = () => {
-    if (user.role === "student") return false;
-    else return true;
-  };
-  const setandupdate = (i) => {
-    setLesson(i);
-    // window.location.reload();
+  const isAuthor = () => {
+    if (user.role === "teacher" && user._id === course.author_id) return true;
+    else return false;
   };
   const LessonsList = () => {
-    var i = 0;
     const listLessons = Lessons.map((lesson, index) => (
-      <li>
-        <Button1
-          className="listbtn"
+      <li className="lii">
+        <a
+          className="aa"
           onClick={() => {
             setLesson(index);
           }}
         >
           {lesson.name}
-        </Button1>
+        </a>
       </li>
     ));
-    return <ul>{listLessons}</ul>;
+    return listLessons;
   };
+  const editLessonsList = () => {
+    const listLessons = Lessons.map((lesson, index) => (
+      <li className="lii">
+        <a
+          className="aa"
+          onClick={() => {
+            setLesson(index);
+          }}
+        >
+          {lesson.name}
+        </a>
+      </li>
+    ));
+    return listLessons;
+  };
+
   const Coursecontent = () => {
     if (Lessons[Lesson]) {
       if (Lessons[Lesson].content_type === "article")
-        return <p className="par">{Lessons[Lesson].content}</p>;
+        return (
+          <div
+            className="par"
+            dangerouslySetInnerHTML={{ __html: Lessons[Lesson].content }}
+          />
+        );
       else return <p>other</p>;
     } else {
       console.log("lsa");
     }
   };
+  const add = () => {};
 
   return (
     <>
@@ -94,8 +111,23 @@ function Mcourse() {
         </div>
         <div className="list">
           <div className="container">
-            <h4>Lessons</h4>
-            <LessonsList />
+            <div className="title">Lessons</div>
+            <ul className="ul">
+              {isAuthor() ? (
+                <>
+                  <LessonsList />
+                  <li className="lii">
+                    <a className="aa" onClick={() => add()}>
+                      addmore
+                    </a>
+                  </li>
+                </>
+              ) : (
+                <>
+                  <LessonsList />
+                </>
+              )}
+            </ul>
           </div>
         </div>
       </div>
