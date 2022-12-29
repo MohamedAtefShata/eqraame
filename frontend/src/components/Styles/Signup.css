@@ -55,8 +55,6 @@
     pointer-events: none;
     font-size: 1.2rem;
     color: #636161;
-    /* text-transform: uppercase; */
-    font-family: 'PT Sans', sans-serif;
     transition: 0.15s;
 }
 
