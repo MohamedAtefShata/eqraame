@@ -11,14 +11,23 @@ import LoadingPage from "./LoadingPage";
 
 function EditProfile() {
   const [userinfo, setuserinfo] = useState([]);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [birthdate, setBirthdate] = useState("");
   const [name, setName] = useState("");
   const [loading, setloading] = useState(true);
-  const [selected, setSelected] = useState("");
   const navigate = useNavigate();
-
+  const upd = async () => {
+    setloading(true);
+    await AuthService.update(name, birthdate).then(
+      () => {
+        setloading(false);
+        window.location.reload();
+      },
+      (error) => {
+        setloading(false);
+        console.log(error);
+      }
+    );
+  };
   useEffect(() => {
     setloading(true);
     PostService.getuserinfo().then(
@@ -75,11 +84,11 @@ function EditProfile() {
                 </div>
               </div>
               <Button1
-                type="submit"
                 className="btns"
                 buttonStyle="btn--primary--logsign"
                 buttonSize="btn--large"
                 buttonTrans="btn--logsign"
+                onClick={(e) => upd()}
               >
                 Save Changes
               </Button1>

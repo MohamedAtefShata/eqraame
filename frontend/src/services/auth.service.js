@@ -1,6 +1,6 @@
 import axios from "axios";
 import authHeader from "./auth-header";
-const HOST = "http://localhost:5000";
+const HOST = "https://tgvqjc.deta.dev";
 //add
 const signup = (name, email, password, birthdate, role) => {
   return axios
@@ -95,10 +95,13 @@ const payCourse = (ID) => {
     }
   );
 };
-const update = (ID) => {
+const update = (name, birthdate) => {
   return axios.post(
-    HOST + "/api/wallet/pay/course/" + ID,
-    {},
+    HOST + "/api/user/update",
+    {
+      name: name,
+      birthdate: birthdate,
+    },
     {
       headers: authHeader(),
     }
@@ -116,6 +119,7 @@ const authService = {
   virtualcreditcard,
   payCourse,
   addCourse,
+  update,
 };
 
 export default authService;

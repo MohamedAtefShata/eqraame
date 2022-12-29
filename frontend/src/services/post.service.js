@@ -1,6 +1,6 @@
 import axios from "axios";
 import authHeader from "./auth-header";
-const HOST = "http://localhost:5000";
+const HOST = "https://tgvqjc.deta.dev";
 
 const getuserinfo = () => {
   return axios.get(HOST + "/api/auth", { headers: authHeader() });
