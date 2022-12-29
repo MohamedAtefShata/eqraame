@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import LoadingPage from "./Pages/LoadingPage";
 
 function Cards() {
-  var [courses, setcourses] = useState([]);
+  const [courses, setcourses] = useState([]);
   const [loading, setloading] = useState(true);
 
   // nav to courses page
