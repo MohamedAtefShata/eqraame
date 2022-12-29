@@ -6,6 +6,7 @@ import AuthService from "../../services/post.service";
 import "../Styles/MainCourse.css";
 import LessonView from "./LessonView";
 import LoadingPage from "../Pages/LoadingPage";
+import authService from "../../services/auth.service";
 
 function isNumeric(str) {
   if (typeof str != "string") return false;
@@ -16,6 +17,7 @@ function Mcourse(props) {
   const [user, setUser] = useState([]);
   const [course, setCourse] = useState([]);
   const [lessons, setLessons] = useState([]);
+  const [author, setAuthor] = useState([]);
   const [overview, setOverView] = useState({});
   const { courseID } = props;
   const [disable, setDisable] = useState(true);
@@ -49,7 +51,7 @@ function Mcourse(props) {
         <div><span style='color:#d49b00; font-size:20px ;font-weight: bolder';>Course name : </span>  ${course.name} </div>
         <p/>
         <hr>
-        <span style='color:#d49b00; font-size:18px ;font-weight: bolder';>Author: </span> ${course.author_id}
+        <span style='color:#d49b00; font-size:18px ;font-weight: bolder';>Author: </span> ${author}
         <p/>
         <span style='color:#d49b00; font-size:18px ; font-weight: bolder';>Category: </span> ${course.category}
         <hr/>
@@ -69,6 +71,17 @@ function Mcourse(props) {
   //   //   setDisable(false);
   // };
 
+  const deleteLesson = (lid) => {
+    console.log("delete");
+    authService.deletelesson(courseID, lid).then(
+      (res) => {
+        window.location.reload();
+        console.log(res);
+      },
+      (error) => console.log(error)
+    );
+  };
+
   const dataUpdate = async () => {
     setloading(true);
     let res1 = await postService.getuserinfo();
@@ -83,6 +96,13 @@ function Mcourse(props) {
 
     let user0 = res1.data.user;
     let course0 = res2.data.data;
+
+    let res3 = await postService.getwallet();
+    let mycourses = res3.data.wallet.courses;
+    mycourses.forEach((e) => {
+      if (courseID === e) setDisable(false);
+    });
+
     if (user0.role === "teacher" && user0._id === course0.author_id) {
       setDisable(false);
     }
@@ -105,7 +125,10 @@ function Mcourse(props) {
         >
           <a href={"#" + (index + 1)}>{index + 1 + ". " + lesson.name}</a>
           {isAuthor() ? (
-            <span className="delete--btn">
+            <span
+              className="delete--btn"
+              onClick={(e) => deleteLesson(lesson._id)}
+            >
               {" "}
               <i class="fa fa-sharp fa-solid fa-trash"></i>{" "}
             </span>
@@ -176,6 +199,7 @@ function Mcourse(props) {
                   : lessons[lessonIndex - 1]
               }
               edit={lessonIndex !== 0 && isAuthor()}
+              course_id={courseID}
             />
           </div>
         </div>
