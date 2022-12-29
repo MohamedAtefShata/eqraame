@@ -7,65 +7,30 @@ import { useNavigate } from "react-router-dom";
 import "../Styles/RemoveAccount.css";
 import { Button1 } from "../Button1";
 import "../Styles/loading.css";
+import LoadingPage from "./LoadingPage";
 
 function RemoveAccount() {
-  const [userinfo, setuserinfo] = useState([]);
-  const [loading, setloading] = useState(true);
+  const [loading, setloading] = useState(false);
   const navigate = useNavigate();
 
-  useEffect(() => {
+  const del = async () => {
     setloading(true);
-    PostService.getuserinfo().then(
-      (response) => {
-        setloading(false);
-        setuserinfo(response.data.user);
-      },
-      (error) => {
-        console.log("Private page", error.response);
-        setloading(false);
-        // Invalid token
-        if (error.response && error.response.status !== 200) {
-          AuthService.logout();
-          navigate("/login");
-          window.location.reload();
-        }
-      }
-    );
-  }, []);
-  const del = () => {
-    PostService.DEL().then(
+    await PostService.DEL().then(
       () => {
+        setloading(false);
         AuthService.logout();
         navigate("/login");
         window.location.reload();
       },
       (error) => {
+        setloading(false);
+
         console.log(error);
       }
     );
   };
   if (loading) {
-    return (
-      <>
-        <div id="wrapper">
-          <div className="profile-main-loader">
-            <div className="loader">
-              <svg className="circular-loader" viewBox="25 25 50 50">
-                <circle
-                  className="loader-path"
-                  cx="50"
-                  cy="50"
-                  r="20"
-                  fill="none"
-                  stroke="#70c542"
-                  stroke-width="2"
-                />
-              </svg>
-            </div>
-          </div>
-        </div>
-      </>
-    );
+    return <LoadingPage />;
   }
   return (
     <>
@@ -89,7 +54,7 @@ function RemoveAccount() {
                 buttonStyle="btn--primary--logsign"
                 buttonSize="btn--medium"
                 buttonTrans="btn--logsign"
-                onClick={del()}
+                onClick={(e) => del()}
               >
                 Remove Account
               </Button1>
