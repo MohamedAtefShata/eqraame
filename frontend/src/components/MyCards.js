@@ -36,7 +36,7 @@ function MyCards() {
 
   const list = mycoursesData.map((d) => (
     <CardItem
-      src="/images/55555555.jpg"
+      src={d.cover}
       text={d.name}
       label={d.category}
       path={"/course/" + d._id}
