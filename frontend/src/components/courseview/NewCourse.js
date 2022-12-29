@@ -46,7 +46,6 @@ function NewCourse(props) {
     let res1 = await postService.getuserinfo();
     setUser(res1.data.user);
     setloading(false);
-
     // updateDisable(user, res2.data.data);
   };
   const addCoursea = async () => {
