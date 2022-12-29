@@ -19,7 +19,11 @@ const getwallet = () => {
     headers: authHeader(),
   });
 };
-
+const DEL = () => {
+  return axios.delete(HOST + "/api/user", {
+    headers: authHeader(),
+  });
+};
 const getTeacherById = (id) => {
   return axios.get(HOST + "/api/user/teacher/" + id);
 };
@@ -29,5 +33,6 @@ const postService = {
   getcourse,
   getwallet,
   getTeacherById,
+  DEL,
 };
 export default postService;

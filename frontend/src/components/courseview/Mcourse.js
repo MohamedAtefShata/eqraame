@@ -48,14 +48,14 @@ function Mcourse(props) {
       content: `
       <div class="text-center ">  
         <img class="course-cover text-center" src="${course.cover}"/>
-        <div><span style='color:#d49b00; font-size:20px ;font-weight: bolder';>Course name : </span>  ${course.name} </div>
+        <div><span style='color:#1f1d1d; font-size:20px ;font-weight: bolder';>Course name : </span>  ${course.name} </div>
         <p/>
         <hr>
-        <span style='color:#d49b00; font-size:18px ;font-weight: bolder';>Author: </span> ${author}
+        <span style='color:#1f1d1d; font-size:18px ;font-weight: bolder';>Author: </span> ${author}
         <p/>
-        <span style='color:#d49b00; font-size:18px ; font-weight: bolder';>Category: </span> ${course.category}
+        <span style='color:#1f1d1d; font-size:18px ; font-weight: bolder';>Category: </span> ${course.category}
         <hr/>
-        <h4 style="color:#d49b00;font-size:18px ; font-weight: bolder';font-size:72";>description:</h4>
+        <h4 style="color:#1f1d1d;font-size:18px ; font-weight: bolder';font-size:72";>description:</h4>
         <p>${course.descreption}</p> 
         </div>
       `,
