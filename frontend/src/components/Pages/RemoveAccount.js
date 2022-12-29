@@ -10,12 +10,7 @@ import "../Styles/loading.css";
 
 function RemoveAccount() {
   const [userinfo, setuserinfo] = useState([]);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [birthdate, setBirthdate] = useState("");
-  const [name, setName] = useState("");
   const [loading, setloading] = useState(true);
-  const [selected, setSelected] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -37,6 +32,18 @@ function RemoveAccount() {
       }
     );
   }, []);
+  const del = () => {
+    PostService.DEL().then(
+      () => {
+        AuthService.logout();
+        navigate("/login");
+        window.location.reload();
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  };
   if (loading) {
     return (
       <>
@@ -82,6 +89,7 @@ function RemoveAccount() {
                 buttonStyle="btn--primary--logsign"
                 buttonSize="btn--medium"
                 buttonTrans="btn--logsign"
+                onClick={del()}
               >
                 Remove Account
               </Button1>
