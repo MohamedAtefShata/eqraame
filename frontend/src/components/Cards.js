@@ -28,7 +28,7 @@ function Cards() {
 
   const list = courses.map((d) => (
     <CardItem
-      src="images/55555555.jpg"
+      src="/images/55555555.jpg"
       text={d.name}
       label={d.category}
       path={"/course/" + d._id}

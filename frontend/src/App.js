@@ -3,7 +3,6 @@ import { React, useState, useEffect, useParams } from "react";
 import "./components/Styles/App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./components/Pages/Home";
-import Courses from "./components/Pages/Courses";
 import Categories from "./components/Pages/Categories";
 import Footer from "./components/Footer";
 import Login from "./components/Pages/Login";
@@ -18,6 +17,8 @@ import Pay from "./components/Pages/Pay";
 import BuyCourse from "./components/Pages/BuyCourse";
 import MainCourse from "./components/Pages/MainCourse";
 import MyWallet from "./components/Pages/MyWallet";
+import MyCourses from "./components/Pages/MyCourses";
+
 function App() {
   const [currentUser, setCurrentUser] = useState(undefined);
 
@@ -65,6 +66,10 @@ function App() {
           <Route
             path="/user/my-wallet"
             element={currentUser ? <MyWallet /> : <Login />}
+          />
+          <Route
+            path="/user/my-courses"
+            element={currentUser ? <MyCourses /> : <Login />}
           />
           <Route path="course">
             <Route path=":courseID" element={<MainCourse />} />
