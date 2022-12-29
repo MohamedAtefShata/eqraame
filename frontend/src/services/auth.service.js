@@ -95,6 +95,15 @@ const payCourse = (ID) => {
     }
   );
 };
+const update = (ID) => {
+  return axios.post(
+    HOST + "/api/wallet/pay/course/" + ID,
+    {},
+    {
+      headers: authHeader(),
+    }
+  );
+};
 const authService = {
   signup,
   login,
