@@ -71,6 +71,21 @@ const virtualcreditcard = (body) => {
     headers: authHeader(),
   });
 };
+const addCourse = (name, price, descreption, category, cover) => {
+  return axios.post(
+    HOST + "/api/course/",
+    {
+      name: name,
+      price: price,
+      descreption: descreption,
+      category: category,
+      cover: cover,
+    },
+    {
+      headers: authHeader(),
+    }
+  );
+};
 const payCourse = (ID) => {
   return axios.post(
     HOST + "/api/wallet/pay/course/" + ID,
