@@ -72,7 +72,7 @@ function MyCoursesComp() {
           </div>
           <div className="courses-contanier">
             <div className="courses-wapper">
-              <img src="/images/books.png" alt="" className="wallt-img" />
+              <img src="/images/books.png" alt="" className="courses-img" />
               <p className="courses-balance">
                 <b className="balance">{"Your Courses: "}</b>
               </p>
