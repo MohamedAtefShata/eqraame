@@ -131,7 +131,6 @@ function EditAvatar() {
             </form>
           </div>
         </div>
-        <div></div>
       </div>
     </>
   );

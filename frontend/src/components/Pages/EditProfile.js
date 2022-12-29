@@ -86,7 +86,6 @@ function EditProfile() {
             </form>
           </div>
         </div>
-        <div></div>
       </div>
     </>
   );
