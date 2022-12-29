@@ -1,19 +1,42 @@
-import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import { Button1 } from "./Button1";
 import "./Styles/paypage.css";
-// import { Link, useNavigate } from "react-router-dom";
 import AuthService from "../services/auth.service";
+import React, { useState, useEffect } from "react";
+import PostService from "../services/post.service";
+import "./Styles/loading.css";
 
 // charge wallet
 
 function Paypage() {
+  const [userinfo, setuserinfo] = useState([]);
   const [name, setName] = useState("");
   const [card, setCard] = useState("");
   const [cvv, setCvv] = useState("");
   const [exp, setExp] = useState("");
   const [amount, setAmount] = useState("");
+  const [loading, setloading] = useState(true);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    setloading(true);
+    PostService.getuserinfo().then(
+      (response) => {
+        setloading(false);
+        setuserinfo(response.data.user);
+      },
+      (error) => {
+        console.log("Private page", error.response);
+        setloading(false);
+        // Invalid token
+        if (error.response && error.response.status !== 200) {
+          AuthService.logout();
+          navigate("/login");
+          window.location.reload();
+        }
+      }
+    );
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -40,6 +63,30 @@ function Paypage() {
       alert("d5l number s7 lwsma7t");
     }
   };
+
+  if (loading) {
+    return (
+      <>
+        <div id="wrapper">
+          <div className="profile-main-loader">
+            <div className="loader">
+              <svg className="circular-loader" viewBox="25 25 50 50">
+                <circle
+                  className="loader-path"
+                  cx="50"
+                  cy="50"
+                  r="20"
+                  fill="none"
+                  stroke="#70c542"
+                  stroke-width="2"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </>
+    );
+  }
   return (
     <>
       <div className="payment-container">
