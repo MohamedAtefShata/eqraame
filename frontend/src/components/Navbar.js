@@ -2,61 +2,21 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "./Button";
 import "./Styles/navbar.css";
-import { styled, alpha } from "@mui/material/styles";
 import Toolbar from "@mui/material/Toolbar";
-import InputBase from "@mui/material/InputBase";
-import SearchIcon from "@mui/icons-material/Search";
 import AuthService from "../services/auth.service";
-
-const Search = styled("div")(({ theme }) => ({
-  position: "relative",
-  borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.white, 1),
-  "&:hover": {
-    backgroundColor: alpha(theme.palette.common.white, 1),
-  },
-  marginLeft: 0,
-  width: "100%",
-  [theme.breakpoints.up("sm")]: {
-    marginLeft: theme.spacing(1),
-    width: "auto",
-  },
-}));
-
-const SearchIconWrapper = styled("div")(({ theme }) => ({
-  padding: theme.spacing(0, 2),
-  height: "100%",
-  position: "absolute",
-  pointerEvents: "none",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-}));
-
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: "inherit",
-  "& .MuiInputBase-input": {
-    padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-    transition: theme.transitions.create("width"),
-    width: "100%",
-    [theme.breakpoints.up("sm")]: {
-      width: "12ch",
-      "&:focus": {
-        width: "20ch",
-      },
-    },
-  },
-}));
+import TextField from "@mui/material/TextField";
+import Autocomplete from "@mui/material/Autocomplete";
+import postService from "../services/post.service";
 
 function Navbar() {
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
+  const [courses, setcourses] = useState([]);
   var [currentUser, setCurrentUser] = useState(undefined);
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
   const navigate = useNavigate();
+
   const showButton = () => {
     if (window.innerWidth <= 960) {
       setButton(false);
@@ -71,14 +31,27 @@ function Navbar() {
     if (user) {
       setCurrentUser(user);
     }
+    postService.getcourseinfo().then(
+      (response) => {
+        setcourses(response.data.data);
+        console.log(response.data.data);
+      },
+      (error) => {
+        console.log("allcourse", error.response);
+      }
+    );
   }, []);
   const logOut = () => {
     AuthService.logout();
     navigate("/");
     window.location.reload();
   };
+  function dddd(value) {
+    courses.map((d) => {
+      d.name == value ? navigate("/course/" + d._id) : console.log("d");
+    });
+  }
   window.addEventListener("resize", showButton);
-
   return (
     <>
       <nav className="navbar">
@@ -87,7 +60,7 @@ function Navbar() {
             <img src="/images/logoPSDWhite.png" className="logo" alt="" />
           </Link>
           <Toolbar className="searchBar">
-            <Search className="searching">
+            {/* <Search className="searching">
               <SearchIconWrapper>
                 <SearchIcon />
               </SearchIconWrapper>
@@ -95,7 +68,20 @@ function Navbar() {
                 placeholder="Search…"
                 inputProps={{ "aria-label": "search" }}
               />
-            </Search>
+            </Search> */}
+            <Autocomplete
+              disablePortal
+              id="combo-box-demo"
+              onChange={(event, value) => {
+                dddd(value);
+              }}
+              options={courses.map((d) => d.name)}
+              // onSelectCapture={aaaa()}
+              sx={{ width: 300 }}
+              renderInput={(params) => (
+                <TextField {...params} label="Search ... " />
+              )}
+            />
           </Toolbar>
         </div>
         <div className="menu-icon" onClick={handleClick}>
