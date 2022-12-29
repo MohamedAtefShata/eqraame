@@ -6,7 +6,7 @@ import "../Styles/MainCourse.css";
 import LoadingPage from "../Pages/LoadingPage";
 import axios from "axios";
 import DropdownCategory from "../DropdownCategory";
-
+import AuthService from "../../services/auth.service";
 function NewCourse(props) {
   const [selected, setSelected] = useState("Development");
   const [user, setUser] = useState([]);
@@ -48,6 +48,23 @@ function NewCourse(props) {
     setloading(false);
 
     // updateDisable(user, res2.data.data);
+  };
+  const addCoursea = async () => {
+    AuthService.addCourse(
+      name,
+      price,
+      descreption,
+      selected,
+      previewSource
+    ).then(
+      (response) => {
+        navigate("/course/" + response.data.data._id);
+        window.location.reload();
+      },
+      (error) => {
+        alert(error);
+      }
+    );
   };
 
   useEffect(() => {
@@ -124,6 +141,7 @@ function NewCourse(props) {
               buttonStyle="btn--primary--logsign"
               buttonSize="btn--large"
               buttonTrans="btn--logsign"
+              onClick={addCoursea}
             >
               Add Course
             </Button1>
