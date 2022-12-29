@@ -114,7 +114,7 @@ function Paypage() {
             <div className="text-grid">
               <div className="pay-field">
                 <input
-                  type="month"
+                  type="text"
                   required="required"
                   onChange={(e) => setExp(e.target.value)}
                 />
