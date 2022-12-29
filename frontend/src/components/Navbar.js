@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, styles } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "./Button";
 import "./Styles/navbar.css";
@@ -46,12 +46,8 @@ function Navbar() {
     navigate("/");
     window.location.reload();
   };
-  function dddd(value) {
-    courses.map((d) => {
-      d.name == value ? navigate("/course/" + d._id) : console.log("d");
-    });
-  }
   window.addEventListener("resize", showButton);
+  const dd = courses.map((d) => d.name);
   return (
     <>
       <nav className="navbar">
@@ -60,26 +56,29 @@ function Navbar() {
             <img src="/images/logoPSDWhite.png" className="logo" alt="" />
           </Link>
           <Toolbar className="searchBar">
-            {/* <Search className="searching">
-              <SearchIconWrapper>
-                <SearchIcon />
-              </SearchIconWrapper>
-              <StyledInputBase
-                placeholder="Search…"
-                inputProps={{ "aria-label": "search" }}
-              />
-            </Search> */}
             <Autocomplete
               disablePortal
-              id="combo-box-demo"
+              freeSolo
+              id="free-solo-demo"
               onChange={(event, value) => {
-                dddd(value);
+                courses.map((d) => {
+                  d.name === value
+                    ? navigate("/course/" + d._id)
+                    : console.log("d");
+                });
               }}
-              options={courses.map((d) => d.name)}
-              // onSelectCapture={aaaa()}
               sx={{ width: 300 }}
+              options={dd}
               renderInput={(params) => (
-                <TextField {...params} label="Search ... " />
+                <TextField
+                  sx={{
+                    input: {
+                      color: "white",
+                    },
+                  }}
+                  {...params}
+                  label="Search"
+                />
               )}
             />
           </Toolbar>
