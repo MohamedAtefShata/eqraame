@@ -129,11 +129,13 @@
     width: 100%;
     background-color: white;
     text-align: center;
+    position: relative;
   }
   .mycourse .content{
     text-align: center;
     margin: auto;
-    padding-top: 50px;
+    padding-top: 25px;
+    width: 500px;
     flex-wrap: wrap;
     display: flex;
     flex-direction: column;
@@ -148,21 +150,74 @@
   }
   .addimage{
     padding: 20px;
-    margin: 10px;
+    /* margin: 10px; */
     /* border: 1px #282828 solid; */
   }
   .addimage img{
-    width: 100px;
+    width: 200px;
   }
   
   #inputTag{
     display: none;
   }
+
   .filechoserlabel{
     cursor:pointer;
   }
+  
   .mycourse .description{
       resize: none;
-      width: 100vh;
+      width: 489px;
       height: 200px;
   }
+
+  .content .btn {
+    margin-top: 10px;
+    margin-bottom: 30px;
+    width: 489px;
+  }
+
+
+ .content .textarea-field
+{
+    position: relative;
+    width: 484px;
+    margin-top: 15px;
+}
+
+ .content .textarea-field textarea
+{
+    width: 100%;
+    padding: 12px 26px;
+    border: 1px solid #636161;
+    border-radius: 2px;
+    font-size: 1.19rem;
+    transition: 0.15s;
+}
+
+.content .textarea-field span
+{
+    position: absolute;
+    left: 0;
+    padding: 10px;
+    padding-left: 20px;
+    pointer-events: none;
+    font-size: 1.2rem;
+    color: #636161;
+    transition: 0.15s;
+}
+
+.content .textarea-field textarea:valid ~ span,
+.content .textarea-field textarea:focus ~ span
+{
+    color: #282828;
+    transform: translateX(25px) translateY(-9px);
+    font-size: 0.85rem;
+    padding: 0 5px;
+    background: #fff;
+}
+.content .textarea-field textarea:valid,
+.content .textarea-field textarea:focus
+{
+    color: #282828;
+}
