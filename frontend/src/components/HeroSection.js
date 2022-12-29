@@ -68,7 +68,7 @@ function HeroSection() {
                   buttonStyle="btn--outline--scr"
                   buttonSize="btn--large"
                   buttonTrans="btn--scr"
-                  buttonPath="/courses"
+                  buttonPath="/signup"
                 >
                   join as teacher
                 </Button>
