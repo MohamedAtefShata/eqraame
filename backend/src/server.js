@@ -48,3 +48,4 @@ const loadExpressRoutesAndMiddleWares = () => {
 // run functions
 loadExpressRoutesAndMiddleWares();
 Main();
+module.exports = app;
