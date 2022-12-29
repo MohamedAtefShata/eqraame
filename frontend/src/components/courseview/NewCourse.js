@@ -5,8 +5,10 @@ import postService from "../../services/post.service";
 import "../Styles/MainCourse.css";
 import LoadingPage from "../Pages/LoadingPage";
 import axios from "axios";
+import DropdownCategory from "../DropdownCategory";
 
 function NewCourse(props) {
+  const [selected, setSelected] = useState("");
   const [user, setUser] = useState([]);
   const [loading, setloading] = useState();
   const [name, setName] = useState();
@@ -95,33 +97,33 @@ function NewCourse(props) {
               />
               <span>Name</span>
             </div>
-            <br />
-            <h3>Category:</h3>
-            <select
-              value={category}
-              onChange={(e) => setCategory(e.target.value)}
-            >
-              <option>Development</option>
-              <option>Marketing</option>
-              <option>Science</option>
-              <option>Design</option>
-            </select>
-
-            <div>
-              <h3>Description :</h3>
+            <div className="input-field">
+              <input
+                type="text"
+                required="required"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+              <span>Price</span>
+            </div>
+            <div className="textarea-field">
               <textarea
                 className="description"
+                type="text"
+                required="required"
                 value={descreption}
                 onChange={(e) => setDescription(e.target.value)}
-              ></textarea>
+              />
+              <span>Description</span>
             </div>
+            <DropdownCategory selected={selected} setSelected={setSelected} />
             <Button1
               className=""
               buttonStyle="btn--primary--logsign"
               buttonSize="btn--large"
               buttonTrans="btn--logsign"
             >
-              add
+              Add Course
             </Button1>
           </div>
         </div>
