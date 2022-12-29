@@ -81,4 +81,11 @@ router.post(
   validateCheckers,
   UserController.updateAvatar
 );
+
+router.delete(
+  // path,
+  "/",
+  auth,
+  UserController.deleteByID
+);
 module.exports = router;
