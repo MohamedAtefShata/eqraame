@@ -17,7 +17,7 @@ function Mcourse(props) {
   const [user, setUser] = useState([]);
   const [course, setCourse] = useState([]);
   const [lessons, setLessons] = useState([]);
-  const [author, setAuthor] = useState([]);
+  const [author, setAuthor] = useState("");
   const [overview, setOverView] = useState({});
   const { courseID } = props;
   const [disable, setDisable] = useState(true);
@@ -56,7 +56,7 @@ function Mcourse(props) {
         <span style='color:#d49b00; font-size:18px ; font-weight: bolder';>Category: </span> ${course.category}
         <hr/>
         <h4 style="color:#d49b00;font-size:18px ; font-weight: bolder';font-size:72";>description:</h4>
-        <p>${course.descreption}</p>
+        <p>${course.descreption}</p> 
         </div>
       `,
     });
@@ -89,7 +89,6 @@ function Mcourse(props) {
     setUser(res1.data.user);
     // updateDisable(res1.data.user, course);
     let res2 = await postService.getcourse(courseID);
-    setloading(false);
     setCourse(res2.data.data);
     setLessons(res2.data.data.lessons);
     updateOverView(res2.data.data);
@@ -106,12 +105,17 @@ function Mcourse(props) {
     if (user0.role === "teacher" && user0._id === course0.author_id) {
       setDisable(false);
     }
+    let res4 = await postService.getTeacherById(course0.author_id);
+    const nameAuth = res4.data.data.name;
+    console.log(nameAuth);
+    setAuthor(nameAuth);
+    setloading(false);
     // updateDisable(user, res2.data.data);
   };
 
   useEffect(() => {
     dataUpdate();
-  }, []);
+  }, [author]);
 
   const LessonsList = () => {
     const listLessons = lessons.map((lesson, index) => (
@@ -151,7 +155,7 @@ function Mcourse(props) {
     <>
       <div className="row">
         <div className="lesson">
-          <div className="container">
+          <div className="container text-center">
             <div className="course--controll--section">
               <div>
                 {" "}
@@ -201,6 +205,20 @@ function Mcourse(props) {
               edit={lessonIndex !== 0 && isAuthor()}
               course_id={courseID}
             />
+            {disable ? (
+              <Button1
+                buttonStyle="btn--primary--logsign"
+                buttonSize="btn--large"
+                buttonTrans="btn--logsign"
+                onClick={() => {
+                  navigate(`/buy-course/${courseID}`);
+                }}
+              >
+                Buy Now
+              </Button1>
+            ) : (
+              ""
+            )}
           </div>
         </div>
         <div className="list">

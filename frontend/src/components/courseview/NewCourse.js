@@ -8,10 +8,11 @@ import axios from "axios";
 import DropdownCategory from "../DropdownCategory";
 
 function NewCourse(props) {
-  const [selected, setSelected] = useState("");
+  const [selected, setSelected] = useState("Development");
   const [user, setUser] = useState([]);
   const [loading, setloading] = useState();
   const [name, setName] = useState();
+  const [price, setPrice] = useState();
   const [category, setCategory] = useState();
   const [image, setImage] = useState("");
   const [imageName, setImageName] = useState("");
@@ -99,10 +100,11 @@ function NewCourse(props) {
             </div>
             <div className="input-field">
               <input
-                type="text"
+                type="number"
+                min="0"
                 required="required"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
+                value={price}
+                onChange={(e) => setPrice(e.target.value)}
               />
               <span>Price</span>
             </div>
