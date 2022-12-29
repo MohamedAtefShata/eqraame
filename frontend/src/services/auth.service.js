@@ -36,7 +36,7 @@ const login = (email, password) => {
 };
 
 const addlesson = (ID, body) => {
-  return axios.post(HOST + "/api/course/" + ID, body, {
+  return axios.post(HOST + "/api/course/" + ID + "/lesson", body, {
     headers: authHeader(),
   });
 };
@@ -46,9 +46,13 @@ const updatelesson = (cID, lID, body) => {
   });
 };
 const deletelesson = (cID, lID) => {
-  return axios.post(HOST + "/api/course/" + cID + "/lesson/" + lID, {
-    headers: authHeader(),
-  });
+  return axios.delete(
+    HOST + "/api/course/" + cID + "/lesson/" + lID,
+
+    {
+      headers: authHeader(),
+    }
+  );
 };
 const logout = () => {
   localStorage.removeItem("user");
