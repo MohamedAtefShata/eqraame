@@ -9,12 +9,7 @@ import ProfileTemp from "./ProfileTemp";
 
 function Wallet() {
   const [userinfo, setuserinfo] = useState([]);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [birthdate, setBirthdate] = useState("");
-  const [name, setName] = useState("");
   const [loading, setloading] = useState(true);
-  const [selected, setSelected] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
