@@ -6,6 +6,7 @@
 const { default: mongoose } = require("mongoose");
 const CourseModel = require("../models/Course.model");
 const ResponseError = require("../utils/ResponseError");
+const { cloudinary } = require("../utils/cloudinary");
 
 /** Get All courses */
 const getAllCourses = async (req, res, next) => {
@@ -77,7 +78,13 @@ const updateByID = async (req, res, next) => {
 const addNewCourse = async (req, res, next) => {
   try {
     const author_id = req.user.id;
-    const { name, price, descreption, category, cover } = req.body;
+    let { name, price, descreption, category, cover } = req.body;
+    const uploadResponse = await cloudinary.uploader.upload(cover, {
+      upload_preset: "course-websiste-avatar",
+      public_id: `course_${user.id}`,
+    });
+
+    cover = uploadResponse.url;
 
     // servies
     let course = new CourseModel({ name, price, author_id, category, cover });
