@@ -6,7 +6,7 @@ import { Button } from "./Button";
 import "./Styles/loading.css";
 import "./Styles/MyCoursesComp.css";
 import ProfileTemp from "./ProfileTemp";
-import Cards from "./Cards";
+import MyCards from "./MyCards";
 
 function MyCoursesComp() {
   const [userinfo, setuserinfo] = useState([]);
@@ -77,7 +77,7 @@ function MyCoursesComp() {
                 <b className="balance">{"Your Courses: "}</b>
               </p>
             </div>
-            {/* <Cards /> */}
+            <MyCards />
           </div>
         </div>
       </div>
