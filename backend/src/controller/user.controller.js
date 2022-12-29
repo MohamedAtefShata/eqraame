@@ -73,6 +73,16 @@ const changePassword = async (req, res, next) => {
   }
 };
 
+const deleteByID = async (req, res, next) => {
+  try {
+    const user = await User.findByIdAndDelete(req.user.id);
+    // await user.save();
+    return res.json({ msg: "deleted" });
+  } catch (error) {
+    next(error);
+  }
+};
+
 const updateAvatar = async (req, res, next) => {
   try {
     const user = await User.findById(req.user.id).select("-passowrd");
@@ -91,10 +101,28 @@ const updateAvatar = async (req, res, next) => {
     next(error);
   }
 };
+
+const updateProfile = async (req, res, next) => {
+  try {
+    const user = await User.findById(req.user.id).select("-passowrd");
+    const { name, birthdate } = req.body;
+
+    user.name = name;
+    user.birthdate = birthdate;
+    await user.save();
+
+    return res.json({ msg: "profile updated", user });
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   addUser,
   getAllTeachers,
   getTeacherByID,
   changePassword,
   updateAvatar,
+  deleteByID,
+  updateProfile,
 };

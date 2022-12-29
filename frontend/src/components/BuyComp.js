@@ -25,7 +25,7 @@ function BuyComp(props) {
     );
     PostService.getwallet().then(
       (response) => {
-        setuser(response.data);
+        setuser(response.data.wallet);
       },
       (error) => {
         console.log(error);
@@ -68,7 +68,7 @@ function BuyComp(props) {
         </div>
         <div className="buy-container">
           <form id="form" onSubmit={handleSubmit}>
-            <h5>{"Your balance: " + user.wallet.balance}</h5>
+            <h5>{"Your balance: " + user.balance}</h5>
             <h3>{"Course Fees: " + courses.price}</h3>
             <div className="buy-btn">
               <Button1
