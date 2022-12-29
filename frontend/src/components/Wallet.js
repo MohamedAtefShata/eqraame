@@ -72,9 +72,12 @@ function Wallet() {
             </h3>
           </div>
           <div className="wallet-contanier">
-            <p className="wallet-balance">
-              <b className="balance">{"Your Balance: "}</b> 154$
-            </p>
+            <div className="wallet-wapper">
+              <img src="/images/wallet.png" alt="" className="wallt-img" />
+              <p className="wallet-balance">
+                <b className="balance">{"Your Balance: "}</b> 154$
+              </p>
+            </div>
             <form>
               <Button
                 className="btns"
@@ -88,7 +91,6 @@ function Wallet() {
             </form>
           </div>
         </div>
-        <div></div>
       </div>
     </>
   );
