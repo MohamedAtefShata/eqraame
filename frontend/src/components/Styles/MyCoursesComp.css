@@ -1,6 +1,6 @@
-.mywallet-container {
+.mycourses-container {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
     flex-direction: row;
     margin-top: 150px;
@@ -9,14 +9,14 @@
     
 }
 
-.wallet-Header {
+.courses-Header {
     text-align: center;
     padding-bottom: 12px;
     width: 400px;
     border-bottom: 1px solid #282828;
 }
 
-.mywallet-container .center-handel {
+.mycourses-container .center-handel {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -24,41 +24,60 @@
     width: 850px;
 }
 
-.wallet-balance {
+.courses-balance {
     font-size: 22px;
     font-weight: 400;
     max-width: 500px;
     /* margin-left: 300px; */
 }
 
-.wallet-wapper {
+.courses-wapper {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: row;
+    margin-left: -600px;
 }
 
-.wallt-img {
-    width: 60px;
+.courses-img {
+    width: 40px;
     margin-right: 10px;
     -webkit-user-drag: none;
 }
 
-.balance {
+.courses-balance {
     color: #282828;
     font-weight: bold;
 }
 
-.wallet-contanier {
+.courses-contanier {
     display: flex;
-    align-items: center;
-    justify-content: center;
     flex-direction: column;
     margin-top: 100px;
+    /* margin-left: -420px; */
 }
 
-.wallet-contanier .btn{
+.courses-contanier .btn{
     margin-top: 10px;
     margin-bottom: 5px;
     width: 300px;
+}
+
+.courses-contanier .cards {
+    padding: 0;
+    /* background: #fff; */
+}
+
+.courses-contanier .cards__container {
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.courses-contanier .cards__wrapper {
+    margin: 20px 0 5px;
+}
+
+.courses-contanier .cards__items {
+    grid-template-columns: repeat(3, auto);
 }

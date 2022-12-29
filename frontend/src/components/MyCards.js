@@ -4,20 +4,28 @@ import "./Styles/Cards.css"; /*import css style of cards*/
 import PostService from "../services/post.service";
 import { useNavigate } from "react-router-dom";
 import LoadingPage from "./Pages/LoadingPage";
+import postService from "../services/post.service";
 
-function Cards() {
-  const [courses, setcourses] = useState([]);
+function MyCards() {
+  const [mycourses, setmycourses] = useState([]);
+  const [mycoursesData, setmycoursesData] = useState([]);
   const [loading, setloading] = useState(true);
-
-  // nav to courses page
-  // const navigate = useNavigate();
   useEffect(() => {
-    setloading(true);
-    PostService.getcourseinfo().then(
+    PostService.getwallet().then(
       (response) => {
         setloading(false);
-        setcourses(response.data.data);
-        console.log(courses);
+        setmycourses(response.data.wallet.courses);
+        const main = async () => {
+          let myCourses2 = response.data.wallet.courses;
+          const result = await Promise.all(
+            myCourses2.map(async (d) => {
+              let res = await PostService.getcourse(d);
+              return res.data.data;
+            })
+          );
+          setmycoursesData(result);
+        };
+        main();
       },
       (error) => {
         setloading(false);
@@ -26,7 +34,7 @@ function Cards() {
     );
   }, []);
 
-  const list = courses.map((d) => (
+  const list = mycoursesData.map((d) => (
     <CardItem
       src="/images/55555555.jpg"
       text={d.name}
@@ -55,11 +63,11 @@ function Cards() {
   ) : (
     <div className="cards">
       {/* Header of countainer */}
-      <h1>Learn what you want from our courses</h1>
+      {/* <h1></h1> */}
       <div className="cards__container">
-        {!courses.length ? notAvilable : listView}
+        {!mycoursesData.length ? notAvilable : listView}
       </div>
     </div>
   );
 }
-export default Cards;
+export default MyCards;

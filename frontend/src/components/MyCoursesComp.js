@@ -4,12 +4,18 @@ import AuthService from "../services/auth.service";
 import { useNavigate } from "react-router-dom";
 import { Button } from "./Button";
 import "./Styles/loading.css";
-import "./Styles/Wallet.css";
+import "./Styles/MyCoursesComp.css";
 import ProfileTemp from "./ProfileTemp";
+import MyCards from "./MyCards";
 
-function Wallet() {
+function MyCoursesComp() {
   const [userinfo, setuserinfo] = useState([]);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [birthdate, setBirthdate] = useState("");
+  const [name, setName] = useState("");
   const [loading, setloading] = useState(true);
+  const [selected, setSelected] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -57,33 +63,21 @@ function Wallet() {
   }
   return (
     <>
-      <div className="mywallet-container">
+      <div className="mycourses-container">
         <ProfileTemp />
         <div className="center-handel">
-          <div className="wallet-Header">
-            <h1 className="header">My Wallet</h1>
-            <h3 className="wallet-disc">
-              Wallet balance and charge more money
-            </h3>
+          <div className="courses-Header">
+            <h1 className="header">My Courses</h1>
+            <h3 className="courses-disc">Courses that you have 🍆</h3>
           </div>
-          <div className="wallet-contanier">
-            <div className="wallet-wapper">
-              <img src="/images/wallet.png" alt="" className="wallt-img" />
-              <p className="wallet-balance">
-                <b className="balance">{"Your Balance: "}</b> 154$
+          <div className="courses-contanier">
+            <div className="courses-wapper">
+              <img src="/images/books.png" alt="" className="courses-img" />
+              <p className="courses-balance">
+                <b className="balance">{"Your Courses: "}</b>
               </p>
             </div>
-            <form>
-              <Button
-                className="btns"
-                buttonStyle="btn--primary--logsign"
-                buttonSize="btn--medium"
-                buttonTrans="btn--logsign"
-                buttonPath="/charging"
-              >
-                Charge Your Wallet
-              </Button>
-            </form>
+            <MyCards />
           </div>
         </div>
       </div>
@@ -91,4 +85,4 @@ function Wallet() {
   );
 }
 
-export default Wallet;
+export default MyCoursesComp;
