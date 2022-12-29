@@ -1,1 +1,1 @@
-module.exports = ["programming", "art", "science"];
+module.exports = ["Development", "Marketing", "Science", "Design"];
