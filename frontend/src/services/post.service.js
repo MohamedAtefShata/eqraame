@@ -20,7 +20,7 @@ const getwallet = () => {
   });
 };
 const DEL = () => {
-  return axios.delete(HOST + "/api/auth/", {
+  return axios.delete(HOST + "/api/user", {
     headers: authHeader(),
   });
 };
