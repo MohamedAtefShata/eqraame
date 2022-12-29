@@ -7,29 +7,28 @@ import LoadingPage from "./Pages/LoadingPage";
 import postService from "../services/post.service";
 
 function MyCards() {
-  var [mycourses, setmycourses] = useState([]);
+  const [mycourses, setmycourses] = useState([]);
   const [mycoursesData, setmycoursesData] = useState([]);
-  //   const [loading, setloading] = useState(true);
-
-  // nav to courses page
-  // const navigate = useNavigate();
   useEffect(() => {
-    // setloading(true);
     PostService.getwallet().then(
       (response) => {
-        // setloading(false);
-        setmycourses(response.courses);
-        console.log(mycourses);
+        setmycourses(response.data.wallet.courses);
+        const main = async () => {
+          let myCourses2 = response.data.wallet.courses;
+          const result = await Promise.all(
+            myCourses2.map(async (d) => {
+              let res = await PostService.getcourse(d);
+              return res.data.data;
+            })
+          );
+          setmycoursesData(result);
+        };
+        main();
       },
       (error) => {
-        // setloading(false);
         console.log("allcourse", error.response);
       }
     );
-    setmycoursesData(mycourses);
-    mycourses.map((d, index) => {
-      mycoursesData[index] = postService.getcourse(d);
-    });
   }, []);
 
   const list = mycoursesData.map((d) => (
