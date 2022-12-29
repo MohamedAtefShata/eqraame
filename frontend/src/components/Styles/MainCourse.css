@@ -13,7 +13,6 @@
   }
   
   .lesson {
-    -ms-flex: 75%; 
     width: 75%;
     padding: 0 16px;
   }
@@ -52,16 +51,118 @@
     padding: 10px;
     font-size: 14px;
     margin-bottom: 0px;
-  }
-  .aa {
+    text-decoration: none;
     display: block;
-    padding: 13px 5px;
+}
+  .side--btn {
+    display: block;
+    padding: 0px 5px;
     color: #282828;
     margin: 0px 0;
     font-size: 14px;
     border-bottom: solid 1px #ececec;
+    text-decoration: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: nowrap;
+
   }
-  .aa:hover {
+  .side--btn:hover ,   .side--btn.selected,  .side--btn:hover a ,.side--btn.selected a  {
     background-color: #282828;
     color: #fff;
+  }
+  .side--btn a ,a.side--btn{
+    color: #282828;
+    margin: 0px 0;
+    text-decoration: none;
+    padding-top: 13px;
+    padding-bottom: 13px;
+    width: 100%;
+    overflow: hidden;
+  }
+  .disable { 
+    background-color: #EBEBE4;
+  }
+  .side--btn .delete--btn{
+    width: fit-content;
+    color: #520808;
+  }
+  
+  .controll-btn{
+    display: flex;
+    align-self: flex-end;
+  }
+  .course--controll--section{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .text-center{
+    text-align: center;
+  }
+
+  .edit{
+    width: 100%;
+    padding-bottom: 20px;
+  }
+  .edit input{
+    font-size: larger;
+    margin-bottom: 20px;
+  }
+  
+  .edit select{
+    font-size: large;
+  }
+  .edit>.content{
+    resize:none;
+    width: 90%;
+    margin: 5%;
+    height: 60vh;
+
+  }
+  .course-cover{
+    height: 300px;
+  }
+
+  .mycourse{
+    width: 100%;
+    background-color: white;
+    text-align: center;
+  }
+  .mycourse .content{
+    text-align: center;
+    margin: auto;
+    padding-top: 50px;
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-content: space-around; */
+    align-items: center
+
+  }
+  .mycourse .content select{
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  .addimage{
+    padding: 20px;
+    margin: 10px;
+    /* border: 1px #282828 solid; */
+  }
+  .addimage img{
+    width: 100px;
+  }
+  
+  #inputTag{
+    display: none;
+  }
+  .filechoserlabel{
+    cursor:pointer;
+  }
+  .mycourse .description{
+      resize: none;
+      width: 100vh;
+      height: 200px;
   }
