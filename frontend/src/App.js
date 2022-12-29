@@ -18,6 +18,7 @@ import Pay from "./components/Pages/Pay";
 import BuyCourse from "./components/Pages/BuyCourse";
 import MainCourse from "./components/Pages/MainCourse";
 import MyWallet from "./components/Pages/MyWallet";
+import NewCourse from "./components/courseview/NewCourse";
 function App() {
   const [currentUser, setCurrentUser] = useState(undefined);
 
@@ -70,6 +71,7 @@ function App() {
             <Route path=":courseID" element={<MainCourse />} />
           </Route>
           <Route path="/all-courses" element={<Allcourses />} />
+          <Route path="/newcourse" element={<NewCourse />} />
           <Route path="/charging" element={currentUser ? <Pay /> : <Login />} />
           <Route path="/buy-course/">
             <Route
