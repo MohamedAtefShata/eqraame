@@ -155,6 +155,7 @@ module.exports = {
   checkPasswordConfirmation,
   checkRole,
   checkRequire,
+  checkBirthDate,
   // collections
   checkUserRegistration,
   checkLogin,

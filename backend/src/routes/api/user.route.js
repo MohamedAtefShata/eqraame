@@ -11,6 +11,8 @@ const {
   checkPassword,
   checkPasswordConfirmation,
   checkRequire,
+  checkName,
+  checkBirthDate,
 } = require("../../middlewares/cheakers");
 const User = require("../../models/User.model");
 const userService = require("../../services/user.service");
@@ -80,6 +82,16 @@ router.post(
   auth,
   validateCheckers,
   UserController.updateAvatar
+);
+
+router.post(
+  // path,
+  "/update",
+  auth,
+  checkName(),
+  checkBirthDate(),
+  validateCheckers,
+  UserController.updateProfile
 );
 
 router.delete(

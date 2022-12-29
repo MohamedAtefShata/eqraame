@@ -102,6 +102,21 @@ const updateAvatar = async (req, res, next) => {
   }
 };
 
+const updateProfile = async (req, res, next) => {
+  try {
+    const user = await User.findById(req.user.id).select("-passowrd");
+    const { name, birthdate } = req.body;
+
+    user.name = name;
+    user.birthdate = birthdate;
+    await user.save();
+
+    return res.json({ msg: "profile updated", user });
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   addUser,
   getAllTeachers,
@@ -109,4 +124,5 @@ module.exports = {
   changePassword,
   updateAvatar,
   deleteByID,
+  updateProfile,
 };
