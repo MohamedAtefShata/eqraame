@@ -8,11 +8,30 @@ import AuthService from "../services/auth.service";
 import "./Styles/BuyComp.css";
 
 function BuyComp(props) {
-  var [courses, setcourses] = useState([]);
+  const [courses, setcourses] = useState([]);
+  const [user, setuser] = useState([]);
   const [loading, setloading] = useState(false);
   const { courseID } = props;
   // nav to courses page
   const navigate = useNavigate();
+  useEffect(() => {
+    PostService.getcourse(courseID).then(
+      (response) => {
+        setcourses(response.data.data);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+    PostService.getwallet().then(
+      (response) => {
+        setuser(response.data);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -49,8 +68,8 @@ function BuyComp(props) {
         </div>
         <div className="buy-container">
           <form id="form" onSubmit={handleSubmit}>
-            <h5>{"Your balance: "}</h5>
-            <h3>{"Course Fees: "}</h3>
+            <h5>{"Your balance: " + user.wallet.balance}</h5>
+            <h3>{"Course Fees: " + courses.price}</h3>
             <div className="buy-btn">
               <Button1
                 type="submit"
