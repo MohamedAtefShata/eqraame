@@ -76,7 +76,12 @@ function App() {
             <Route path=":courseID" element={<MainCourse />} />
           </Route>
           <Route path="/all-courses" element={<Allcourses />} />
-          <Route path="/newcourse" element={<NewCourse />} />
+
+          <Route
+            path="/newcourse"
+            element={currentUser ? <NewCourse /> : <Login />}
+          />
+
           <Route path="/charging" element={currentUser ? <Pay /> : <Login />} />
           <Route path="/buy-course/">
             <Route

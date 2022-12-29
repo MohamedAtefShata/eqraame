@@ -13,7 +13,7 @@ module.exports = async function (req, res, next) {
 
     const user = await UserModel.findById(req.user.id).select("-password");
 
-    if (!user || user.role != "teacher")
+    if (!user || user.role != "admin")
       throw new BadRequestError("You are not allowed to go there", 401);
 
     next();

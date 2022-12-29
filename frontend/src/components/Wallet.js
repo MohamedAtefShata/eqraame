@@ -9,15 +9,17 @@ import ProfileTemp from "./ProfileTemp";
 
 function Wallet() {
   const [userinfo, setuserinfo] = useState([]);
+  const [wallet, setWallet] = useState([]);
   const [loading, setloading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
     setloading(true);
-    PostService.getuserinfo().then(
+
+    PostService.getwallet().then(
       (response) => {
         setloading(false);
-        setuserinfo(response.data.user);
+        setWallet(response.data.wallet);
       },
       (error) => {
         console.log("Private page", error.response);
@@ -70,7 +72,8 @@ function Wallet() {
             <div className="wallet-wapper">
               <img src="/images/wallet.png" alt="" className="wallt-img" />
               <p className="wallet-balance">
-                <b className="balance">{"Your Balance: "}</b> 154$
+                <b className="balance">{"Your Balance: "}</b>
+                {wallet.balance}$
               </p>
             </div>
             <form>

@@ -67,7 +67,7 @@ function EditProfile() {
                 <div className="update-field">
                   <input
                     type="date"
-                    required="required"
+                    // required="required"
                     onChange={(e) => setBirthdate(e.target.value)}
                     // value={userinfo.birthdate}
                   />

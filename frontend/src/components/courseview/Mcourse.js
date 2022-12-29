@@ -47,7 +47,7 @@ function Mcourse(props) {
       content_type: "article",
       content: `
       <div class="text-center ">  
-        <img class="course-cover text-center" src="/images/55555555.jpg"/>
+        <img class="course-cover text-center" src="${course.cover}"/>
         <div><span style='color:#d49b00; font-size:20px ;font-weight: bolder';>Course name : </span>  ${course.name} </div>
         <p/>
         <hr>

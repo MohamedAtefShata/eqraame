@@ -49,6 +49,7 @@ function NewCourse(props) {
     // updateDisable(user, res2.data.data);
   };
   const addCoursea = async () => {
+    setloading(true);
     AuthService.addCourse(
       name,
       price,
@@ -57,10 +58,12 @@ function NewCourse(props) {
       previewSource
     ).then(
       (response) => {
+        setloading(false);
         navigate("/course/" + response.data.data._id);
         window.location.reload();
       },
       (error) => {
+        setloading(false);
         alert(error);
       }
     );
