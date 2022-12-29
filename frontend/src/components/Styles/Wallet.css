@@ -12,7 +12,7 @@
 .wallet-Header {
     text-align: center;
     padding-bottom: 12px;
-    width: 850px;
+    width: 400px;
     border-bottom: 1px solid #282828;
 }
 
@@ -21,6 +21,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    width: 850px;
 }
 
 .wallet-balance {
