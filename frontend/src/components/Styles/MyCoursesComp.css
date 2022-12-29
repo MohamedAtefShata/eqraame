@@ -62,3 +62,22 @@
     margin-bottom: 5px;
     width: 300px;
 }
+
+.courses-contanier .cards {
+    padding: 0;
+    /* background: #fff; */
+}
+
+.courses-contanier .cards__container {
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.courses-contanier .cards__wrapper {
+    margin: 20px 0 5px;
+}
+
+.courses-contanier .cards__items {
+    grid-template-columns: repeat(3, auto);
+}

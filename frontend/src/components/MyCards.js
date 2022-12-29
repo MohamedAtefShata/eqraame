@@ -9,9 +9,11 @@ import postService from "../services/post.service";
 function MyCards() {
   const [mycourses, setmycourses] = useState([]);
   const [mycoursesData, setmycoursesData] = useState([]);
+  const [loading, setloading] = useState(true);
   useEffect(() => {
     PostService.getwallet().then(
       (response) => {
+        setloading(false);
         setmycourses(response.data.wallet.courses);
         const main = async () => {
           let myCourses2 = response.data.wallet.courses;
@@ -26,6 +28,7 @@ function MyCards() {
         main();
       },
       (error) => {
+        setloading(false);
         console.log("allcourse", error.response);
       }
     );
@@ -55,7 +58,9 @@ function MyCards() {
     </div>
   );
 
-  return (
+  return loading ? (
+    <LoadingPage />
+  ) : (
     <div className="cards">
       {/* Header of countainer */}
       {/* <h1></h1> */}
