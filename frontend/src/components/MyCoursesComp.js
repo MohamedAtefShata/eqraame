@@ -24,6 +24,7 @@ function MyCoursesComp() {
       (response) => {
         setloading(false);
         setuserinfo(response.data.user);
+        console.log(response.data.user);
       },
       (error) => {
         console.log("Private page", error.response);
@@ -78,6 +79,19 @@ function MyCoursesComp() {
               </p>
             </div>
             <MyCards />
+            {userinfo.role === "teacher" ? (
+              <Button
+                className="btns"
+                buttonStyle="btn--primary--logsign"
+                buttonSize="btn--large"
+                buttonTrans="btn--logsign"
+                path="/newcourse"
+              >
+                addCourse
+              </Button>
+            ) : (
+              <></>
+            )}
           </div>
         </div>
       </div>
