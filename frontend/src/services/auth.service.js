@@ -106,6 +106,7 @@ const authService = {
   chargeWallet,
   virtualcreditcard,
   payCourse,
+  addCourse,
 };
 
 export default authService;
